@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class itemCollect : MonoBehaviour
 {
     private int itemNumber = 0;
-
+    private SpriteRenderer _renderer;
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Treasure"))
@@ -19,7 +21,8 @@ public class itemCollect : MonoBehaviour
         {
             if (itemNumber == 4)
             {
-                // succeed
+                _renderer.color = Color.black; 
+                Destroy(col.gameObject);
             }
         }
     }
@@ -27,7 +30,7 @@ public class itemCollect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _renderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
