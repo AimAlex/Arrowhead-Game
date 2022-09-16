@@ -20,6 +20,23 @@ public class PlayerMovement : MonoBehaviour
 	bool jumpPressed;
 	int jumpCount;
 
+	bool CollectSpring;
+
+	private void OnTriggerEnter2D(Collider2D col)
+	{
+		if(col.CompareTag("spring"))
+		{
+			CollectSpring = true;
+			Destroy(col.gameObject);
+		}
+
+		// if (col.CompareTag("Treasure"))
+        // {
+        //     // ++itemNumber;
+        //     Destroy(col.gameObject);
+        // }
+	}
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -69,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
 			jumpCount--;
 			jumpPressed = false;
 		}
-		else if (jumpPressed && jumpCount > 0 && isJump)
+		else if (jumpPressed && jumpCount > 0 && isJump && CollectSpring)
 		{
 			rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpForce);
 			jumpCount--;
