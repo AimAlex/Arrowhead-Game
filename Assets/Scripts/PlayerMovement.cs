@@ -45,18 +45,12 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update() // Update is called once per frame
 	{
-		if (Input.GetButtonDown("Jump") && jumpCount > 0)
-		{
-			jumpPressed = true;
-		}
-	}
-
-	private void FixedUpdate()
-	{
 		isGround = Physics2D.OverlapCircle(groundCheck.position, 0.1f, ground);
 		GroundMovement();
-		Jump();
-		// SwitchAnim();
+		if (Input.GetButtonDown("Jump"))
+		{
+			Jump();
+		}
 	}
 
 	void GroundMovement()
@@ -76,17 +70,13 @@ public class PlayerMovement : MonoBehaviour
 		if (isGround)
 		{
 			jumpCount = 2;
-			isJump = false;
+			jumpPressed = true;
+		} else if (CollectSpring && jumpCount > 0)
+		{
+			jumpPressed = true;
 		}
 
-		if (jumpPressed && isGround)
-		{
-			isJump = true;
-			rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpForce);
-			jumpCount--;
-			jumpPressed = false;
-		}
-		else if (jumpPressed && jumpCount > 0 && isJump && CollectSpring)
+		if (jumpPressed)
 		{
 			rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpForce);
 			jumpCount--;
