@@ -10,7 +10,6 @@ public class itemCollect : MonoBehaviour
     private int itemNumber = 0;
     private SpriteRenderer _renderer;
 
-
     // Level 3 variables;
     public GameObject item1Prefab;
     public GameObject item2Prefab;
@@ -33,6 +32,10 @@ public class itemCollect : MonoBehaviour
             {
                 _renderer.color = Color.black; 
                 Destroy(col.gameObject);
+
+                // Analytics codes
+                FindObjectOfType<AnalyticsScript>().Success();
+
             }
         }
     }
@@ -98,7 +101,6 @@ public class itemCollect : MonoBehaviour
         GameObject obj2= Instantiate(item2Prefab, new Vector3(this.transform.position.x+this.transform.localScale.x+1,this.transform.position.y+this.transform.localScale.x+1,this.transform.position.z), Quaternion.identity);
         obj2.tag="treasure(cloned)";
 		obj2.GetComponent<Rigidbody2D>().velocity=new Vector3(3,3,0);
-
     }
 
 }
