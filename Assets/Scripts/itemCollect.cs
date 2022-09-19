@@ -68,15 +68,15 @@ public class itemCollect : MonoBehaviour
                 onPickObject.SetActive(false);
                 bagQueue.Enqueue(onPickObject);
                 //Analytics codes
-                if(itemNumber==1){
-                    FindObjectOfType<AnalyticsScript>().Collect1();
-                }else if(itemNumber==2){
-                    FindObjectOfType<AnalyticsScript>().Collect2();
-                }else if(itemNumber==3){
-                    FindObjectOfType<AnalyticsScript>().Collect3();
-                }else if(itemNumber==4){
-                    FindObjectOfType<AnalyticsScript>().Collect4();
-                }
+                // if(itemNumber==1){
+                //     FindObjectOfType<AnalyticsScript>().Collect1();
+                // }else if(itemNumber==2){
+                //     FindObjectOfType<AnalyticsScript>().Collect2();
+                // }else if(itemNumber==3){
+                //     FindObjectOfType<AnalyticsScript>().Collect3();
+                // }else if(itemNumber==4){
+                //     FindObjectOfType<AnalyticsScript>().Collect4();
+                // }
             }
         }
         if (Input.GetKeyDown(KeyCode.E))
