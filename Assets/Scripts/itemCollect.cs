@@ -10,6 +10,12 @@ public class itemCollect : MonoBehaviour
     private int itemNumber = 0;
     private SpriteRenderer _renderer;
 
+    // bag varialbes
+    bool CanBePick = false;
+    private GameObject onPickObject;
+    Queue<GameObject> bagQueue=new Queue<GameObject> ();
+
+
     // Level 3 variables;
     public GameObject item1Prefab;
     public GameObject item2Prefab;
@@ -22,19 +28,8 @@ public class itemCollect : MonoBehaviour
     {
         if (col.CompareTag("Treasure"))
         {
-            ++itemNumber;
-            Destroy(col.gameObject);
-
-            //Analytics codes
-            if(itemNumber==1){
-                FindObjectOfType<AnalyticsScript>().Collect1();
-            }else if(itemNumber==2){
-                FindObjectOfType<AnalyticsScript>().Collect2();
-            }else if(itemNumber==3){
-                FindObjectOfType<AnalyticsScript>().Collect3();
-            }else if(itemNumber==4){
-                FindObjectOfType<AnalyticsScript>().Collect4();
-            }
+            CanBePick = true;
+            onPickObject = col.gameObject;
         }
 
         if (col.CompareTag("Finish"))
@@ -55,16 +50,50 @@ public class itemCollect : MonoBehaviour
         // }
     }
 
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.CompareTag("Treasure"))
+        {
+            CanBePick = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (CanBePick)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                ++itemNumber;
+                onPickObject.SetActive(false);
+                bagQueue.Enqueue(onPickObject);
+                //Analytics codes
+                if(itemNumber==1){
+                    FindObjectOfType<AnalyticsScript>().Collect1();
+                }else if(itemNumber==2){
+                    FindObjectOfType<AnalyticsScript>().Collect2();
+                }else if(itemNumber==3){
+                    FindObjectOfType<AnalyticsScript>().Collect3();
+                }else if(itemNumber==4){
+                    FindObjectOfType<AnalyticsScript>().Collect4();
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (itemNumber > 0)
+            {
+                GameObject item = bagQueue.Dequeue();
+                item.SetActive(true);
+                --itemNumber;
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         _renderer = GetComponent<SpriteRenderer>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
 
