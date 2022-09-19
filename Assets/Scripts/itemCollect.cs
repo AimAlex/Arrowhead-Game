@@ -24,6 +24,17 @@ public class itemCollect : MonoBehaviour
         {
             ++itemNumber;
             Destroy(col.gameObject);
+
+            //Analytics codes
+            if(itemNumber==1){
+                FindObjectOfType<AnalyticsScript>().Collect1();
+            }else if(itemNumber==2){
+                FindObjectOfType<AnalyticsScript>().Collect2();
+            }else if(itemNumber==3){
+                FindObjectOfType<AnalyticsScript>().Collect3();
+            }else if(itemNumber==4){
+                FindObjectOfType<AnalyticsScript>().Collect4();
+            }
         }
 
         if (col.CompareTag("Finish"))
@@ -38,6 +49,10 @@ public class itemCollect : MonoBehaviour
 
             }
         }
+
+        // if(col.CompareTag("trap")){
+        //     FindObjectOfType<AnalyticsScript>().KillByTrap();
+        // }
     }
 
     // Start is called before the first frame update
