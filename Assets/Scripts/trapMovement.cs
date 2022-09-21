@@ -16,14 +16,24 @@ public class trapMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (vertical != 0)
+        if (vertical > 0)
         {
             verticalDir = 1;
         }
+        else if (vertical < 0)
+        {
+            verticalDir = -1;
+            vertical = -vertical;
+        }
 
-        if (horizontal != 0)
+        if (horizontal > 0)
         {
             horizontalDir = 1;
+        }
+        else if (horizontal < 0)
+        {
+            horizontalDir = -1;
+            horizontal = -horizontal;
         }
         pc = GetComponent<PolygonCollider2D>();
         startPosition = pc.transform.position;
