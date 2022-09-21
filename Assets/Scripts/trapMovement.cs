@@ -6,8 +6,8 @@ public class trapMovement : MonoBehaviour
 {
 
 
-    private float upLimit = 14f;
-    private float downLimit = 10f;
+    [SerializeField]private float upLimit;
+    [SerializeField] private float downLimit;
     private float speed = 2f;
     private int direction = 1;
 
