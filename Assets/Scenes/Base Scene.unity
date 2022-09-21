@@ -357,8 +357,8 @@ GameObject:
   - component: {fileID: 121360031}
   - component: {fileID: 121360030}
   m_Layer: 0
-  m_Name: spring
-  m_TagString: spring
+  m_Name: dashItem
+  m_TagString: Booster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1142,10 +1142,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 11
+  dashDistance: 10
   groundCheck: {fileID: 501010318}
   ground:
     serializedVersion: 2
     m_Bits: 128
+  collectDoubleJump: 0
+  collectDash: 0
 --- !u!114 &570530349
 MonoBehaviour:
   m_ObjectHideFlags: 0
