@@ -49,9 +49,11 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update() // Update is called once per frame
 	{
-		if (isDashing) return;
 		isGround = Physics2D.OverlapCircle(groundCheck.position, 0.1f, ground);
-		GroundMovement();
+		if (!isDashing)
+		{
+			GroundMovement();	
+		}
 		if (Input.GetButtonDown("Jump"))
 		{
 			Jump();
@@ -97,8 +99,7 @@ public class PlayerMovement : MonoBehaviour
 
 	IEnumerator Dash()
 	{
-		
-		if (collectDash && dashCount > 0)
+		if (collectDash && (dashCount > 0 || isGround))
 		{
 			isDashing = true;
 			float d = dashDistance;
