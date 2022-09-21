@@ -27,6 +27,7 @@ public class trapMovement : MonoBehaviour
         {
             verticalDir = -1;
             verticalDistance = -vertical;
+            //vertical = -vertical;
         }
 
         if (horizontal > 0)
@@ -38,13 +39,14 @@ public class trapMovement : MonoBehaviour
         {
             horizontalDir = -1;
             horizontalDistance = -horizontal;
+            //horizontal = -horizontal;
         }
         pc = GetComponent<PolygonCollider2D>();
         startPosition = pc.transform.position;
+
     }
 
     // Update is called once per frame
- 
     void Update ()
     {
         if (verticalDistance > 0 && transform.position.y - startPosition.y > verticalDistance) {
