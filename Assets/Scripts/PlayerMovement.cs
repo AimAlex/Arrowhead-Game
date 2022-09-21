@@ -10,31 +10,39 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed = 5f;
     
-    // new operator
     public float jumpForce = 10f;
+
+    public float dashDistance = 10f; 
 
     public Transform groundCheck;
 	public LayerMask ground;
 
-	private bool isGround, isJump;
+	private bool isGround, isDashing;
 	bool jumpPressed;
-	int jumpCount;
+	int jumpCount, dashCount;
 
-	bool CollectSpring;
+	[SerializeField] bool collectDoubleJump, collectDash;
 
 	private void OnTriggerEnter2D(Collider2D col)
 	{
-		if(col.CompareTag("spring"))
+		// if (col.name == "doubleJumpItem")
+		// {
+		// 	collectDoubleJump = true;
+		// }
+		if(col.CompareTag("Booster"))
 		{
-			CollectSpring = true;
+			if (col.name == "doubleJumpItem")
+			{
+				collectDoubleJump = true;
+			}
+
+			if (col.name == "dashItem")
+			{
+				collectDash = true;
+			}
+
 			Destroy(col.gameObject);
 		}
-
-		// if (col.CompareTag("Treasure"))
-        // {
-        //     // ++itemNumber;
-        //     Destroy(col.gameObject);
-        // }
 	}
 
     private void Awake()
@@ -46,10 +54,18 @@ public class PlayerMovement : MonoBehaviour
 	void Update() // Update is called once per frame
 	{
 		isGround = Physics2D.OverlapCircle(groundCheck.position, 0.1f, ground);
-		GroundMovement();
+		if (!isDashing)
+		{
+			GroundMovement();	
+		}
 		if (Input.GetButtonDown("Jump"))
 		{
 			Jump();
+		}
+
+		if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+		{
+			StartCoroutine(Dash());
 		}
 	}
 
@@ -70,8 +86,9 @@ public class PlayerMovement : MonoBehaviour
 		if (isGround)
 		{
 			jumpCount = 2;
+			dashCount = 1;
 			jumpPressed = true;
-		} else if (CollectSpring && jumpCount > 0)
+		} else if (collectDoubleJump && jumpCount > 0)
 		{
 			jumpPressed = true;
 		}
@@ -81,6 +98,29 @@ public class PlayerMovement : MonoBehaviour
 			rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpForce);
 			jumpCount--;
 			jumpPressed = false;
+		}
+	}
+
+	IEnumerator Dash()
+	{
+		if (collectDash && (dashCount > 0 || isGround))
+		{
+			isDashing = true;
+			float d = dashDistance;
+			if (rigidbody.velocity.x < 0)
+			{
+				d = -d;
+			} else if (rigidbody.velocity.x == 0)
+			{
+				d = 0;
+			}
+			rigidbody.AddForce(new Vector2(d, 0f), ForceMode2D.Impulse);
+			float gravity = rigidbody.gravityScale;
+			rigidbody.gravityScale = 0;
+			yield return new WaitForSeconds(0.2f);
+			rigidbody.gravityScale = gravity;
+			--dashCount;
+			isDashing = false;
 		}
 	}
 
