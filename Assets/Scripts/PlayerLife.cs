@@ -17,9 +17,6 @@ public class PlayerLife : MonoBehaviour
     {
         if (col.gameObject.CompareTag("trap"))
         {
-            //Analytics codes
-            FindObjectOfType<AnalyticsScript>().KillByTrap();
-
             Die();
         }
     }
