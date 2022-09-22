@@ -10,7 +10,6 @@ public class ShowHintForLevels : MonoBehaviour
     void Start()
     {
         hint.SetActive(false);
-        
     }
 
     public void showhint()
