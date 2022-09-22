@@ -24,7 +24,6 @@ public class itemCollect : MonoBehaviour
     public Image tool2;
     public Image tool3;
     
-
     // Level 3 variables;
     public GameObject item1Prefab;
     public GameObject item2Prefab;
@@ -47,22 +46,22 @@ public class itemCollect : MonoBehaviour
             checkFinish();
 
             //level1_1 move to level1_2
-            if(col.name == "level1_1_des")
-            {
-                // transform.position = new Vector3(34f,-6f,0f);
-                SceneManager.LoadScene("level1_2");
-            }
-            // level1_2 move to level1_3
-            else if(col.name == "level1_2_des")
-            {
-                // transform.position = new Vector3(128.7f,-5f,0f);
-                SceneManager.LoadScene("level1_3");
-            }
-            // final destination
-            else if(col.name == "level1_3_des")
-            {
-                SceneManager.LoadScene("level2");
-            }
+            // if(col.name == "level1_1_des")
+            // {
+            //     // transform.position = new Vector3(34f,-6f,0f);
+            //     SceneManager.LoadScene("level1_2");
+            // }
+            // // level1_2 move to level1_3
+            // else if(col.name == "level1_2_des")
+            // {
+            //     // transform.position = new Vector3(128.7f,-5f,0f);
+            //     SceneManager.LoadScene("level1_3");
+            // }
+            // // final destination
+            // else if(col.name == "level1_3_des")
+            // {
+            //     SceneManager.LoadScene("level2-1");
+            // }
         }
 
         // if(col.CompareTag("trap")){
@@ -117,26 +116,32 @@ public class itemCollect : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                ++itemNumber;
-                onPickObject.SetActive(false);
-                bagQueue.Enqueue(onPickObject);
-                if (bagQueue.Count == 1)
+                if (bagQueue.Count < 3)
                 {
-                    tool1.sprite = onPickObject.GetComponent<SpriteRenderer>().sprite;
-                    tool1.color = onPickObject.GetComponent<SpriteRenderer>().color;
-                }
-                else if (bagQueue.Count == 2)
-                {
-                    tool2.sprite = onPickObject.GetComponent<SpriteRenderer>().sprite;
-                    tool2.color = onPickObject.GetComponent<SpriteRenderer>().color;
+                    ++itemNumber;
+                    onPickObject.SetActive(false);
+                    bagQueue.Enqueue(onPickObject);
+                    if (tool1.sprite == null)
+                    {
+                        tool1.sprite = onPickObject.GetComponent<SpriteRenderer>().sprite;
+                        tool1.color = onPickObject.GetComponent<SpriteRenderer>().color;
+                    }
+                    else if (tool2.sprite == null)
+                    {
+                        tool2.sprite = onPickObject.GetComponent<SpriteRenderer>().sprite;
+                        tool2.color = onPickObject.GetComponent<SpriteRenderer>().color;
 
+                    }
+                    else
+                    {
+                        tool3.sprite = onPickObject.GetComponent<SpriteRenderer>().sprite;
+                        tool3.color = onPickObject.GetComponent<SpriteRenderer>().color;
+                    }
                 }
-                else if (bagQueue.Count == 3)
-                {
-                    tool3.sprite = onPickObject.GetComponent<SpriteRenderer>().sprite;
-                    tool3.color = onPickObject.GetComponent<SpriteRenderer>().color;
-
-                }
+                // else
+                // {
+                //     // GameObject.Find("info").GetComponent<InfoShow>().showInfo("You Bag is full!");
+                // }
                 //Analytics codes
                 // if(itemNumber==1){
                 //     FindObjectOfType<AnalyticsScript>().Collect1();
@@ -156,16 +161,19 @@ public class itemCollect : MonoBehaviour
                 GameObject item = bagQueue.Dequeue();
                 item.SetActive(true);
                 --itemNumber;
-                if (bagQueue.Count == 0)
+                if (item.GetComponent<SpriteRenderer>().sprite == tool1.sprite)
                 {
+                    tool1.sprite = null;
                     tool1.color = Color.clear;
                 }
-                else if (bagQueue.Count == 1)
+                else if (item.GetComponent<SpriteRenderer>().sprite == tool2.sprite)
                 {
+                    tool2.sprite = null;
                     tool2.color = Color.clear;
                 }
-                else if (bagQueue.Count == 2)
+                else
                 {
+                    tool3.sprite = null;
                     tool3.color = Color.clear;
                 }
             }
