@@ -7,7 +7,6 @@ public class trapMovement : MonoBehaviour
     [SerializeField] private float vertical, horizontal;
     [SerializeField] private float speed = 0;
     private Vector2 startPosition;
-    private PolygonCollider2D pc;
     private int verticalDir = 0;
     private int horizontalDir = 0;
     private float verticalDistance = 0;
@@ -39,8 +38,7 @@ public class trapMovement : MonoBehaviour
             horizontalDistance = -horizontal;
             //horizontal = -horizontal;
         }
-        pc = GetComponent<PolygonCollider2D>();
-        startPosition = pc.transform.position;
+        startPosition = transform.position;
 
     }
 
