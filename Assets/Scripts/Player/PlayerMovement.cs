@@ -142,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
 
 	IEnumerator Dash()
 	{
-		if (collectDash && (dashCount > 0 || isGround))
+		if (collectDash && (dashCount > 0 || isGround) && !isDashing)
 		{
 			isDashing = true;
 			float d = dashDistance;
