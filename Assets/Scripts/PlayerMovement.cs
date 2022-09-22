@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 	int jumpCount, dashCount;
 
 	[SerializeField] bool collectDoubleJump, collectDash;
-
+	
 	private void OnTriggerEnter2D(Collider2D col)
 	{
 		
@@ -96,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
 			jumpCount--;
 			jumpPressed = false;
 		}
+
 	}
 
 	IEnumerator Dash()
@@ -120,6 +121,8 @@ public class PlayerMovement : MonoBehaviour
 			isDashing = false;
 		}
 	}
+
+	
 
 
 }
