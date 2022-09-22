@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
 			Jump();
 		}
 
-		if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+		if (Input.GetKeyDown("w") || Input.GetKeyDown("w"))
 		{
 			StartCoroutine(Dash());
 		}
