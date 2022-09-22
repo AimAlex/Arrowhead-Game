@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 10f;
 
     public float dashDistance = 10f; 
-
+	
     public Transform groundCheck;
 	public LayerMask ground;
 
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
 			if (col.name == "doubleJumpItem")
 			{
 				collectDoubleJump = true;
+				// GameObject.Find("info").GetComponent<InfoShow>().showInfo("You got double jump!");
 			}
 
 			if (col.name == "dashItem")
