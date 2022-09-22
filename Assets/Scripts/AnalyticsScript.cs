@@ -19,8 +19,8 @@ public class AnalyticsScript : MonoBehaviour
     // private long _Ticks_collect3=0;
     // private long _Ticks_collect4=0;
 
-    // private int _killedByTrap=0;
-    // private int _restart=0;
+     private int _killedByTrap=0;
+     private int _restart=0;
     // private long _endTicks;
 
     // Start is called before the first frame update
@@ -68,12 +68,12 @@ public class AnalyticsScript : MonoBehaviour
 
     public void KilledByTrap()
     {
-        // _killByTrap+=1;
-        // Send();
+        _killedByTrap += 1;
+         Send();
     }
 
     public void Restart(){
-        // _restart+=1;
+         //_restart+=1;
         // Send();
     }
 
@@ -86,7 +86,8 @@ public class AnalyticsScript : MonoBehaviour
     {
         // _endTicks=DateTime.Now.Ticks;
         // StartCoroutine(Post(_sessionID.ToString(),_level.ToString(), _Ticks_collect1.ToString(), _Ticks_collect2.ToString(), _Ticks_collect3.ToString(), _Ticks_collect4.ToString(), _numHints.ToString(),_success.ToString(),_killByTrap.ToString(),_restart.ToString(), _endTicks.ToString()));
-        StartCoroutine(Post(_sessionID.ToString(), _numHints.ToString(),success,level));
+        StartCoroutine(Post(_sessionID.ToString(), _numHints.ToString(),success,level, _killedByTrap.ToString(), _restart.ToString()));
+       
     }
 
     private IEnumerator Post1(string sessionID, string level){
@@ -108,13 +109,16 @@ public class AnalyticsScript : MonoBehaviour
         }
     }
 
-    private IEnumerator Post(string sessionID, string numHints, string success, string level)
+    private IEnumerator Post(string sessionID, string numHints, string success, string level, string killByTrap, string restart)
     {
         WWWForm form = new WWWForm();
         form.AddField("entry.28648695", sessionID);
         form.AddField("entry.359015480", numHints);
         form.AddField("entry.2002142994", success);
         form.AddField("entry.516466219", level);
+        
+        form.AddField("entry.1228259701", killByTrap);
+        form.AddField("entry.397790580", restart);
 
 
         // form.AddField("entry.643454633", collect1);
