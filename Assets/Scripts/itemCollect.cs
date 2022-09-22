@@ -187,20 +187,5 @@ public class itemCollect : MonoBehaviour
 		obj2.GetComponent<Rigidbody2D>().velocity=new Vector3(3,3,0);
     }
 
-    public void updateTool1(GameObject pickObject)
-    {
-        tool1 = GameObject.Find("Tool1").GetComponent<Image>();
-        tool1.sprite = pickObject.GetComponent<SpriteRenderer>().sprite;
-    }
-    public void updateTool2(GameObject pickObject)
-    {
-        tool1 = GameObject.Find("Tool1").GetComponent<Image>();
-        tool1.sprite = pickObject.GetComponent<SpriteRenderer>().sprite;
-    }
-    public void updateTool3(GameObject pickObject)
-    {
-        tool1 = GameObject.Find("Tool1").GetComponent<Image>();
-        tool1.sprite = pickObject.GetComponent<SpriteRenderer>().sprite;
-    }
 
 }
