@@ -188,9 +188,9 @@ public class itemCollect : MonoBehaviour
 
     void Awake()
     {
-        // tool1 = GameObject.Find("tool1").GetComponent<Image>();
-        // tool2 = GameObject.Find("tool2").GetComponent<Image>();
-        // tool3 = GameObject.Find("tool3").GetComponent<Image>();
+        tool1 = GameObject.Find("tool1").GetComponent<Image>();
+        tool2 = GameObject.Find("tool2").GetComponent<Image>();
+        tool3 = GameObject.Find("tool3").GetComponent<Image>();
     }
 
     // Level 3 codes
