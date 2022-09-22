@@ -7,7 +7,7 @@ public class trapMovement : MonoBehaviour
 
 
     [SerializeField] private float vertical, horizontal;
-    [SerializeField] private float speed = 2f;
+    [SerializeField] private float speed = 0;
     private Vector2 startPosition;
     private PolygonCollider2D pc;
     private int verticalDir = 0;
