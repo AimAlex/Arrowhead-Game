@@ -19,8 +19,8 @@ public class AnalyticsScript : MonoBehaviour
     // private long _Ticks_collect3=0;
     // private long _Ticks_collect4=0;
 
-    private int _killedByTrap=0;
-    private int _restart=0;
+    // private int _killedByTrap=0;
+    // private int _restart=0;
     // private long _endTicks;
 
     // Start is called before the first frame update
@@ -68,12 +68,12 @@ public class AnalyticsScript : MonoBehaviour
 
     public void KilledByTrap()
     {
-        _killByTrap+=1;
+        // _killByTrap+=1;
         // Send();
     }
 
     public void Restart(){
-        _restart+=1;
+        // _restart+=1;
         // Send();
     }
 
