@@ -25,10 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D col)
 	{
-		// if (col.name == "doubleJumpItem")
-		// {
-		// 	collectDoubleJump = true;
-		// }
+		
 		if(col.CompareTag("Booster"))
 		{
 			if (col.name == "doubleJumpItem")
@@ -63,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
 			Jump();
 		}
 
-		if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+		if (Input.GetKeyDown("w") || Input.GetKeyDown("w"))
 		{
 			StartCoroutine(Dash());
 		}
