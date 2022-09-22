@@ -19,8 +19,8 @@ public class AnalyticsScript : MonoBehaviour
     // private long _Ticks_collect3=0;
     // private long _Ticks_collect4=0;
 
-    // private int _killByTrap=0;
-    // private int _restart=0;
+    private int _killedByTrap=0;
+    private int _restart=0;
     // private long _endTicks;
 
     // Start is called before the first frame update
@@ -66,16 +66,16 @@ public class AnalyticsScript : MonoBehaviour
         Send();
     }
 
-    // public void KillByTrap()
-    // {
-    //     _killByTrap=1;
-    //     Send();
-    // }
+    public void KilledByTrap()
+    {
+        _killByTrap+=1;
+        // Send();
+    }
 
-    // public void Restart(){
-    //     _restart=1;
-    //     Send();
-    // }
+    public void Restart(){
+        _restart+=1;
+        // Send();
+    }
 
     public void Send1(){
         StartCoroutine(Post1(_sessionID.ToString(),level));

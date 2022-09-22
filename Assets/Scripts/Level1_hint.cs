@@ -31,16 +31,25 @@ public class Level1_hint : MonoBehaviour
             hint1_panel.SetActive(true);
             // hint2_panel.SetActive(false);
             // hint3_panel.SetActive(false);
+
+            //Analytics codes
+            FindObjectOfType<AnalyticsScript>.UpdateNumHints();
         }
         else if(player_x > 28 && player_x < 86)
         {
             // hint1_panel.SetActive(false);
             hint2_panel.SetActive(true);
             // hint3_panel.SetActive(false);
+
+            //Analytics codes
+            FindObjectOfType<AnalyticsScript>.UpdateNumHints();
         }
         else
         {
             hint3_panel.SetActive(true);
+
+            //Analytics codes
+            FindObjectOfType<AnalyticsScript>.UpdateNumHints();
         }
     }
 
