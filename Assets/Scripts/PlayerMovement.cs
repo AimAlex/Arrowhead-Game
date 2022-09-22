@@ -23,7 +23,11 @@ public class PlayerMovement : MonoBehaviour
 	int jumpCount, dashCount;
 
 	[SerializeField] bool collectDoubleJump, collectDash;
-	
+
+	public Image power1;
+    public Image power2;
+    public Image power3;
+
 	private void OnTriggerEnter2D(Collider2D col)
 	{
 		
@@ -32,12 +36,44 @@ public class PlayerMovement : MonoBehaviour
 			if (col.name == "doubleJumpItem")
 			{
 				collectDoubleJump = true;
+				if (power1.sprite == null)
+				{
+					power1.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
+					power1.color = col.gameObject.GetComponent<SpriteRenderer>().color;
+				}
+				else if (power2.sprite == null)
+				{
+					power2.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
+					power2.color = col.gameObject.GetComponent<SpriteRenderer>().color;
+
+				}
+				else
+				{
+					power3.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
+					power3.color = col.gameObject.GetComponent<SpriteRenderer>().color;
+				}
 				// GameObject.Find("info").GetComponent<InfoShow>().showInfo("You got double jump!");
 			}
 
 			if (col.name == "dashItem")
 			{
 				collectDash = true;
+				if (power1.sprite == null)
+				{
+					power1.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
+					power1.color = col.gameObject.GetComponent<SpriteRenderer>().color;
+				}
+				else if (power2.sprite == null)
+				{
+					power2.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
+					power2.color = col.gameObject.GetComponent<SpriteRenderer>().color;
+
+				}
+				else
+				{
+					power3.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
+					power3.color = col.gameObject.GetComponent<SpriteRenderer>().color;
+				}
 			}
 
 			Destroy(col.gameObject);
@@ -47,6 +83,9 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+		power1 = GameObject.Find("power1").GetComponent<Image>();
+        power2 = GameObject.Find("power2").GetComponent<Image>();
+        power3 = GameObject.Find("power3").GetComponent<Image>();
     }
 
 
