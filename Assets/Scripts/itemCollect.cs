@@ -43,6 +43,22 @@ public class itemCollect : MonoBehaviour
                 FindObjectOfType<AnalyticsScript>().Success();
 
             }
+
+            //level1_1 move to level1_2
+            if(col.name == "level1_1_des")
+            {
+                transform.position = new Vector3(34f,-6f,0f);
+            }
+            // level1_2 move to level1_3
+            else if(col.name == "level1_2_des")
+            {
+                transform.position = new Vector3(128.7f,-5f,0f);
+            }
+            // final destination
+            else if(col.name == "level1_3_des")
+            {
+
+            }
         }
 
         // if(col.CompareTag("trap")){

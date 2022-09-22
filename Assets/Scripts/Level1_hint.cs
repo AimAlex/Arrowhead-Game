@@ -47,14 +47,14 @@ public class Level1_hint : MonoBehaviour
     public void closehint()
     {
         float player_x = player.transform.position.x;
-        if(player_x > -19 && player_x < 25)
+        if(player_x < 18)
         {
             // hint1_panel = GameObject.Find("Canvas/Hint1_panel");
             hint1_panel.SetActive(false);
             // hint2_panel.SetActive(false);
             // hint3_panel.SetActive(false);
         }
-        else if(player_x > 32 && player_x < 84)
+        else if(player_x < 100)
         {
             // hint1_panel.SetActive(false);
             hint2_panel.SetActive(false);
@@ -62,8 +62,6 @@ public class Level1_hint : MonoBehaviour
         }
         else
         {
-            // hint1_panel.SetActive(false);
-            // hint2_panel.SetActive(false);
             hint3_panel.SetActive(false);
         }
     }

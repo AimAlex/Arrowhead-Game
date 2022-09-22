@@ -25,10 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D col)
 	{
-		// if (col.name == "doubleJumpItem")
-		// {
-		// 	collectDoubleJump = true;
-		// }
+		
 		if(col.CompareTag("Booster"))
 		{
 			if (col.name == "doubleJumpItem")
