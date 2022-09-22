@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+
 using Object = UnityEngine.Object;
 
 public class itemCollect : MonoBehaviour
@@ -14,7 +16,10 @@ public class itemCollect : MonoBehaviour
     bool CanBePick = false;
     private GameObject onPickObject;
     Queue<GameObject> bagQueue=new Queue<GameObject> ();
-
+    public Image tool1;
+    public Image tool2;
+    public Image tool3;
+    
 
     // Level 3 variables;
     public GameObject item1Prefab;
@@ -83,6 +88,23 @@ public class itemCollect : MonoBehaviour
                 ++itemNumber;
                 onPickObject.SetActive(false);
                 bagQueue.Enqueue(onPickObject);
+                if (bagQueue.Count == 1)
+                {
+                    tool1.sprite = onPickObject.GetComponent<SpriteRenderer>().sprite;
+                    tool1.color = onPickObject.GetComponent<SpriteRenderer>().color;
+                }
+                else if (bagQueue.Count == 2)
+                {
+                    tool2.sprite = onPickObject.GetComponent<SpriteRenderer>().sprite;
+                    tool2.color = onPickObject.GetComponent<SpriteRenderer>().color;
+
+                }
+                else if (bagQueue.Count == 3)
+                {
+                    tool3.sprite = onPickObject.GetComponent<SpriteRenderer>().sprite;
+                    tool3.color = onPickObject.GetComponent<SpriteRenderer>().color;
+
+                }
                 //Analytics codes
                 // if(itemNumber==1){
                 //     FindObjectOfType<AnalyticsScript>().Collect1();
@@ -102,6 +124,18 @@ public class itemCollect : MonoBehaviour
                 GameObject item = bagQueue.Dequeue();
                 item.SetActive(true);
                 --itemNumber;
+                if (bagQueue.Count == 0)
+                {
+                    tool1.color = Color.clear;
+                }
+                else if (bagQueue.Count == 1)
+                {
+                    tool2.color = Color.clear;
+                }
+                else if (bagQueue.Count == 2)
+                {
+                    tool3.color = Color.clear;
+                }
             }
         }
     }
@@ -112,6 +146,12 @@ public class itemCollect : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
     }
 
+    void Awake()
+    {
+        tool1 = GameObject.Find("tool1").GetComponent<Image>();
+        tool2 = GameObject.Find("tool2").GetComponent<Image>();
+        tool3 = GameObject.Find("tool3").GetComponent<Image>();
+    }
 
     // Level 3 codes
      private void OnCollisionEnter2D(Collision2D col)
@@ -162,5 +202,6 @@ public class itemCollect : MonoBehaviour
         obj2.tag="treasure(cloned)";
 		obj2.GetComponent<Rigidbody2D>().velocity=new Vector3(3,3,0);
     }
+
 
 }
