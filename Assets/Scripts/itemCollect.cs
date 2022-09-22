@@ -35,7 +35,6 @@ public class itemCollect : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        checkFinish();
         if (col.CompareTag("Treasure"))
         {
             CanBePick = true;
@@ -44,15 +43,8 @@ public class itemCollect : MonoBehaviour
 
         if (col.CompareTag("Finish"))
         {
-            if (itemNumber == 4)
-            {
-                _renderer.color = Color.black; 
-                Destroy(col.gameObject);
 
-                // Analytics codes
-                FindObjectOfType<AnalyticsScript>().Success();
-
-            }
+            checkFinish();
 
             //level1_1 move to level1_2
             if(col.name == "level1_1_des")
@@ -103,6 +95,8 @@ public class itemCollect : MonoBehaviour
 
         if (collList.Count == 0)
         {
+            // success, go to next level
+            FindObjectOfType<AnalyticsScript>().Success();
             SceneManager.LoadScene(nextSceneName);
         }
     }
