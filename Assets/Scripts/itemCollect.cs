@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 using Object = UnityEngine.Object;
 
 public class itemCollect : MonoBehaviour
 {
+    [SerializeField] private List<GameObject> collItemList;
+    [SerializeField] private string nextSceneName;
+    
     private int itemNumber = 0;
     private SpriteRenderer _renderer;
 
@@ -38,20 +42,64 @@ public class itemCollect : MonoBehaviour
 
         if (col.CompareTag("Finish"))
         {
-            if (itemNumber == 4)
+
+            checkFinish();
+
+            //level1_1 move to level1_2
+            if(col.name == "level1_1_des")
             {
-                _renderer.color = Color.black; 
-                Destroy(col.gameObject);
-
-                // Analytics codes
-                FindObjectOfType<AnalyticsScript>().Success();
-
+                // transform.position = new Vector3(34f,-6f,0f);
+                SceneManager.LoadScene("level1_2");
+            }
+            // level1_2 move to level1_3
+            else if(col.name == "level1_2_des")
+            {
+                // transform.position = new Vector3(128.7f,-5f,0f);
+                SceneManager.LoadScene("level1_3");
+            }
+            // final destination
+            else if(col.name == "level1_3_des")
+            {
+                SceneManager.LoadScene("level2");
             }
         }
 
         // if(col.CompareTag("trap")){
         //     FindObjectOfType<AnalyticsScript>().KillByTrap();
         // }
+    }
+    
+    private void checkFinish()
+    {
+        List<GameObject> collList = new List<GameObject> ();
+        foreach (var obj in bagQueue)
+        {
+            collList.Add(obj);
+        }
+
+        if (collList.Count != collItemList.Count)
+        {
+            return;
+        }
+
+        foreach (var item in collItemList) 
+        {
+            if (collList.Exists(t => t == item))
+            {
+                collList.Remove(item);
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        if (collList.Count == 0)
+        {
+            // success, go to next level
+            FindObjectOfType<AnalyticsScript>().Success();
+            SceneManager.LoadScene(nextSceneName);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D col)
@@ -140,9 +188,9 @@ public class itemCollect : MonoBehaviour
 
     void Awake()
     {
-        tool1 = GameObject.Find("tool1").GetComponent<Image>();
-        tool2 = GameObject.Find("tool2").GetComponent<Image>();
-        tool3 = GameObject.Find("tool3").GetComponent<Image>();
+        // tool1 = GameObject.Find("tool1").GetComponent<Image>();
+        // tool2 = GameObject.Find("tool2").GetComponent<Image>();
+        // tool3 = GameObject.Find("tool3").GetComponent<Image>();
     }
 
     // Level 3 codes
