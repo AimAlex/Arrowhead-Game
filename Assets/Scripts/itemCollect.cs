@@ -47,22 +47,22 @@ public class itemCollect : MonoBehaviour
             checkFinish();
 
             //level1_1 move to level1_2
-            if(col.name == "level1_1_des")
-            {
-                // transform.position = new Vector3(34f,-6f,0f);
-                SceneManager.LoadScene("level1_2");
-            }
-            // level1_2 move to level1_3
-            else if(col.name == "level1_2_des")
-            {
-                // transform.position = new Vector3(128.7f,-5f,0f);
-                SceneManager.LoadScene("level1_3");
-            }
-            // final destination
-            else if(col.name == "level1_3_des")
-            {
-                SceneManager.LoadScene("level2");
-            }
+            // if(col.name == "level1_1_des")
+            // {
+            //     // transform.position = new Vector3(34f,-6f,0f);
+            //     SceneManager.LoadScene("level1_2");
+            // }
+            // // level1_2 move to level1_3
+            // else if(col.name == "level1_2_des")
+            // {
+            //     // transform.position = new Vector3(128.7f,-5f,0f);
+            //     SceneManager.LoadScene("level1_3");
+            // }
+            // // final destination
+            // else if(col.name == "level1_3_des")
+            // {
+            //     SceneManager.LoadScene("level2-1");
+            // }
         }
 
         // if(col.CompareTag("trap")){
