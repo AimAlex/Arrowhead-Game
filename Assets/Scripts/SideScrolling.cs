@@ -19,7 +19,8 @@ public class SideScrolling : MonoBehaviour
         Vector3 cameraPosition = transform.position;
         cameraPosition.x = player.position.x;
         //cameraPosition.y = player.position.y + startPosition.y;
-        cameraPosition.y = player.position.y;
+        //cameraPosition.y = player.position.y;
+        cameraPosition.y = player.position.y + 3;
         if (cameraPosition != transform.position)
         {
             transform.position = cameraPosition;

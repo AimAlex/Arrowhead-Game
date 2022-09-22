@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class trapMovement : MonoBehaviour
 {
-
-
     [SerializeField] private float vertical, horizontal;
     [SerializeField] private float speed = 0;
     private Vector2 startPosition;
@@ -21,7 +19,7 @@ public class trapMovement : MonoBehaviour
         if (vertical > 0)
         {
             verticalDir = 1;
-            verticalDistance = vertical;
+             verticalDistance = vertical;
         }
         else if (vertical < 0)
         {
@@ -64,6 +62,22 @@ public class trapMovement : MonoBehaviour
         {
             horizontalDir = 1;
         }
+
+        // if (vertical> 0 && transform.position.y - startPosition.y > vertical) {
+        //     verticalDir = -1;
+        // }
+        // else if (vertical > 0 && startPosition.y - transform.position.y > vertical) {
+        //     verticalDir = 1;
+        // }
+
+        // if (horizontal > 0 && transform.position.x - startPosition.x > horizontal)
+        // {
+        //     horizontalDir = -1;
+        // }
+        // else if (horizontal> 0 && startPosition.x - transform.position.x > horizontal)
+        // {
+        //     horizontalDir = 1;
+        // }
         
         transform.Translate(verticalDir * speed * Time.deltaTime * Vector3.up);
         transform.Translate(horizontalDir * speed * Time.deltaTime * Vector3.right);
