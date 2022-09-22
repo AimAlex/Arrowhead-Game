@@ -4059,6 +4059,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1688049972}
+  - component: {fileID: 1688049973}
+  - component: {fileID: 1688049974}
+  - component: {fileID: 1688049975}
   m_Layer: 0
   m_Name: MovingPlate
   m_TagString: Untagged
@@ -4082,6 +4085,59 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1688049973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688049971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd0acb99c7814fe7baa5da4b146924a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vertical: 0
+  horizontal: 3
+  speed: 1
+--- !u!61 &1688049974
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688049971}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.8659737, y: -5.506175}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.0189214, y: 0.143538}
+  m_EdgeRadius: 0
+--- !u!114 &1688049975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688049971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af15102f6daaa4efe8dd3769c4ba65a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1720471295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4699,7 +4755,6 @@ GameObject:
   - component: {fileID: 1862279346}
   - component: {fileID: 1862279345}
   - component: {fileID: 1862279344}
-  - component: {fileID: 1862279343}
   m_Layer: 7
   m_Name: MovingPlate
   m_TagString: Untagged
@@ -4722,21 +4777,6 @@ Transform:
   m_Father: {fileID: 1688049972}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1862279343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1862279341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd0acb99c7814fe7baa5da4b146924a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vertical: 0
-  horizontal: 5
-  speed: 5
 --- !u!60 &1862279344
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4836,7 +4876,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.0611794}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4847,7 +4887,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.8776412}
   m_EdgeRadius: 0
 --- !u!212 &1862279348
 SpriteRenderer:
