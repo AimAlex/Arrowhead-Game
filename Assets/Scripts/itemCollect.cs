@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 using Object = UnityEngine.Object;
 
 public class itemCollect : MonoBehaviour
 {
+    [SerializeField] private List<GameObject> collItemList;
+    [SerializeField] private string nextSceneName;
+    
     private int itemNumber = 0;
     private SpriteRenderer _renderer;
 
@@ -31,6 +35,7 @@ public class itemCollect : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        checkFinish();
         if (col.CompareTag("Treasure"))
         {
             CanBePick = true;
@@ -69,6 +74,37 @@ public class itemCollect : MonoBehaviour
         // if(col.CompareTag("trap")){
         //     FindObjectOfType<AnalyticsScript>().KillByTrap();
         // }
+    }
+    
+    private void checkFinish()
+    {
+        List<GameObject> collList = new List<GameObject> ();
+        foreach (var obj in bagQueue)
+        {
+            collList.Add(obj);
+        }
+
+        if (collList.Count != collItemList.Count)
+        {
+            return;
+        }
+
+        foreach (var item in collItemList) 
+        {
+            if (collList.Exists(t => t == item))
+            {
+                collList.Remove(item);
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        if (collList.Count == 0)
+        {
+            SceneManager.LoadScene(nextSceneName);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D col)
