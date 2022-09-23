@@ -24,6 +24,8 @@ public class Level1_hint : MonoBehaviour
 
     public void showhint()
     {
+
+        FindObjectOfType<AnalyticsScript>().UpdateNumHints();
         float player_x = player.transform.position.x;
         if(player_x < 18)
         {

@@ -57,7 +57,7 @@ public class AnalyticsScript : MonoBehaviour
     // Update is called once per frame
     public void UpdateNumHints()
     {
-        _numHints++;
+        _numHints += 1;
     }
 
     public void Success()
@@ -69,13 +69,14 @@ public class AnalyticsScript : MonoBehaviour
     public void KilledByTrap()
     {
         _killedByTrap += 1;
-         Send();
+        _restart += 1;
+        Send();
     }
 
-    public void Restart(){
-         _restart+=1;
-         Send();
-    }
+    //public void Restart(){
+         //_restart+=1;
+        // Send();
+    //}
 
     public void Send1(){
         StartCoroutine(Post1(_sessionID.ToString(),level));

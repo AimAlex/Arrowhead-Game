@@ -53,8 +53,6 @@ public class PlayerLife : MonoBehaviour
 
     private void RestartLevel()
     {
-
-        FindObjectOfType<AnalyticsScript>().Restart();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
