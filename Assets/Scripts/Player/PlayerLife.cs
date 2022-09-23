@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class PlayerLife : MonoBehaviour
 {
@@ -46,11 +47,14 @@ public class PlayerLife : MonoBehaviour
     private void Die()
     {
         rb.bodyType = RigidbodyType2D.Static;
+        FindObjectOfType<AnalyticsScript>().KilledByTrap();
         RestartLevel();
     }
 
     private void RestartLevel()
     {
+
+        FindObjectOfType<AnalyticsScript>().Restart();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

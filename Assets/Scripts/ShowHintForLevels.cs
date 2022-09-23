@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.VisualScripting;
 
 public class ShowHintForLevels : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class ShowHintForLevels : MonoBehaviour
     public void showhint()
     {
         hint.SetActive(true);
+        FindObjectOfType<AnalyticsScript>().UpdateNumHints();
     }
 
     public void closehint()
