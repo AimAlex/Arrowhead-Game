@@ -25,11 +25,14 @@ public class itemCollect : MonoBehaviour
     public Image tool3;
     
     // Level 3 variables;
-    public GameObject item1Prefab;
-    public GameObject item2Prefab;
-    public GameObject item3Prefab;
-    public GameObject item4Prefab;
-    private bool hasPower=false;
+    public GameObject cloned1;
+    public GameObject cloned2;
+    public GameObject cloned3;
+    public GameObject cloned2_2;
+    public GameObject cloned3_2;
+    public GameObject cloned3_3;
+    public GameObject item14;
+    // public GameObject item4Prefab;
 
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -64,9 +67,6 @@ public class itemCollect : MonoBehaviour
             // }
         }
 
-        // if(col.CompareTag("trap")){
-        //     FindObjectOfType<AnalyticsScript>().KillByTrap();
-        // }
     }
     
     private void checkFinish()
@@ -84,6 +84,7 @@ public class itemCollect : MonoBehaviour
 
         foreach (var item in collItemList) 
         {
+            Debug.Log(item.name);
             if (collList.Exists(t => t == item))
             {
                 collList.Remove(item);
@@ -118,6 +119,7 @@ public class itemCollect : MonoBehaviour
             {
                 if (bagQueue.Count < 3)
                 {
+
                     ++itemNumber;
                     onPickObject.SetActive(false);
                     bagQueue.Enqueue(onPickObject);
@@ -137,6 +139,21 @@ public class itemCollect : MonoBehaviour
                         tool3.sprite = onPickObject.GetComponent<SpriteRenderer>().sprite;
                         tool3.color = onPickObject.GetComponent<SpriteRenderer>().color;
                     }
+
+
+                    //level 3
+                    if(FindObjectOfType<PlayerMovement>().collectCopy){
+                        if(onPickObject.name=="item1"){
+                            spawn_cloned_items1();
+                        }else if(onPickObject.name=="item2"){
+                            spawn_cloned_items2();
+                        }else if(onPickObject.name=="item3"){
+                            spawn_cloned_items3();
+                        }else if(onPickObject.name=="item11"){
+                            spawn_cloned_items11();
+                        }
+                    }
+
                 }
                 // else
                 // {
@@ -152,6 +169,7 @@ public class itemCollect : MonoBehaviour
                 // }else if(itemNumber==4){
                 //     FindObjectOfType<AnalyticsScript>().Collect4();
                 // }
+
             }
         }
         if (Input.GetKeyDown(KeyCode.E))
@@ -200,9 +218,9 @@ public class itemCollect : MonoBehaviour
         {
             ++itemNumber;
 
-            if(hasPower){
-                spaw_cloned_items();
-            }
+            // if(hasPower){
+            //     spaw_cloned_items();
+            // }
 
             Destroy(col.gameObject);
 
@@ -224,24 +242,51 @@ public class itemCollect : MonoBehaviour
             }
         }
 
-        if(col.collider.tag=="spring(copy)"){
-            _renderer.color =col.gameObject.GetComponent<SpriteRenderer>().color;
-            hasPower=true;
-            Destroy(col.gameObject);
-        }
+        // if(col.collider.tag=="spring(copy)"){
+        //     _renderer.color =col.gameObject.GetComponent<SpriteRenderer>().color;
+        //     // hasPower=true;
+        //     Destroy(col.gameObject);
+        // }
 
     }
 
-     void spaw_cloned_items(){
-		// Debug.Log(this.transform.localScale.x);
-        GameObject obj1= Instantiate(item1Prefab, new Vector3(this.transform.position.x-this.transform.localScale.x+1,this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z), Quaternion.identity);
-		obj1.tag="treasure(cloned)";
-        obj1.GetComponent<Rigidbody2D>().velocity=new Vector3(-3,3,0);
+     void spawn_cloned_items1(){
+        cloned3.transform.position=new Vector3(this.transform.position.x-(this.transform.localScale.x+3),this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
+        cloned3.AddComponent<Rigidbody2D>();
+        cloned3.GetComponent<Rigidbody2D>().velocity=new Vector3(-1,0,0);
 
-        GameObject obj2= Instantiate(item2Prefab, new Vector3(this.transform.position.x+this.transform.localScale.x+1,this.transform.position.y+this.transform.localScale.x+1,this.transform.position.z), Quaternion.identity);
-        obj2.tag="treasure(cloned)";
-		obj2.GetComponent<Rigidbody2D>().velocity=new Vector3(3,3,0);
+        cloned1.transform.position=new Vector3(this.transform.position.x+this.transform.localScale.x+1,this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
+        cloned1.AddComponent<Rigidbody2D>();
+        cloned1.GetComponent<Rigidbody2D>().velocity=new Vector3(4,2,0);
     }
+
+    void spawn_cloned_items2(){
+        cloned2.transform.position=new Vector3(this.transform.position.x-(this.transform.localScale.x+3),this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
+        cloned2.AddComponent<Rigidbody2D>();
+        cloned2.GetComponent<Rigidbody2D>().velocity=new Vector3(-2,0,0);
+
+        cloned3_3.transform.position=new Vector3(this.transform.position.x+this.transform.localScale.x+1,this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
+        cloned3_3.AddComponent<Rigidbody2D>();
+        cloned3_3.GetComponent<Rigidbody2D>().velocity=new Vector3(3,2,0);
+    }
+
+
+    void spawn_cloned_items3(){
+        cloned2_2.transform.position=new Vector3(this.transform.position.x-(this.transform.localScale.x+3),this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
+        cloned2_2.AddComponent<Rigidbody2D>();
+        cloned2_2.GetComponent<Rigidbody2D>().velocity=new Vector3(-3,0,0);
+
+        cloned3_2.transform.position=new Vector3(this.transform.position.x+this.transform.localScale.x+1,this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
+        cloned3_2.AddComponent<Rigidbody2D>();
+        cloned3_2.GetComponent<Rigidbody2D>().velocity=new Vector3(2,2,0);
+    }
+
+    void spawn_cloned_items11(){
+        item14.transform.position=new Vector3(this.transform.position.x-(this.transform.localScale.x+3),this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
+        item14.AddComponent<Rigidbody2D>();
+        item14.GetComponent<Rigidbody2D>().velocity=new Vector3(-3,0,0);
+    }
+
 
 
 }

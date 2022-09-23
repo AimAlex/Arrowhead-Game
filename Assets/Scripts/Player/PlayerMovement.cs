@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     public Image power2;
     public Image power3;
 
+	public bool collectCopy=false;
+
 	private void OnTriggerEnter2D(Collider2D col)
 	{
 		
@@ -58,6 +60,27 @@ public class PlayerMovement : MonoBehaviour
 			if (col.name == "dashItem")
 			{
 				collectDash = true;
+				if (power1.sprite == null)
+				{
+					power1.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
+					power1.color = col.gameObject.GetComponent<SpriteRenderer>().color;
+				}
+				else if (power2.sprite == null)
+				{
+					power2.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
+					power2.color = col.gameObject.GetComponent<SpriteRenderer>().color;
+
+				}
+				else
+				{
+					power3.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
+					power3.color = col.gameObject.GetComponent<SpriteRenderer>().color;
+				}
+			}
+
+			if (col.name == "copyItem")
+			{
+				collectCopy = true;
 				if (power1.sprite == null)
 				{
 					power1.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
