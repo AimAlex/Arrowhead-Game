@@ -73,8 +73,8 @@ public class AnalyticsScript : MonoBehaviour
     }
 
     public void Restart(){
-         //_restart+=1;
-        // Send();
+         _restart+=1;
+         Send();
     }
 
     public void Send1(){
