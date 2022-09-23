@@ -27,7 +27,7 @@ public class AnalyticsScript : MonoBehaviour
     void Start()
     {
         _sessionID=DateTime.Now.Ticks;
-        // Send1();
+        Send1();
     }
 
     //     public void Collect1()
@@ -63,14 +63,14 @@ public class AnalyticsScript : MonoBehaviour
     public void Success()
     {
         success="YES";
-        // Send();
+        Send();
     }
 
     public void KilledByTrap()
     {
         _killedByTrap += 1;
         _restart += 1;
-        // Send();
+        Send();
     }
 
     //public void Restart(){
