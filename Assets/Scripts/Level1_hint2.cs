@@ -38,6 +38,7 @@ public class Level1_hint2 : MonoBehaviour
         // {
         //     hint3_panel.SetActive(true);
         // }
+        FindObjectOfType<AnalyticsScript>().UpdateNumHints();
         hint1_panel.SetActive(true);
     }
 
