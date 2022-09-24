@@ -24,15 +24,15 @@ public class itemCollect : MonoBehaviour
     public Image tool2;
     public Image tool3;
     
-    // Level 3 variables;
-    public GameObject cloned1;
-    public GameObject cloned2;
-    public GameObject cloned3;
-    public GameObject cloned2_2;
-    public GameObject cloned3_2;
-    public GameObject cloned3_3;
-    public GameObject item14;
-    // public GameObject item4Prefab;
+    // // Level 3 variables; For copy power
+    // public GameObject cloned1;
+    // public GameObject cloned2;
+    // public GameObject cloned3;
+    // public GameObject cloned2_2;
+    // public GameObject cloned3_2;
+    // public GameObject cloned3_3;
+    // public GameObject item14;
+    // // public GameObject item4Prefab;
 
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -141,18 +141,18 @@ public class itemCollect : MonoBehaviour
                     }
 
 
-                    //level 3
-                    if(FindObjectOfType<PlayerMovement>().collectCopy){
-                        if(onPickObject.name=="item1"){
-                            spawn_cloned_items1();
-                        }else if(onPickObject.name=="item2"){
-                            spawn_cloned_items2();
-                        }else if(onPickObject.name=="item3"){
-                            spawn_cloned_items3();
-                        }else if(onPickObject.name=="item11"){
-                            spawn_cloned_items11();
-                        }
-                    }
+                    // //level 3. For copy power
+                    // if(FindObjectOfType<PlayerMovement>().collectCopy){
+                    //     if(onPickObject.name=="item1"){
+                    //         spawn_cloned_items1();
+                    //     }else if(onPickObject.name=="item2"){
+                    //         spawn_cloned_items2();
+                    //     }else if(onPickObject.name=="item3"){
+                    //         spawn_cloned_items3();
+                    //     }else if(onPickObject.name=="item11"){
+                    //         spawn_cloned_items11();
+                    //     }
+                    // }
 
                 }
                 // else
@@ -211,81 +211,81 @@ public class itemCollect : MonoBehaviour
         tool3 = GameObject.Find("tool3").GetComponent<Image>();
     }
 
-    // Level 3 codes
-     private void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.collider.tag=="Treasure")
-        {
-            ++itemNumber;
+    // // Level 3 codes; For copy power 
+    //  private void OnCollisionEnter2D(Collision2D col)
+    // {
+    //     if (col.collider.tag=="Treasure")
+    //     {
+    //         ++itemNumber;
 
-            // if(hasPower){
-            //     spaw_cloned_items();
-            // }
+    //         // if(hasPower){
+    //         //     spaw_cloned_items();
+    //         // }
 
-            Destroy(col.gameObject);
+    //         Destroy(col.gameObject);
 
-        }
+    //     }
 
-        if (col.collider.tag=="treasure(cloned)")
-        {
-            ++itemNumber;
-            Destroy(col.gameObject);
-        }
-
-
-        if (col.collider.tag=="Finish")
-        {
-            if (itemNumber == 4)
-            {
-                _renderer.color = Color.black; 
-                Destroy(col.gameObject);
-            }
-        }
-
-        // if(col.collider.tag=="spring(copy)"){
-        //     _renderer.color =col.gameObject.GetComponent<SpriteRenderer>().color;
-        //     // hasPower=true;
-        //     Destroy(col.gameObject);
-        // }
-
-    }
-
-     void spawn_cloned_items1(){
-        cloned3.transform.position=new Vector3(this.transform.position.x-(this.transform.localScale.x+3),this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
-        cloned3.AddComponent<Rigidbody2D>();
-        cloned3.GetComponent<Rigidbody2D>().velocity=new Vector3(-1,0,0);
-
-        cloned1.transform.position=new Vector3(this.transform.position.x+this.transform.localScale.x+1,this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
-        cloned1.AddComponent<Rigidbody2D>();
-        cloned1.GetComponent<Rigidbody2D>().velocity=new Vector3(4,2,0);
-    }
-
-    void spawn_cloned_items2(){
-        cloned2.transform.position=new Vector3(this.transform.position.x-(this.transform.localScale.x+3),this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
-        cloned2.AddComponent<Rigidbody2D>();
-        cloned2.GetComponent<Rigidbody2D>().velocity=new Vector3(-2,0,0);
-
-        cloned3_3.transform.position=new Vector3(this.transform.position.x+this.transform.localScale.x+1,this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
-        cloned3_3.AddComponent<Rigidbody2D>();
-        cloned3_3.GetComponent<Rigidbody2D>().velocity=new Vector3(3,2,0);
-    }
+    //     if (col.collider.tag=="treasure(cloned)")
+    //     {
+    //         ++itemNumber;
+    //         Destroy(col.gameObject);
+    //     }
 
 
-    void spawn_cloned_items3(){
-        cloned2_2.transform.position=new Vector3(this.transform.position.x-(this.transform.localScale.x+3),this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
-        cloned2_2.AddComponent<Rigidbody2D>();
-        cloned2_2.GetComponent<Rigidbody2D>().velocity=new Vector3(-3,0,0);
+    //     if (col.collider.tag=="Finish")
+    //     {
+    //         if (itemNumber == 4)
+    //         {
+    //             _renderer.color = Color.black; 
+    //             Destroy(col.gameObject);
+    //         }
+    //     }
 
-        cloned3_2.transform.position=new Vector3(this.transform.position.x+this.transform.localScale.x+1,this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
-        cloned3_2.AddComponent<Rigidbody2D>();
-        cloned3_2.GetComponent<Rigidbody2D>().velocity=new Vector3(2,2,0);
-    }
+    //     // if(col.collider.tag=="spring(copy)"){
+    //     //     _renderer.color =col.gameObject.GetComponent<SpriteRenderer>().color;
+    //     //     // hasPower=true;
+    //     //     Destroy(col.gameObject);
+    //     // }
 
-    void spawn_cloned_items11(){
-        item14.transform.position=new Vector3(this.transform.position.x-(this.transform.localScale.x+3),this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
-        item14.AddComponent<Rigidbody2D>();
-        item14.GetComponent<Rigidbody2D>().velocity=new Vector3(-3,0,0);
-    }
+    // }
+
+    //  void spawn_cloned_items1(){
+    //     cloned3.transform.position=new Vector3(this.transform.position.x-(this.transform.localScale.x+3),this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
+    //     cloned3.AddComponent<Rigidbody2D>();
+    //     cloned3.GetComponent<Rigidbody2D>().velocity=new Vector3(-1,0,0);
+
+    //     cloned1.transform.position=new Vector3(this.transform.position.x+this.transform.localScale.x+1,this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
+    //     cloned1.AddComponent<Rigidbody2D>();
+    //     cloned1.GetComponent<Rigidbody2D>().velocity=new Vector3(4,2,0);
+    // }
+
+    // void spawn_cloned_items2(){
+    //     cloned2.transform.position=new Vector3(this.transform.position.x-(this.transform.localScale.x+3),this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
+    //     cloned2.AddComponent<Rigidbody2D>();
+    //     cloned2.GetComponent<Rigidbody2D>().velocity=new Vector3(-2,0,0);
+
+    //     cloned3_3.transform.position=new Vector3(this.transform.position.x+this.transform.localScale.x+1,this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
+    //     cloned3_3.AddComponent<Rigidbody2D>();
+    //     cloned3_3.GetComponent<Rigidbody2D>().velocity=new Vector3(3,2,0);
+    // }
+
+
+    // void spawn_cloned_items3(){
+    //     cloned2_2.transform.position=new Vector3(this.transform.position.x-(this.transform.localScale.x+3),this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
+    //     cloned2_2.AddComponent<Rigidbody2D>();
+    //     cloned2_2.GetComponent<Rigidbody2D>().velocity=new Vector3(-3,0,0);
+
+    //     cloned3_2.transform.position=new Vector3(this.transform.position.x+this.transform.localScale.x+1,this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
+    //     cloned3_2.AddComponent<Rigidbody2D>();
+    //     cloned3_2.GetComponent<Rigidbody2D>().velocity=new Vector3(2,2,0);
+    // }
+
+    // void spawn_cloned_items11(){
+    //     item14.transform.position=new Vector3(this.transform.position.x-(this.transform.localScale.x+3),this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
+    //     item14.AddComponent<Rigidbody2D>();
+    //     item14.GetComponent<Rigidbody2D>().velocity=new Vector3(-3,0,0);
+    // }
 
 
 
