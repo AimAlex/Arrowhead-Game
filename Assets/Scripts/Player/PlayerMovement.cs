@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+	    rigidbody = GetComponent<Rigidbody2D>();
 		power1 = GameObject.Find("power1").GetComponent<Image>();
         power2 = GameObject.Find("power2").GetComponent<Image>();
         power3 = GameObject.Find("power3").GetComponent<Image>();
