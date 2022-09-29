@@ -46,7 +46,13 @@ IEnumerator Explotion()
 
     foreach (var item in CollCheck)
     {
-        if (item.name != "Square" && item.name!="Player" && !item.CompareTag("Booster") &&!item.CompareTag("Treasure"))
+        if (item.name != "4_1ground" 
+                && item.name!="Player" 
+                    && !item.CompareTag("Booster") 
+                        &&!item.CompareTag("Treasure")
+                            &&!item.CompareTag("indestructible")
+                                &&!item.CompareTag("Finish")
+            )
         {
 
             Debug.Log(item);
