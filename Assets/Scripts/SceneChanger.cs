@@ -30,29 +30,59 @@ public class SceneChanger : MonoBehaviour
         Application.Quit();
     }
 
-    public void StartLevel2()
+    public void StartLevel1_2()
+    {
+        SceneManager.LoadScene("level1_2");
+    }
+    
+    public void StartLevel1_3()
+    {
+        SceneManager.LoadScene("level1_3");
+    }
+    
+    public void StartLevel2_1()
     {
         SceneManager.LoadScene("level2-1");
     }
-
-    public void StartLevel3()
+    
+    public void StartLevel2_2()
+    {
+        SceneManager.LoadScene("level2-2");
+    }
+    
+    public void StartLevel2_3()
+    {
+        SceneManager.LoadScene("level2-3");
+    }
+    
+    public void StartLevel3_1()
     {
         SceneManager.LoadScene("level3-1");
     }
-
-    public void StartLevel4()
+    
+    public void StartLevel3_2()
+    {
+        SceneManager.LoadScene("level3-2");
+    }
+    
+    public void StartLevel3_3()
+    {
+        SceneManager.LoadScene("level3-3");
+    }
+    
+    public void StartLevel4_1()
     {
         SceneManager.LoadScene("level4-1");
     }
-
-    public void StartLevel5()
+    
+    public void StartLevel4_2()
     {
-        SceneManager.LoadScene("level5-1");
+        SceneManager.LoadScene("level4-2");
     }
-
-    public void StartLevel6()
+    
+    public void StartLevel4_3()
     {
-        SceneManager.LoadScene("level6-1");
+        SceneManager.LoadScene("level4-3");
     }
 
     public void ReturnToMenu()
