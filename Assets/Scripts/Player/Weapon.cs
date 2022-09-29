@@ -8,13 +8,14 @@ public class Weapon : MonoBehaviour
     public Transform firePoint;
     // public GameObject bulletPrefab;
     public LineRenderer lineRenderer;
+    public bool laserGunPickUp;
     public Vector2 direction;
     // Update is called once per frame
     void Update()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = mousePos - (Vector2)firePoint.position;
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetButtonDown("Fire1") && laserGunPickUp == true)
         {
             StartCoroutine(Shoot());
         }
@@ -45,5 +46,17 @@ public class Weapon : MonoBehaviour
         lineRenderer.enabled = true;
         yield return new WaitForSeconds(0.02f);
         lineRenderer.enabled = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.CompareTag("Booster"))
+        {
+            if(col.name == "laserGunItem")
+            {
+                laserGunPickUp = true;
+                Destroy(col.gameObject);
+            } 
+        }
     }
 }
