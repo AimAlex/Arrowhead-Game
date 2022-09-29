@@ -19,7 +19,7 @@ public class itemCollect : MonoBehaviour
     // bag varialbes
     bool CanBePick = false;
     private GameObject onPickObject;
-    Queue<GameObject> bagQueue=new Queue<GameObject> ();
+    Stack<GameObject> bagStack=new Stack<GameObject> ();
     public Image tool1;
     public Image tool2;
     public Image tool3;
@@ -72,7 +72,7 @@ public class itemCollect : MonoBehaviour
     private void checkFinish()
     {
         List<GameObject> collList = new List<GameObject> ();
-        foreach (var obj in bagQueue)
+        foreach (var obj in bagStack)
         {
             collList.Add(obj);
         }
@@ -117,12 +117,12 @@ public class itemCollect : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                if (bagQueue.Count < 3)
+                if (bagStack.Count < 3)
                 {
 
                     ++itemNumber;
                     onPickObject.SetActive(false);
-                    bagQueue.Enqueue(onPickObject);
+                    bagStack.Push(onPickObject);
                     if (tool1.sprite == null)
                     {
                         tool1.sprite = onPickObject.GetComponent<SpriteRenderer>().sprite;
@@ -176,7 +176,7 @@ public class itemCollect : MonoBehaviour
         {
             if (itemNumber > 0)
             {
-                GameObject item = bagQueue.Dequeue();
+                GameObject item = bagStack.Pop();
                 item.SetActive(true);
                 --itemNumber;
                 if (item.GetComponent<SpriteRenderer>().sprite == tool1.sprite)
