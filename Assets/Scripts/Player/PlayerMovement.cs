@@ -114,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update() // Update is called once per frame
 	{
-		isGround = Physics2D.OverlapCircle(groundCheck.position, 0.2f, ground);
+		isGround = Physics2D.OverlapCircle(groundCheck.position, 0.7f, ground);
 		if (!isDashing)
 		{
 			GroundMovement();	
