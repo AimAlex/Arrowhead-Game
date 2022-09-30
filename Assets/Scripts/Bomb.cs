@@ -51,6 +51,7 @@ IEnumerator Explotion()
                     && !item.CompareTag("Booster") 
                         &&!item.CompareTag("Treasure")
                             &&!item.CompareTag("indestructible")
+                            &&item.name!="Square"
                                 &&!item.CompareTag("Finish")
             )
         {
