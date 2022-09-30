@@ -28,14 +28,19 @@ public class Weapon : MonoBehaviour
         {
             lineRenderer.SetPosition(0, firePoint.position);
             lineRenderer.SetPosition(1, hitInfo.point);
+            Collider2D col = hitInfo.collider;
+            GameObject item = col.gameObject;
             if(hitInfo.transform.tag == "Treasure")
             {
-                Collider2D col = hitInfo.collider;
-                GameObject item = col.gameObject;
+
                 // TO DO: Figure out how to get grid y position
                 item.transform.position = new Vector3(item.transform.position.x, -7.8223f, item.transform.position.z);
             }
-
+            else if(hitInfo.transform.tag == "Enemy")
+            {
+                Debug.Log("Hit Enemy");
+                Destroy(item);
+            }
         }
         else
         {
