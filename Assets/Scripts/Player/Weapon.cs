@@ -22,7 +22,7 @@ public class Weapon : MonoBehaviour
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = mousePos - (Vector2)firePoint.position;
-        if(Input.GetButtonDown("Fire1") && laserGunPickUp == true)
+        if(Input.GetKeyDown(KeyCode.F) && laserGunPickUp == true)
         {
             StartCoroutine(Shoot());
         }
