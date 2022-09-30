@@ -27,8 +27,34 @@ public class PlayerMovement : MonoBehaviour
 	public Image power1;
     public Image power2;
     public Image power3;
+	public Image power4;
 
 	public bool collectCopy=false;
+	
+	private void UpdatePowerShow(Collider2D col)
+	{
+		if (power1.sprite == null)
+		{
+			power1.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
+			power1.color = col.gameObject.GetComponent<SpriteRenderer>().color;
+		}
+		else if (power2.sprite == null)
+		{
+			power2.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
+			power2.color = col.gameObject.GetComponent<SpriteRenderer>().color;
+
+		}
+		else if (power3.sprite == null)
+		{
+			power3.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
+			power3.color = col.gameObject.GetComponent<SpriteRenderer>().color;
+		}
+		else if (power4.sprite == null)
+		{
+			power4.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
+			power4.color = col.gameObject.GetComponent<SpriteRenderer>().color;
+		}
+	}
 
 	private void OnTriggerEnter2D(Collider2D col)
 	{
@@ -38,67 +64,19 @@ public class PlayerMovement : MonoBehaviour
 			if (col.name == "doubleJumpItem")
 			{
 				collectDoubleJump = true;
-				if (power1.sprite == null)
-				{
-					power1.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
-					power1.color = col.gameObject.GetComponent<SpriteRenderer>().color;
-				}
-				else if (power2.sprite == null)
-				{
-					power2.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
-					power2.color = col.gameObject.GetComponent<SpriteRenderer>().color;
-
-				}
-				else
-				{
-					power3.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
-					power3.color = col.gameObject.GetComponent<SpriteRenderer>().color;
-				}
 				// GameObject.Find("info").GetComponent<InfoShow>().showInfo("You got double jump!");
 			}
 
 			if (col.name == "dashItem")
 			{
 				collectDash = true;
-				if (power1.sprite == null)
-				{
-					power1.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
-					power1.color = col.gameObject.GetComponent<SpriteRenderer>().color;
-				}
-				else if (power2.sprite == null)
-				{
-					power2.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
-					power2.color = col.gameObject.GetComponent<SpriteRenderer>().color;
-
-				}
-				else
-				{
-					power3.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
-					power3.color = col.gameObject.GetComponent<SpriteRenderer>().color;
-				}
 			}
 
 			if (col.name == "copyItem")
 			{
 				collectCopy = true;
-				if (power1.sprite == null)
-				{
-					power1.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
-					power1.color = col.gameObject.GetComponent<SpriteRenderer>().color;
-				}
-				else if (power2.sprite == null)
-				{
-					power2.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
-					power2.color = col.gameObject.GetComponent<SpriteRenderer>().color;
-
-				}
-				else
-				{
-					power3.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
-					power3.color = col.gameObject.GetComponent<SpriteRenderer>().color;
-				}
 			}
-
+			UpdatePowerShow(col);
 			Destroy(col.gameObject);
 		}
 	}
@@ -109,6 +87,8 @@ public class PlayerMovement : MonoBehaviour
 		power1 = GameObject.Find("power1").GetComponent<Image>();
         power2 = GameObject.Find("power2").GetComponent<Image>();
         power3 = GameObject.Find("power3").GetComponent<Image>();
+		power4 = GameObject.Find("power4").GetComponent<Image>();
+
     }
 
 
