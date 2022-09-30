@@ -10,6 +10,13 @@ public class Weapon : MonoBehaviour
     public LineRenderer lineRenderer;
     public bool laserGunPickUp;
     public Vector2 direction;
+    public GameObject ground;
+
+    private void Awake()
+    {
+        ground = GameObject.Find("Ground");
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -32,9 +39,7 @@ public class Weapon : MonoBehaviour
             GameObject item = col.gameObject;
             if(hitInfo.transform.tag == "Treasure")
             {
-
-                // TO DO: Figure out how to get grid y position
-                item.transform.position = new Vector3(item.transform.position.x, -7.8223f, item.transform.position.z);
+                item.transform.position = new Vector3(item.transform.position.x, ground.transform.position.y + 1.0f, item.transform.position.z);
             }
             else if(hitInfo.transform.tag == "Enemy")
             {
