@@ -31,7 +31,7 @@ public class Weapon : MonoBehaviour
     IEnumerator Shoot()
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, direction);
-        if(hitInfo)
+        if(hitInfo && hitInfo.transform.tag != "Finish")
         {
             lineRenderer.SetPosition(0, firePoint.position);
             lineRenderer.SetPosition(1, hitInfo.point);
@@ -39,7 +39,34 @@ public class Weapon : MonoBehaviour
             GameObject item = col.gameObject;
             if(hitInfo.transform.tag == "Treasure")
             {
-                item.transform.position = new Vector3(item.transform.position.x, ground.transform.position.y + 1.0f, item.transform.position.z);
+                // item.transform.position = new Vector3(item.transform.position.x, ground.transform.position.y + 1.0f, item.transform.position.z);
+                if(itemCollect.bagStack.Count < 3)
+                {
+                    itemCollect.itemNumber = itemCollect.itemNumber + 1;
+                    itemCollect.onPickObject = item;
+                    itemCollect.onPickObject.SetActive(false);
+                    itemCollect.bagStack.Push(itemCollect.onPickObject);
+                    if (itemCollect.tool1.sprite == null)
+                    {
+                        itemCollect.tool1.sprite = itemCollect.onPickObject.GetComponent<SpriteRenderer>().sprite;
+                        itemCollect.tool1.color = itemCollect.onPickObject.GetComponent<SpriteRenderer>().color;
+                    }
+                    else if (itemCollect.tool2.sprite == null)
+                    {
+                        itemCollect.tool2.sprite = itemCollect.onPickObject.GetComponent<SpriteRenderer>().sprite;
+                        itemCollect.tool2.color = itemCollect.onPickObject.GetComponent<SpriteRenderer>().color;
+
+                    }
+                    else
+                    {
+                        itemCollect.tool3.sprite = itemCollect.onPickObject.GetComponent<SpriteRenderer>().sprite;
+                        itemCollect.tool3.color = itemCollect.onPickObject.GetComponent<SpriteRenderer>().color;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Items Are Full");
+                }
             }
             else if(hitInfo.transform.tag == "Enemy")
             {
