@@ -10,11 +10,11 @@ public class Weapon : MonoBehaviour
     public LineRenderer lineRenderer;
     public bool laserGunPickUp;
     public Vector2 direction;
-    public GameObject ground;
+    // public GameObject ground;
 
     private void Awake()
     {
-        ground = GameObject.Find("Ground");
+        // ground = GameObject.Find("Ground");
     }
 
     // Update is called once per frame
