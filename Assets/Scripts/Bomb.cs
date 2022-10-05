@@ -16,6 +16,7 @@ public class Bomb: MonoBehaviour
     public GameObject bomb;
     public LayerMask BoomMask;
     public Vector2 bomb_position;
+ 
 
 
 private void Awake()
@@ -60,7 +61,13 @@ IEnumerator Explotion()
             Destroy(item.gameObject);
         }
     }
-    Destroy(bomb);
+    
+    //Destroy(bomb);
+    bomb.GetComponent<SpriteRenderer>().color = Color.clear;
+    bomb_position = bomb.transform.position;
+    bomb_position.x = -27.9f;
+    bomb_position.y = 4.48f;
+    bomb.GetComponent<Transform>().position = bomb_position;
 }
     
     
