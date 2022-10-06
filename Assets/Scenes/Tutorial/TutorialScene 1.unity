@@ -2360,9 +2360,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collItemList: []
   nextSceneName: TutorialScene 2
-  tool1: {fileID: 0}
-  tool2: {fileID: 0}
-  tool3: {fileID: 0}
 --- !u!114 &570530350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4449,8 +4446,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\"A\" left  \r\n\"D\" right\r\n\"Space\" jump\r\n\"S\" hold 3 sec to restart\r\nGo
-    to the Green Door\n\nTutorial 1\x03"
+  m_text: "\"A\" left  \r\n\"D\" right\r\n\"Space\" jump\r\n\"S\" hold 3 sec to restart\r\n\"J\",
+    \"K\", \"L\", \"I\" move camera\nGo to the Green Door\nTutorial 1\x03"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4513,7 +4510,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.8163605, y: -424.53354, z: -425.52612, w: 9.477239}
+  m_margin: {x: -0.8163605, y: -424.53354, z: -675.68353, w: 9.477239}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6487,6 +6484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2e4e2bcb83742ab8131c980a8c71df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tourCamera: {fileID: 0}
   smoothing: 0
 --- !u!1 &2049787013
 GameObject:
