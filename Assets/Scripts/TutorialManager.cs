@@ -6,9 +6,8 @@ using UnityEngine.EventSystems;
 
 public class TutorialManager : MonoBehaviour
 {
+    [SerializeField] public int popUpIndex;
     [SerializeField] public CustomArrays[] popUps;
-    private int popUpIndex;
-
 
     [System.Serializable]
     public class CustomArrays
@@ -19,7 +18,7 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        popUpIndex = 0;
+        
     }
 
     // Update is called once per frame
@@ -57,6 +56,9 @@ public class TutorialManager : MonoBehaviour
         } else if (popUpIndex == 4)
         {
             ItemTutorial();
+        } else if (popUpIndex == 6)
+        {
+            DoubleJumpTutorial();
         }
     }
 
@@ -97,6 +99,14 @@ public class TutorialManager : MonoBehaviour
     void ItemTutorial()
     {
         if (itemCollect.bagStack.Count > 0)
+        {
+            ++popUpIndex;
+        }
+    }
+
+    void DoubleJumpTutorial()
+    {
+        if (PlayerMovement.collectDoubleJump)
         {
             ++popUpIndex;
         }
