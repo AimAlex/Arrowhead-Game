@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 	bool jumpPressed;
 	int jumpCount, dashCount;
 
-	[SerializeField] bool collectDoubleJump, collectDash;
+	public static bool collectDoubleJump, collectDash;
 
 	public Image power1;
     public Image power2;

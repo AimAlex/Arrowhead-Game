@@ -13,16 +13,16 @@ public class itemCollect : MonoBehaviour
     [SerializeField] private List<GameObject> collItemList;
     [SerializeField] private string nextSceneName;
     
-    private int itemNumber = 0;
+    public static int itemNumber = 0;
     private SpriteRenderer _renderer;
 
     // bag varialbes
     bool CanBePick = false;
-    private GameObject onPickObject;
-    Stack<GameObject> bagStack=new Stack<GameObject> ();
-    public Image tool1;
-    public Image tool2;
-    public Image tool3;
+    public static GameObject onPickObject;
+    public static Stack<GameObject> bagStack=new Stack<GameObject> ();
+    public static Image tool1;
+    public static Image tool2;
+    public static Image tool3;
     
     // // Level 3 variables; For copy power
     // public GameObject cloned1;
