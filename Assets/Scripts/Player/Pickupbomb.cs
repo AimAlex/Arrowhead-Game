@@ -47,7 +47,9 @@ public class Pickupbomb : MonoBehaviour
     
     private void DropBomb()
     {
+        Debug.Log("dropbomb");
         // get the player object location, get the bomb object,   make it visible, change the location
+        //GameObject new_bomb = GameObject.Instantiate(bomb) as GameObject;
         player_position = player.transform.position;
         pos_x = player_position.x;
         pos_y = player_position.y;

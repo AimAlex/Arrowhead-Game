@@ -18,7 +18,7 @@ public class PlayerLife : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("trap"))
+        if (col.gameObject.CompareTag("trap") || col.gameObject.CompareTag("Enemy"))
         {
             Die();
         }
