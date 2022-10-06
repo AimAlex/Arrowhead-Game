@@ -202,6 +202,13 @@ public class itemCollect : MonoBehaviour
     void Start()
     {
         _renderer = GetComponent<SpriteRenderer>();
+        tool1.sprite = collItemList[0].GetComponent<SpriteRenderer>().sprite;
+        tool1.color = new Color(100,100,100);
+        tool2.sprite = collItemList[1].GetComponent<SpriteRenderer>().sprite;
+        tool2.color = new Color(100,100,100);
+        tool3.sprite = collItemList[2].GetComponent<SpriteRenderer>().sprite;
+		tool3.color = new Color(100,100,100);
+        // tool3.color = collItemList[2].GetComponent<SpriteRenderer>().color;
     }
 
     void Awake()
