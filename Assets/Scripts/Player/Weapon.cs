@@ -16,7 +16,7 @@ public class Weapon : MonoBehaviour
 
     private void Awake()
     {
-        // ground = GameObject.Find("Ground");
+        laserGunPickUp = false;
     }
 
     // Update is called once per frame

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,8 +30,6 @@ public class PlayerMovement : MonoBehaviour
     public Image power3;
 	public Image power4;
 
-	public bool collectCopy=false;
-	
 	private void UpdatePowerShow(Collider2D col)
 	{
 		if (power1.sprite == null)
@@ -71,18 +70,16 @@ public class PlayerMovement : MonoBehaviour
 			{
 				collectDash = true;
 			}
-
-			if (col.name == "copyItem")
-			{
-				collectCopy = true;
-			}
+			
 			UpdatePowerShow(col);
 			Destroy(col.gameObject);
 		}
 	}
 
-    private void Awake()
+	private void Awake()
     {
+	    collectDoubleJump = false;
+	    collectDash = false;
 	    rigidbody = GetComponent<Rigidbody2D>();
 		power1 = GameObject.Find("power1").GetComponent<Image>();
         power2 = GameObject.Find("power2").GetComponent<Image>();

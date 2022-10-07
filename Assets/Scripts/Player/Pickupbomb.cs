@@ -28,9 +28,10 @@ public class Pickupbomb : MonoBehaviour
             } 
         }
     }
-
+    
     private void Awake()
     {
+        collectBomb = false;
         Debug.Log("Awake");
         player = GameObject.Find("Player");
         bomb = GameObject.Find("Bomb");
