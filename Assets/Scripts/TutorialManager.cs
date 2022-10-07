@@ -12,7 +12,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] public CustomArrays[] popUps;
     private float jumpForce;
     private int moveCount;
-    private int jumpCheck, puzzleCheck, collectCheck;
+    private int jumpCheck, puzzleCheck, collectCheck, trapCheck;
     private int popUpIndex;
 
     [System.Serializable]
@@ -43,6 +43,9 @@ public class TutorialManager : MonoBehaviour
         } else if (col.gameObject.name == "CollectCheck")
         {
             collectCheck = 1;
+        } else if (col.gameObject.name == "TrapCheck")
+        {
+            trapCheck = 1;
         }
     }
 
@@ -101,7 +104,13 @@ public class TutorialManager : MonoBehaviour
             }
         } else if (levelNo == 4)
         {
-            
+            if (popUpIndex == 0)
+            {
+                TrapTutorial();
+            } else if (popUpIndex == 1)
+            {
+                BombTutorial();
+            }
         }
     }
 
@@ -176,6 +185,22 @@ public class TutorialManager : MonoBehaviour
     void ShootingTutorial()
     {
         if (Weapon.laserGunPickUp)
+        {
+            ++popUpIndex;
+        }
+    }
+
+    void TrapTutorial()
+    {
+        if (trapCheck == 1)
+        {
+            ++popUpIndex;
+        }
+    }
+
+    void BombTutorial()
+    {
+        if (Pickupbomb.collectBomb)
         {
             ++popUpIndex;
         }

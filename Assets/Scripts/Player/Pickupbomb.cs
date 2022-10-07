@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine.UI;
 public class Pickupbomb : MonoBehaviour
 {
-    public bool collectBomb;
+    public static bool collectBomb;
     public GameObject player;
     public GameObject bomb;
     
