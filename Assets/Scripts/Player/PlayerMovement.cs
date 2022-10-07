@@ -81,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
 	    collectDoubleJump = false;
 	    collectDash = false;
 	    rigidbody = GetComponent<Rigidbody2D>();
+		jumpForce = 10f;
 		power1 = GameObject.Find("power1").GetComponent<Image>();
         power2 = GameObject.Find("power2").GetComponent<Image>();
         power3 = GameObject.Find("power3").GetComponent<Image>();
