@@ -2531,7 +2531,6 @@ GameObject:
   - component: {fileID: 570530352}
   - component: {fileID: 570530353}
   - component: {fileID: 570530354}
-  - component: {fileID: 570530355}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2647,8 +2646,6 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 128
-  collectDoubleJump: 1
-  collectDash: 1
   power1: {fileID: 0}
   power2: {fileID: 0}
   power3: {fileID: 0}
@@ -2856,40 +2853,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &570530355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 570530343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91305a9cee7f1469587f8c7e6224886c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popUps:
-  - Array:
-    - {fileID: 1913924844}
-  - Array:
-    - {fileID: 1490598174}
-  - Array:
-    - {fileID: 196127717}
-    - {fileID: 1155036379}
-  - Array:
-    - {fileID: 1019505754}
-  - Array:
-    - {fileID: 599454139}
-    - {fileID: 1422656684}
-    - {fileID: 888020399}
-    - {fileID: 441214823}
-    - {fileID: 357934058}
-  - Array:
-    - {fileID: 599454139}
-    - {fileID: 1422656684}
-    - {fileID: 888020399}
-    - {fileID: 441214823}
-    - {fileID: 1464108560}
 --- !u!1 &591328871
 GameObject:
   m_ObjectHideFlags: 0
