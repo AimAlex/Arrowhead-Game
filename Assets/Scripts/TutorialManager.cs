@@ -8,11 +8,12 @@ using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
-    [SerializeField] public int popUpIndex;
+    [SerializeField] public int levelNo;
     [SerializeField] public CustomArrays[] popUps;
     private float jumpForce;
     private int moveCount;
     private int jumpCheck, puzzleCheck, collectCheck;
+    private int popUpIndex;
 
     [System.Serializable]
     public class CustomArrays
@@ -23,6 +24,7 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        popUpIndex = 0;
         jumpForce = PlayerMovement.jumpForce;
         moveCount = 0;
         jumpCheck = 0;
@@ -64,27 +66,42 @@ public class TutorialManager : MonoBehaviour
             }
         }
 
-        if (popUpIndex == 0)
+        if (levelNo == 0)
         {
-            MoveTutorial();
-        } else if (popUpIndex == 1)
+            if (popUpIndex == 0)
+            {
+                MoveTutorial();
+            } else if (popUpIndex == 1)
+            {
+                JumpTutorial();
+            } else if (popUpIndex == 2)
+            {
+                PuzzleTutorial();
+            } else if (popUpIndex == 3)
+            {
+                CollectTutorial();
+            } else if (popUpIndex == 4)
+            {
+                ItemTutorial();
+            }
+        } else if (levelNo == 1)
         {
-            JumpTutorial();
-        } else if (popUpIndex == 2)
+            if (popUpIndex == 0)
+            {
+                DoubleJumpTutorial();
+            }
+        } else if (levelNo == 2)
         {
-            PuzzleTutorial();
-        } else if (popUpIndex == 3)
+            
+        } else if (levelNo == 3)
         {
-            CollectTutorial();
-        } else if (popUpIndex == 4)
+            if (popUpIndex == 0)
+            {
+                ShootingTutorial();
+            }
+        } else if (levelNo == 4)
         {
-            ItemTutorial();
-        } else if (popUpIndex == 6)
-        {
-            DoubleJumpTutorial();
-        } else if (popUpIndex == 8)
-        {
-            ShootingTutorial();
+            
         }
     }
 
