@@ -46,6 +46,10 @@ public class TutorialManager : MonoBehaviour
         } else if (col.gameObject.name == "TrapCheck")
         {
             trapCheck = 1;
+        } else if (col.gameObject.CompareTag("CheckPoint"))
+        {
+            ++popUpIndex;
+            Destroy(col.gameObject);
         }
     }
 
