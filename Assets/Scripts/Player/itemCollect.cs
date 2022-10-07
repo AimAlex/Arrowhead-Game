@@ -19,10 +19,17 @@ public class itemCollect : MonoBehaviour
     // bag varialbes
     bool CanBePick = false;
     public static GameObject onPickObject;
-    public static Stack<GameObject> bagStack=new Stack<GameObject> ();
+    public static Stack<GameObject> bagStack = new Stack<GameObject> ();
     public static Image tool1;
     public static Image tool2;
     public static Image tool3;
+	public static Image tool4;
+    public static Image tool5;
+    public static Image tool6;
+
+	private Color white = new Color(100,100,100);
+	private Color green = new Color(0,255,0);
+	// private Color black = new Color(0,0,0);
     
     // // Level 3 variables; For copy power
     // public GameObject cloned1;
@@ -127,17 +134,46 @@ public class itemCollect : MonoBehaviour
                     {
                         tool1.sprite = onPickObject.GetComponent<SpriteRenderer>().sprite;
                         tool1.color = onPickObject.GetComponent<SpriteRenderer>().color;
+						if (tool1.sprite == tool4.sprite) {
+							tool4.sprite = null;
+                    		tool4.color = Color.clear;
+						} else if (tool1.sprite == tool5.sprite) {
+							tool5.sprite = null;
+                    		tool5.color = Color.clear;
+						} else if (tool1.sprite == tool6.sprite) {
+							tool6.sprite = null;
+                    		tool6.color = Color.clear;
+						}
                     }
                     else if (tool2.sprite == null)
                     {
                         tool2.sprite = onPickObject.GetComponent<SpriteRenderer>().sprite;
                         tool2.color = onPickObject.GetComponent<SpriteRenderer>().color;
-
+						if (tool2.sprite == tool4.sprite) {
+							tool4.sprite = null;
+                    		tool4.color = Color.clear;
+						} else if (tool2.sprite == tool5.sprite) {
+							tool5.sprite = null;
+                    		tool5.color = Color.clear;
+						} else if (tool2.sprite == tool6.sprite) {
+							tool6.sprite = null;
+                    		tool6.color = Color.clear;
+						}
                     }
                     else
                     {
                         tool3.sprite = onPickObject.GetComponent<SpriteRenderer>().sprite;
                         tool3.color = onPickObject.GetComponent<SpriteRenderer>().color;
+						if (tool3.sprite == tool4.sprite) {
+							tool4.sprite = null;
+                    		tool4.color = Color.clear;
+						} else if (tool3.sprite == tool5.sprite) {
+							tool5.sprite = null;
+                    		tool5.color = Color.clear;
+						} else if (tool3.sprite == tool6.sprite) {
+							tool6.sprite = null;
+                    		tool6.color = Color.clear;
+						}
                     }
 
 
@@ -181,16 +217,46 @@ public class itemCollect : MonoBehaviour
                 --itemNumber;
                 if (item.GetComponent<SpriteRenderer>().sprite == tool1.sprite)
                 {
+					if (tool1.sprite == collItemList[0].GetComponent<SpriteRenderer>().sprite) {
+						tool4.sprite = tool1.sprite;
+        				tool4.color = tool1.color;
+					} else if (tool1.sprite == collItemList[1].GetComponent<SpriteRenderer>().sprite) {
+						tool5.sprite = tool1.sprite;
+        				tool5.color = tool1.color;
+					} else if (tool1.sprite == collItemList[2].GetComponent<SpriteRenderer>().sprite) {
+						tool6.sprite = tool1.sprite;
+        				tool6.color = tool1.color;
+					}
                     tool1.sprite = null;
                     tool1.color = Color.clear;
                 }
                 else if (item.GetComponent<SpriteRenderer>().sprite == tool2.sprite)
                 {
+					if (tool2.sprite == collItemList[0].GetComponent<SpriteRenderer>().sprite) {
+						tool4.sprite = tool2.sprite;
+        				tool4.color = tool2.color;
+					} else if (tool2.sprite == collItemList[1].GetComponent<SpriteRenderer>().sprite) {
+						tool5.sprite = tool2.sprite;
+        				tool5.color = tool2.color;
+					} else if (tool2.sprite == collItemList[2].GetComponent<SpriteRenderer>().sprite) {
+						tool6.sprite = tool2.sprite;
+        				tool6.color = tool2.color;
+					}
                     tool2.sprite = null;
                     tool2.color = Color.clear;
                 }
                 else
                 {
+					if (tool3.sprite == collItemList[0].GetComponent<SpriteRenderer>().sprite) {
+						tool4.sprite = tool3.sprite;
+        				tool4.color = tool3.color;
+					} else if (tool3.sprite == collItemList[1].GetComponent<SpriteRenderer>().sprite) {
+						tool5.sprite = tool3.sprite;
+        				tool5.color = tool3.color;
+					} else if (tool3.sprite == collItemList[2].GetComponent<SpriteRenderer>().sprite) {
+						tool6.sprite = tool3.sprite;
+        				tool6.color = tool3.color;
+					}
                     tool3.sprite = null;
                     tool3.color = Color.clear;
                 }
@@ -202,12 +268,13 @@ public class itemCollect : MonoBehaviour
     void Start()
     {
         _renderer = GetComponent<SpriteRenderer>();
-        tool1.sprite = collItemList[0].GetComponent<SpriteRenderer>().sprite;
-        tool1.color = new Color(100,100,100);
-        tool2.sprite = collItemList[1].GetComponent<SpriteRenderer>().sprite;
-        tool2.color = new Color(100,100,100);
-        tool3.sprite = collItemList[2].GetComponent<SpriteRenderer>().sprite;
-		tool3.color = new Color(100,100,100);
+		bagStack = new Stack<GameObject> ();
+        tool4.sprite = collItemList[0].GetComponent<SpriteRenderer>().sprite;
+        tool4.color = collItemList[0].GetComponent<SpriteRenderer>().color;
+        tool5.sprite = collItemList[1].GetComponent<SpriteRenderer>().sprite;
+        tool5.color = collItemList[1].GetComponent<SpriteRenderer>().color;
+        tool6.sprite = collItemList[2].GetComponent<SpriteRenderer>().sprite;
+		tool6.color = collItemList[2].GetComponent<SpriteRenderer>().color;
         // tool3.color = collItemList[2].GetComponent<SpriteRenderer>().color;
     }
 
@@ -216,6 +283,9 @@ public class itemCollect : MonoBehaviour
         tool1 = GameObject.Find("tool1").GetComponent<Image>();
         tool2 = GameObject.Find("tool2").GetComponent<Image>();
         tool3 = GameObject.Find("tool3").GetComponent<Image>();
+		tool4 = GameObject.Find("tool4").GetComponent<Image>();
+        tool5 = GameObject.Find("tool5").GetComponent<Image>();
+        tool6 = GameObject.Find("tool6").GetComponent<Image>();
     }
 
     // // Level 3 codes; For copy power 

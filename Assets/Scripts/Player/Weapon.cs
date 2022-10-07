@@ -50,17 +50,46 @@ public class Weapon : MonoBehaviour
                     {
                         itemCollect.tool1.sprite = itemCollect.onPickObject.GetComponent<SpriteRenderer>().sprite;
                         itemCollect.tool1.color = itemCollect.onPickObject.GetComponent<SpriteRenderer>().color;
+                        if (itemCollect.tool1.sprite == itemCollect.tool4.sprite) {
+                            itemCollect.tool4.sprite = null;
+                            itemCollect.tool4.color = Color.clear;
+                        } else if (itemCollect.tool1.sprite == itemCollect.tool5.sprite) {
+                            itemCollect.tool5.sprite = null;
+                            itemCollect.tool5.color = Color.clear;
+                        } else if (itemCollect.tool1.sprite == itemCollect.tool6.sprite) {
+                            itemCollect.tool6.sprite = null;
+                            itemCollect.tool6.color = Color.clear;
+                        }
                     }
                     else if (itemCollect.tool2.sprite == null)
                     {
                         itemCollect.tool2.sprite = itemCollect.onPickObject.GetComponent<SpriteRenderer>().sprite;
                         itemCollect.tool2.color = itemCollect.onPickObject.GetComponent<SpriteRenderer>().color;
-
+                        if (itemCollect.tool2.sprite == itemCollect.tool4.sprite) {
+                            itemCollect.tool4.sprite = null;
+                            itemCollect.tool4.color = Color.clear;
+                        } else if (itemCollect.tool2.sprite == itemCollect.tool5.sprite) {
+                            itemCollect.tool5.sprite = null;
+                            itemCollect.tool5.color = Color.clear;
+                        } else if (itemCollect.tool2.sprite == itemCollect.tool6.sprite) {
+                            itemCollect.tool6.sprite = null;
+                            itemCollect.tool6.color = Color.clear;
+                        }
                     }
                     else
                     {
                         itemCollect.tool3.sprite = itemCollect.onPickObject.GetComponent<SpriteRenderer>().sprite;
                         itemCollect.tool3.color = itemCollect.onPickObject.GetComponent<SpriteRenderer>().color;
+                        if (itemCollect.tool3.sprite == itemCollect.tool4.sprite) {
+                            itemCollect.tool4.sprite = null;
+                            itemCollect.tool4.color = Color.clear;
+                        } else if (itemCollect.tool3.sprite == itemCollect.tool5.sprite) {
+                            itemCollect.tool5.sprite = null;
+                            itemCollect.tool5.color = Color.clear;
+                        } else if (itemCollect.tool3.sprite == itemCollect.tool6.sprite) {
+                            itemCollect.tool6.sprite = null;
+                            itemCollect.tool6.color = Color.clear;
+                        }
                     }
                 }
                 else
