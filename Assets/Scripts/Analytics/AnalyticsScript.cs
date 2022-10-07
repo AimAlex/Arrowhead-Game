@@ -21,6 +21,11 @@ public class AnalyticsScript : MonoBehaviour
 
      private int _killedByTrap=0;
      private int _restart=0;
+
+     //  Added variables
+     private int _killedByFalling=0;
+     private int _killedByEnemy=0;
+     private int _wrongCollection=0;
     // private long _endTicks;
 
     // Start is called before the first frame update
@@ -55,10 +60,10 @@ public class AnalyticsScript : MonoBehaviour
     // }
 
     // Update is called once per frame
-    public void UpdateNumHints()
-    {
-        _numHints += 1;
-    }
+    // public void UpdateNumHints()
+    // {
+    //     _numHints += 1;
+    // }
 
     public void Success()
     {
@@ -69,6 +74,27 @@ public class AnalyticsScript : MonoBehaviour
     public void KilledByTrap()
     {
         _killedByTrap += 1;
+        _restart += 1;
+        Send();
+    }
+
+    public void KilledByDeadzone()
+    {
+        _killedByFalling += 1;
+        _restart += 1;
+        Send();
+    }
+
+    public void KilledByEnemy()
+    {
+        _killedByEnemy += 1;
+        _restart += 1;
+        Send();
+    }
+
+    public void WrongCollection()
+    {
+        _wrongCollection += 1;
         _restart += 1;
         Send();
     }

@@ -18,8 +18,15 @@ public class PlayerLife : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("trap") || col.gameObject.CompareTag("Enemy"))
+        if (col.gameObject.CompareTag("trap"))
         {
+            FindObjectOfType<AnalyticsScript>().KilledByTrap();
+            Die();
+        }else if(col.gameObject.CompareTag("Enemy")){
+            FindObjectOfType<AnalyticsScript>().KilledByEnemy();
+            Die();
+        }else if(col.gameObject.CompareTag("Deadzone")){
+            FindObjectOfType<AnalyticsScript>().KilledByDeadzone();
             Die();
         }
     }

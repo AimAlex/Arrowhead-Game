@@ -87,6 +87,7 @@ public class itemCollect : MonoBehaviour
 
         if (collList.Count != collItemList.Count)
         {
+            FindObjectOfType<AnalyticsScript>().WrongCollection();
             return;
         }
 
@@ -108,6 +109,8 @@ public class itemCollect : MonoBehaviour
             // success, go to next level
             FindObjectOfType<AnalyticsScript>().Success();
             SceneManager.LoadScene(nextSceneName);
+        }else{
+            FindObjectOfType<AnalyticsScript>().WrongCollection();
         }
     }
 
