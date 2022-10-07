@@ -82,6 +82,9 @@ public class TutorialManager : MonoBehaviour
         } else if (popUpIndex == 6)
         {
             DoubleJumpTutorial();
+        } else if (popUpIndex == 8)
+        {
+            ShootingTutorial();
         }
     }
 
@@ -148,6 +151,14 @@ public class TutorialManager : MonoBehaviour
     void DoubleJumpTutorial()
     {
         if (PlayerMovement.collectDoubleJump)
+        {
+            ++popUpIndex;
+        }
+    }
+
+    void ShootingTutorial()
+    {
+        if (Weapon.laserGunPickUp)
         {
             ++popUpIndex;
         }

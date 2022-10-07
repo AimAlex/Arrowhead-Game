@@ -7,7 +7,7 @@ public class SceneChanger : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("level1_1");
+        SceneManager.LoadScene("level0-0");
     }
 
     public void SelectLevel()
@@ -42,7 +42,7 @@ public class SceneChanger : MonoBehaviour
     
     public void StartLevel2_1()
     {
-        SceneManager.LoadScene("level2-1");
+        SceneManager.LoadScene("level2-0");
     }
     
     public void StartLevel2_2()
@@ -57,7 +57,7 @@ public class SceneChanger : MonoBehaviour
     
     public void StartLevel3_1()
     {
-        SceneManager.LoadScene("level3-1");
+        SceneManager.LoadScene("level3-0");
     }
     
     public void StartLevel3_2()
@@ -72,7 +72,7 @@ public class SceneChanger : MonoBehaviour
     
     public void StartLevel4_1()
     {
-        SceneManager.LoadScene("level4-1");
+        SceneManager.LoadScene("level4-0");
     }
     
     public void StartLevel4_2()

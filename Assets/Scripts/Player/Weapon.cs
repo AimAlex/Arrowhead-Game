@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour
     public Transform firePoint;
     // public GameObject bulletPrefab;
     public LineRenderer lineRenderer;
-    public bool laserGunPickUp;
+    public static bool laserGunPickUp;
     public Vector2 direction;
     // public GameObject ground;
 
