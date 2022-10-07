@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed = 5f;
     
-    public float jumpForce = 10f;
+    public static float jumpForce = 10f;
 
     public float dashDistance = 10f; 
 	

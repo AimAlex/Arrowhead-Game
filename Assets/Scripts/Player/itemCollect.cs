@@ -12,6 +12,7 @@ public class itemCollect : MonoBehaviour
 {
     [SerializeField] private List<GameObject> collItemList;
     [SerializeField] private string nextSceneName;
+    [SerializeField] private GameObject tool1Obj, tool2Obj, tool3Obj, tool4Obj, tool5Obj, tool6Obj;
     
     public static int itemNumber = 0;
     private SpriteRenderer _renderer;
@@ -280,12 +281,12 @@ public class itemCollect : MonoBehaviour
 
     void Awake()
     {
-        tool1 = GameObject.Find("tool1").GetComponent<Image>();
-        tool2 = GameObject.Find("tool2").GetComponent<Image>();
-        tool3 = GameObject.Find("tool3").GetComponent<Image>();
-		tool4 = GameObject.Find("tool4").GetComponent<Image>();
-        tool5 = GameObject.Find("tool5").GetComponent<Image>();
-        tool6 = GameObject.Find("tool6").GetComponent<Image>();
+        tool1 = tool1Obj.GetComponent<Image>();
+        tool2 = tool2Obj.GetComponent<Image>();
+        tool3 = tool3Obj.GetComponent<Image>();
+		tool4 = tool4Obj.GetComponent<Image>();
+        tool5 = tool5Obj.GetComponent<Image>();
+        tool6 = tool6Obj.GetComponent<Image>();
     }
 
     // // Level 3 codes; For copy power 

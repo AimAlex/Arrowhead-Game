@@ -1,13 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
     [SerializeField] public int popUpIndex;
     [SerializeField] public CustomArrays[] popUps;
+    private float jumpForce;
+    private int moveCount;
+    private int jumpCheck, puzzleCheck, collectCheck;
 
     [System.Serializable]
     public class CustomArrays
@@ -18,7 +23,25 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        jumpForce = PlayerMovement.jumpForce;
+        moveCount = 0;
+        jumpCheck = 0;
+        puzzleCheck = 0;
+        collectCheck = 0;
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.name == "JumpCheck")
+        {
+            jumpCheck = 1;
+        } else if (col.gameObject.name == "PuzzleCheck")
+        {
+            puzzleCheck = 1;
+        } else if (col.gameObject.name == "CollectCheck")
+        {
+            collectCheck = 1;
+        }
     }
 
     // Update is called once per frame
@@ -64,15 +87,35 @@ public class TutorialManager : MonoBehaviour
 
     void MoveTutorial()
     {
-        if (Input.GetAxisRaw("Horizontal") != 0)
+        PlayerMovement.jumpForce = 0;
+        if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            ++popUpIndex;
+            if (moveCount < 0)
+            {
+                ++popUpIndex;
+                PlayerMovement.jumpForce = jumpForce;
+            }
+            else if (moveCount == 0)
+            {
+                ++moveCount;
+            }
+        } else if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            if (moveCount > 0)
+            {
+                ++popUpIndex;
+                PlayerMovement.jumpForce = jumpForce;
+            }
+            else if (moveCount == 0)
+            {
+                --moveCount;
+            }
         }
     }
 
     void JumpTutorial()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (jumpCheck == 1)
         {
             ++popUpIndex;
         }
@@ -80,8 +123,7 @@ public class TutorialManager : MonoBehaviour
 
     void PuzzleTutorial()
     {
-        if (EventSystem.current.currentSelectedGameObject &&
-            EventSystem.current.currentSelectedGameObject.name == "Button_showhint")
+        if (puzzleCheck == 1)
         {
             ++popUpIndex;
         }
@@ -89,8 +131,7 @@ public class TutorialManager : MonoBehaviour
     
     void CollectTutorial()
     {
-        if (EventSystem.current.currentSelectedGameObject &&
-            EventSystem.current.currentSelectedGameObject.name == "Button_start")
+        if (collectCheck == 1)
         {
             ++popUpIndex;
         }
