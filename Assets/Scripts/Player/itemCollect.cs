@@ -273,12 +273,14 @@ public class itemCollect : MonoBehaviour
     {
         _renderer = GetComponent<SpriteRenderer>();
 		bagStack = new Stack<GameObject> ();
-        tool4.sprite = collItemList[0].GetComponent<SpriteRenderer>().sprite;
-        tool4.color = collItemList[0].GetComponent<SpriteRenderer>().color;
-        tool5.sprite = collItemList[1].GetComponent<SpriteRenderer>().sprite;
-        tool5.color = collItemList[1].GetComponent<SpriteRenderer>().color;
-        tool6.sprite = collItemList[2].GetComponent<SpriteRenderer>().sprite;
-		tool6.color = collItemList[2].GetComponent<SpriteRenderer>().color;
+		if (collItemList.Count == 3) {
+			tool4.sprite = collItemList[0].GetComponent<SpriteRenderer>().sprite;
+        	tool4.color = collItemList[0].GetComponent<SpriteRenderer>().color;
+        	tool5.sprite = collItemList[1].GetComponent<SpriteRenderer>().sprite;
+        	tool5.color = collItemList[1].GetComponent<SpriteRenderer>().color;
+        	tool6.sprite = collItemList[2].GetComponent<SpriteRenderer>().sprite;
+			tool6.color = collItemList[2].GetComponent<SpriteRenderer>().color;
+		}
         // tool3.color = collItemList[2].GetComponent<SpriteRenderer>().color;
     }
 
