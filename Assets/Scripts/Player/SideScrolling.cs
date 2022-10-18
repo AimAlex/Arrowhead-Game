@@ -14,6 +14,7 @@ public class SideScrolling : MonoBehaviour
     private Vector3 speedLeft;
     private Vector3 speedRight;
     private bool camaraMove = false;
+    private float originalSize = 9.306593f;
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -22,10 +23,18 @@ public class SideScrolling : MonoBehaviour
     }
     private void Update()
     {
-        GetDirection();
-        direction.x *= 2;
-        direction.y *= 2;
-        transform.Translate(direction * Time.deltaTime, Space.World);
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GameObject.Find("Main Camera").GetComponent<Camera>().orthographicSize = 15f;
+        }
+        else if (Input.GetKeyUp(KeyCode.P))
+        {
+            GameObject.Find("Main Camera").GetComponent<Camera>().orthographicSize = originalSize;
+        }
+        // GetDirection();
+        // direction.x *= 2;
+        // direction.y *= 2;
+        // transform.Translate(direction * Time.deltaTime, Space.World);
     }
     private void LateUpdate()
     {
