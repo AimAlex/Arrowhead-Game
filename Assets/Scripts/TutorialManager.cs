@@ -11,6 +11,7 @@ public class TutorialManager : MonoBehaviour
 {
     [SerializeField] public int levelNo;
     [SerializeField] public CustomArrays[] popUps;
+    // [SerializeField] public GameObject Background;
     private int trapCheck, pauseCheck;
     private int popUpIndex;
 
@@ -124,10 +125,20 @@ public class TutorialManager : MonoBehaviour
     {
         if (pauseCheck == 1)
         {
+            // darkBackground();
             Time.timeScale = 0;
             pauseCheck = 0;
         }
     }
+
+    // void darkBackground()
+    // {
+    //     foreach (Transform child in Background.transform.GetComponentInChildren<Transform>())
+    //     {
+    //         var renderer = child.GetComponent<Renderer>();
+    //         renderer.material.color = new Color((float)(renderer.material.color.r * 0.9), (float)(renderer.material.color.g * 0.9), (float)(renderer.material.color.b * 0.9));
+    //     }
+    // }
 
     void ItemTutorial()
     {
