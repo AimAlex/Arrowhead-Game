@@ -15,21 +15,23 @@ public class SideScrolling : MonoBehaviour
     private Vector3 speedRight;
     private bool camaraMove = false;
     private float originalSize = 9.306593f;
+    private Camera mainCamera;
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         startPosition = transform.position - player.position;
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         // if (tourCamera == null) tourCamera = gameObject.transform;
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            GameObject.Find("Main Camera").GetComponent<Camera>().orthographicSize = 15f;
+            mainCamera.orthographicSize = 23f;
         }
         else if (Input.GetKeyUp(KeyCode.P))
         {
-            GameObject.Find("Main Camera").GetComponent<Camera>().orthographicSize = originalSize;
+            mainCamera.orthographicSize = originalSize;
         }
         // GetDirection();
         // direction.x *= 2;
