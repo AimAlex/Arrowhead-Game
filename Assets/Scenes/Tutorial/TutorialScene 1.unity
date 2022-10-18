@@ -279,7 +279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 182837148280957701, guid: c562fae98681445aebca1a2ccd023252, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 182837148280957701, guid: c562fae98681445aebca1a2ccd023252, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1766,7 +1766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 182837148280957701, guid: c562fae98681445aebca1a2ccd023252, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 182837148280957701, guid: c562fae98681445aebca1a2ccd023252, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2054,7 +2054,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
-  jumpForce: 10
   dashDistance: 10
   groundCheck: {fileID: 501010318}
   ground:
@@ -2064,7 +2063,6 @@ MonoBehaviour:
   power2: {fileID: 0}
   power3: {fileID: 0}
   power4: {fileID: 0}
-  collectCopy: 0
 --- !u!114 &570530349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2079,6 +2077,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collItemList: []
   nextSceneName: TutorialScene 2
+  tool1Obj: {fileID: 0}
+  tool2Obj: {fileID: 0}
+  tool3Obj: {fileID: 0}
+  tool4Obj: {fileID: 0}
+  tool5Obj: {fileID: 0}
+  tool6Obj: {fileID: 0}
 --- !u!114 &570530350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2614,7 +2618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 182837148280957701, guid: c562fae98681445aebca1a2ccd023252, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 182837148280957701, guid: c562fae98681445aebca1a2ccd023252, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3916,8 +3920,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\"A\" left  \r\n\"D\" right\r\n\"Space\" jump\r\n\"S\" hold 3 sec to restart\r\n\"J\",
-    \"K\", \"L\", \"I\" move camera\nGo to the Green Door\nTutorial 1\x03"
+  m_text: "\"A\" left  \r\n\"D\" right\r\n\"Space\" jump\r\n\"S\" hold 3 sec to restart\r\n\"P\"
+    hold to preview map\nGo to the Green Door\nTutorial 1\x03"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4431,7 +4435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 182837148280957701, guid: c562fae98681445aebca1a2ccd023252, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 182837148280957701, guid: c562fae98681445aebca1a2ccd023252, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4716,8 +4720,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d423fc570800d9f4e96d93c29e050448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  hint: {fileID: 428744265}
 --- !u!114 &1624621691
 MonoBehaviour:
   m_ObjectHideFlags: 0
