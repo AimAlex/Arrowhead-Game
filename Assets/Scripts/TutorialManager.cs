@@ -10,9 +10,7 @@ public class TutorialManager : MonoBehaviour
 {
     [SerializeField] public int levelNo;
     [SerializeField] public CustomArrays[] popUps;
-    private float jumpForce;
-    private int moveCount;
-    private int jumpCheck, puzzleCheck, collectCheck, trapCheck;
+    private int trapCheck, pauseCheck;
     private int popUpIndex;
 
     [System.Serializable]
@@ -25,30 +23,22 @@ public class TutorialManager : MonoBehaviour
     void Start()
     {
         popUpIndex = 0;
-        jumpForce = PlayerMovement.jumpForce;
-        moveCount = 0;
-        jumpCheck = 0;
-        puzzleCheck = 0;
-        collectCheck = 0;
+        pauseCheck = 1;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name == "JumpCheck")
-        {
-            jumpCheck = 1;
-        } else if (col.gameObject.name == "PuzzleCheck")
-        {
-            puzzleCheck = 1;
-        } else if (col.gameObject.name == "CollectCheck")
-        {
-            collectCheck = 1;
-        } else if (col.gameObject.name == "TrapCheck")
+        if (col.gameObject.name == "TrapCheck")
         {
             trapCheck = 1;
         } else if (col.gameObject.CompareTag("CheckPoint"))
         {
             ++popUpIndex;
+            Destroy(col.gameObject);
+        } else if (col.gameObject.CompareTag("PausePoint"))
+        {
+            ++popUpIndex;
+            pauseCheck = 1;
             Destroy(col.gameObject);
         }
     }
@@ -56,38 +46,20 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < popUps.Length; ++i)
-        {
-            if (i == popUpIndex)
-            {
-                foreach (var popUp in popUps[i].Array)
-                {
-                    popUp.SetActive(true);
-                }
-                break;
-            }
-
-            foreach (var popUp in popUps[i].Array)
-            {
-                popUp.SetActive(false);
-            }
-        }
-
+        UpdatePopUp();
+        CheckPause();
         if (levelNo == 0)
         {
             if (popUpIndex == 0)
             {
-                MoveTutorial();
-            } else if (popUpIndex == 1)
-            {
-                JumpTutorial();
+                PauseUntilPress();
             } else if (popUpIndex == 2)
             {
-                PuzzleTutorial();
-            } else if (popUpIndex == 3)
-            {
-                CollectTutorial();
+                PauseUntilPress();
             } else if (popUpIndex == 4)
+            {
+                PauseUntilPress();
+            } else if (popUpIndex == 5)
             {
                 ItemTutorial();
             }
@@ -118,55 +90,41 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    void MoveTutorial()
+    void UpdatePopUp()
     {
-        PlayerMovement.jumpForce = 0;
-        if (Input.GetAxisRaw("Horizontal") > 0)
+        for (int i = 0; i < popUps.Length; ++i)
         {
-            if (moveCount < 0)
+            if (i == popUpIndex)
             {
-                ++popUpIndex;
-                PlayerMovement.jumpForce = jumpForce;
+                foreach (var popUp in popUps[i].Array)
+                {
+                    popUp.SetActive(true);
+                }
+                break;
             }
-            else if (moveCount == 0)
+
+            foreach (var popUp in popUps[i].Array)
             {
-                ++moveCount;
-            }
-        } else if (Input.GetAxisRaw("Horizontal") < 0)
-        {
-            if (moveCount > 0)
-            {
-                ++popUpIndex;
-                PlayerMovement.jumpForce = jumpForce;
-            }
-            else if (moveCount == 0)
-            {
-                --moveCount;
+                popUp.SetActive(false);
             }
         }
     }
 
-    void JumpTutorial()
+    void CheckPause()
     {
-        if (jumpCheck == 1)
+        if (Time.timeScale == 0 && Input.anyKeyDown)
         {
+            Time.timeScale = 1;
             ++popUpIndex;
         }
     }
 
-    void PuzzleTutorial()
+    void PauseUntilPress()
     {
-        if (puzzleCheck == 1)
+        if (pauseCheck == 1)
         {
-            ++popUpIndex;
-        }
-    }
-    
-    void CollectTutorial()
-    {
-        if (collectCheck == 1)
-        {
-            ++popUpIndex;
+            Time.timeScale = 0;
+            pauseCheck = 0;
         }
     }
 
