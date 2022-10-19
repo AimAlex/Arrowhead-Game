@@ -46,9 +46,7 @@ public class TutorialManager : MonoBehaviour
             Destroy(col.gameObject);
         } else if (col.gameObject.CompareTag("PausePoint"))
         {
-            Debug.Log(popUpIndex);
             ++popUpIndex;
-            Debug.Log(popUpIndex);
             pauseCheck = 1;
             Destroy(col.gameObject);
         }
