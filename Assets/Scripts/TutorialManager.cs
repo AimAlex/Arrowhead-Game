@@ -78,9 +78,17 @@ public class TutorialManager : MonoBehaviour
             {
                 PauseUntilPress();
             }
-            else if(popUpIndex == 1)
+            else if(popUpIndex == 2)
+            {
+                PauseUntilPress();
+            }
+            else if(popUpIndex == 3)
             {
                 DoubleJumpTutorial();
+            }
+            else if(popUpIndex == 5)
+            {
+                PauseUntilPress();
             }
         } else if (levelNo == 2)
         {
