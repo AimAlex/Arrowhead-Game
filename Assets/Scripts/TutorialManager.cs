@@ -39,7 +39,9 @@ public class TutorialManager : MonoBehaviour
             Destroy(col.gameObject);
         } else if (col.gameObject.CompareTag("PausePoint"))
         {
+            Debug.Log(popUpIndex);
             ++popUpIndex;
+            Debug.Log(popUpIndex);
             pauseCheck = 1;
             Destroy(col.gameObject);
         }
@@ -76,7 +78,11 @@ public class TutorialManager : MonoBehaviour
             
         } else if (levelNo == 3)
         {
-            if (popUpIndex == 0)
+            if (popUpIndex == 1)
+            {
+                PauseUntilPress();
+            }
+            else if (popUpIndex == 2)
             {
                 ShootingTutorial();
             }
@@ -160,7 +166,10 @@ public class TutorialManager : MonoBehaviour
     {
         if (Weapon.laserGunPickUp)
         {
-            ++popUpIndex;
+            foreach(var popUp in popUps[1].Array)
+            {
+                popUp.SetActive(true);
+            }
         }
     }
 
