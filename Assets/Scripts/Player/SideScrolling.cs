@@ -13,7 +13,7 @@ public class SideScrolling : MonoBehaviour
     private Vector3 speedBack;
     private Vector3 speedLeft;
     private Vector3 speedRight;
-    private bool camaraMove = false;
+    public bool camaraMove = false;
     private float originalSize = 9.306593f;
     private Camera mainCamera;
     private void Awake()
@@ -21,6 +21,14 @@ public class SideScrolling : MonoBehaviour
         player = GameObject.Find("Player").transform;
         startPosition = transform.position - player.position;
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        List<Vector3> tourpoints = new List<Vector3>();
+        tourpoints.Add(new Vector3(transform.position.x + 200, transform.position.y + 200, 0));
+        tourpoints.Add(new Vector3(transform.position.x + 400, transform.position.y + 400, 0));
+        tourpoints.Add(new Vector3(transform.position.x + 800, transform.position.y + 800, 0));
+        tourpoints.Add(new Vector3(transform.position.x + 1000, transform.position.y + 1000, 0));
+        tourpoints.Add(new Vector3(transform.position.x + 2000, transform.position.y + 2000, 0));
+        tourpoints.Add(new Vector3(transform.position.x, transform.position.y, 0));
+        // CameraTour(tourpoints);
         // if (tourCamera == null) tourCamera = gameObject.transform;
     }
     private void Update()
@@ -82,5 +90,15 @@ public class SideScrolling : MonoBehaviour
             camaraMove = true;
         }
         direction = speedForward + speedBack + speedLeft + speedRight;
+    }
+    public void CameraTour(List<Vector3> tourPoints)
+    {
+        camaraMove = true;
+        for (int i = 0; i < tourPoints.Count; i++)
+        {
+            transform.position = Vector3.Lerp(transform.position, tourPoints[i], 10000 * Time.deltaTime);
+            Debug.Log(transform.position);
+        }
+        camaraMove = false;
     }
 }
