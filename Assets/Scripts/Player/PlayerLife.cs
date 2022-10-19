@@ -25,13 +25,22 @@ public class PlayerLife : MonoBehaviour
     {
         if (col.gameObject.CompareTag("trap"))
         {
-            FindObjectOfType<AnalyticsScript>().KilledByEnemy();
+            FindObjectOfType<AnalyticsScript>().KilledByTrap();
             Die();
         }else if(col.gameObject.CompareTag("Enemy")){
             FindObjectOfType<AnalyticsScript>().KilledByEnemy();
             Die();
         }else if(col.gameObject.CompareTag("Deadzone")){
             FindObjectOfType<AnalyticsScript>().KilledByDeadzone();
+            Die();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Enemy"))
+        {
+            FindObjectOfType<AnalyticsScript>().KilledByEnemy();
             Die();
         }
     }

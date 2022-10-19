@@ -2059,7 +2059,6 @@ GameObject:
   - component: {fileID: 563547332}
   - component: {fileID: 563547331}
   - component: {fileID: 563547330}
-  - component: {fileID: 563547329}
   m_Layer: 7
   m_Name: Enemy2
   m_TagString: Enemy
@@ -2082,25 +2081,6 @@ Transform:
   m_Father: {fileID: 818370400}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!251 &563547329
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 563547326}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 0
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1839735485 &563547330
 Tilemap:
   m_ObjectHideFlags: 0
@@ -2149,8 +2129,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.0611794}
   m_SpriteTilingProperty:
@@ -2229,7 +2209,6 @@ GameObject:
   - component: {fileID: 626026441}
   - component: {fileID: 626026440}
   - component: {fileID: 626026439}
-  - component: {fileID: 626026438}
   m_Layer: 7
   m_Name: Enemy1
   m_TagString: Enemy
@@ -2252,25 +2231,6 @@ Transform:
   m_Father: {fileID: 818370400}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!251 &626026438
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 626026435}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 0
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1839735485 &626026439
 Tilemap:
   m_ObjectHideFlags: 0
@@ -2319,8 +2279,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.0611794}
   m_SpriteTilingProperty:
@@ -6201,7 +6161,6 @@ GameObject:
   - component: {fileID: 1002633994}
   - component: {fileID: 1002633993}
   - component: {fileID: 1002633992}
-  - component: {fileID: 1002633991}
   m_Layer: 7
   m_Name: Enemy5
   m_TagString: Enemy
@@ -6224,25 +6183,6 @@ Transform:
   m_Father: {fileID: 818370400}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!251 &1002633991
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1002633989}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 0
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1839735485 &1002633992
 Tilemap:
   m_ObjectHideFlags: 0
@@ -6291,8 +6231,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.0611794}
   m_SpriteTilingProperty:
@@ -7442,9 +7382,8 @@ GameObject:
   - component: {fileID: 1303857474}
   - component: {fileID: 1303857473}
   - component: {fileID: 1303857472}
-  - component: {fileID: 1303857471}
   m_Layer: 7
-  m_Name: Enemy5 (1)
+  m_Name: Enemy6
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7465,25 +7404,6 @@ Transform:
   m_Father: {fileID: 818370400}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!251 &1303857471
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303857469}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 0
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1839735485 &1303857472
 Tilemap:
   m_ObjectHideFlags: 0
@@ -7532,8 +7452,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.0611794}
   m_SpriteTilingProperty:
@@ -8995,7 +8915,6 @@ GameObject:
   - component: {fileID: 1739319154}
   - component: {fileID: 1739319153}
   - component: {fileID: 1739319152}
-  - component: {fileID: 1739319151}
   m_Layer: 7
   m_Name: Enemy3
   m_TagString: Enemy
@@ -9018,25 +8937,6 @@ Transform:
   m_Father: {fileID: 818370400}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!251 &1739319151
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739319148}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 0
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1839735485 &1739319152
 Tilemap:
   m_ObjectHideFlags: 0
@@ -9085,8 +8985,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.0611794}
   m_SpriteTilingProperty:
@@ -9806,6 +9706,7 @@ MonoBehaviour:
   inFrame1: 0
   inFrame2: 0
   inPreviewMode: 0
+  inCameraResume: 0
 --- !u!1001 &1931676398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10184,7 +10085,6 @@ GameObject:
   - component: {fileID: 2022537186}
   - component: {fileID: 2022537185}
   - component: {fileID: 2022537184}
-  - component: {fileID: 2022537183}
   m_Layer: 7
   m_Name: Enemy4
   m_TagString: Enemy
@@ -10207,25 +10107,6 @@ Transform:
   m_Father: {fileID: 818370400}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!251 &2022537183
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2022537181}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 0
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1839735485 &2022537184
 Tilemap:
   m_ObjectHideFlags: 0
@@ -10274,8 +10155,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.0611794}
   m_SpriteTilingProperty:
