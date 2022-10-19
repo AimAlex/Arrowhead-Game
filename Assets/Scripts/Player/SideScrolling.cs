@@ -20,7 +20,7 @@ public class SideScrolling : MonoBehaviour
         player = GameObject.Find("Player").transform;
         startPosition = transform.position - player.position;
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        camaraMove = true;
+        // camaraMove = true;
         inFrame1 = true;
         inFrame2 = false;
         smoothing = 1.5f;
