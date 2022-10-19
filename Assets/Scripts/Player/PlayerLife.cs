@@ -75,7 +75,6 @@ public class PlayerLife : MonoBehaviour
     private void Die()
     {
         rb.bodyType = RigidbodyType2D.Static;
-        FindObjectOfType<AnalyticsScript>().KilledByTrap();
         curScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene("DieScene");
     }
