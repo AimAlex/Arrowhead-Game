@@ -12,7 +12,7 @@ public class SideScrolling : MonoBehaviour
     private Vector3 speedBack;
     private Vector3 speedLeft;
     private Vector3 speedRight;
-    public bool camaraMove, inFrame1, inFrame2;
+    public bool camaraMove, inFrame1, inFrame2, inPreviewMode;
     private float originalSize = 9.306593f;
     private Camera mainCamera;
     private void Awake()
@@ -27,6 +27,7 @@ public class SideScrolling : MonoBehaviour
     }
     private void Start(){
         initPosition = transform.position;
+
     }
     private void turotialFrame(){
         if (inFrame1){
@@ -54,11 +55,17 @@ public class SideScrolling : MonoBehaviour
         // turotialFrame();
         if (Input.GetKeyDown(KeyCode.P))
         {
-            mainCamera.orthographicSize = 23f;
+            inPreviewMode = true;
         }
         else if (Input.GetKeyUp(KeyCode.P))
         {
-            mainCamera.orthographicSize = originalSize;
+            inPreviewMode = false;
+        }
+        if (inPreviewMode){
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, 23f, Time.deltaTime);
+        }
+        else if (!inPreviewMode){
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, originalSize, Time.deltaTime);
         }
         // GetDirection();
     }
