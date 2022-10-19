@@ -187,11 +187,6 @@ public class TutorialManager : MonoBehaviour
             {
                 popUp.SetActive(true);
             }
-
-            foreach(var popUp in popUps[2].Array)
-            {
-                popUp.SetActive(true);
-            }
         }
     }
 
