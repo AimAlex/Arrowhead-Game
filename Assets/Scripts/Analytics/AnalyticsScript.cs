@@ -36,35 +36,6 @@ public class AnalyticsScript : MonoBehaviour
         _sessionID=DateTime.Now.Ticks;
     }
 
-    //     public void Collect1()
-    // {
-    //     _Ticks_collect1=DateTime.Now.Ticks;
-    //     // Send();
-    // }
-
-    //     public void Collect2()
-    // {
-    //     _Ticks_collect2=DateTime.Now.Ticks;
-    //     // Send();
-    // }
-
-    //     public void Collect3()
-    // {
-    //     _Ticks_collect3=DateTime.Now.Ticks;
-    //     // Send();
-    // }
-
-    //         public void Collect4()
-    // {
-    //     _Ticks_collect4=DateTime.Now.Ticks;
-    //     // Send();
-    // }
-
-    // Update is called once per frame
-    // public void UpdateNumHints()
-    // {
-    //     _numHints += 1;
-    // }
 
     public void Success()
     {
@@ -106,11 +77,6 @@ public class AnalyticsScript : MonoBehaviour
         Send2();
     }
 
-    //public void Restart(){
-         //_restart+=1;
-        // Send();
-    //}
-
     public void Send1(){
         _endTicks = DateTime.Now.Ticks;
         StartCoroutine(Post1(_sessionID.ToString(), level, success, _killedByTrap2.ToString(), _killedByEnemy.ToString(), _killedByDeadzone.ToString(), _wrongCollection.ToString(), _endTicks.ToString(), _restart.ToString()));
@@ -120,7 +86,6 @@ public class AnalyticsScript : MonoBehaviour
     public void Send()
     {
         // _endTicks=DateTime.Now.Ticks;
-        // StartCoroutine(Post(_sessionID.ToString(),_level.ToString(), _Ticks_collect1.ToString(), _Ticks_collect2.ToString(), _Ticks_collect3.ToString(), _Ticks_collect4.ToString(), _numHints.ToString(),_success.ToString(),_killByTrap.ToString(),_restart.ToString(), _endTicks.ToString()));
         StartCoroutine(Post(_sessionID.ToString(), _numHints.ToString(),success,level, _killedByTrap.ToString(), _restart.ToString()));
        
     }
@@ -128,7 +93,6 @@ public class AnalyticsScript : MonoBehaviour
     public void Send2()
     {
         _endTicks=DateTime.Now.Ticks;
-        // StartCoroutine(Post(_sessionID.ToString(),_level.ToString(), _Ticks_collect1.ToString(), _Ticks_collect2.ToString(), _Ticks_collect3.ToString(), _Ticks_collect4.ToString(), _numHints.ToString(),_success.ToString(),_killByTrap.ToString(),_restart.ToString(), _endTicks.ToString()));
         StartCoroutine(Post2(_sessionID.ToString(),level, _killedByTrap2.ToString(), _killedByEnemy.ToString(),_killedByDeadzone.ToString(),_wrongCollection.ToString(),_endTicks.ToString()));
        
     }
@@ -171,15 +135,6 @@ public class AnalyticsScript : MonoBehaviour
         form.AddField("entry.1228259701", killByTrap);
         form.AddField("entry.397790580", restart);
 
-
-        // form.AddField("entry.643454633", collect1);
-        // form.AddField("entry.1800891819", collect2);
-        // form.AddField("entry.1396617648", collect3);
-        // form.AddField("entry.1101310629", collect4);
-        // form.AddField("entry.1818505519", killByTrap);
-        // form.AddField("entry.1080352547", restart);
-        // form.AddField("entry.1572406458", endTicks);
-
         using (UnityWebRequest www = UnityWebRequest.Post(URL, form))
         {
             yield return www.SendWebRequest();
@@ -220,3 +175,33 @@ public class AnalyticsScript : MonoBehaviour
     }
 
 }
+
+    //     public void Collect1()
+    // {
+    //     _Ticks_collect1=DateTime.Now.Ticks;
+    //     // Send();
+    // }
+
+    //     public void Collect2()
+    // {
+    //     _Ticks_collect2=DateTime.Now.Ticks;
+    //     // Send();
+    // }
+
+    //     public void Collect3()
+    // {
+    //     _Ticks_collect3=DateTime.Now.Ticks;
+    //     // Send();
+    // }
+
+    //         public void Collect4()
+    // {
+    //     _Ticks_collect4=DateTime.Now.Ticks;
+    //     // Send();
+    // }
+
+    // Update is called once per frame
+    // public void UpdateNumHints()
+    // {
+    //     _numHints += 1;
+    // }

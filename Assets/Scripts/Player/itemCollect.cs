@@ -79,39 +79,46 @@ public class itemCollect : MonoBehaviour
     
     private void checkFinish()
     {
-        List<GameObject> collList = new List<GameObject> ();
-        foreach (var obj in bagStack)
-        {
-            collList.Add(obj);
-        }
-
-        if (collList.Count != collItemList.Count)
-        {
-            FindObjectOfType<AnalyticsScript>().WrongCollection();
-            return;
-        }
-
-        foreach (var item in collItemList) 
-        {
-            Debug.Log(item.name);
-            if (collList.Exists(t => t == item))
-            {
-                collList.Remove(item);
-            }
-            else
-            {
-                break;
-            }
-        }
-
-        if (collList.Count == 0)
-        {
+        if(tool4.color == Color.clear && tool5.color == Color.clear && tool6.color == Color.clear){
             // success, go to next level
             FindObjectOfType<AnalyticsScript>().Success();
             SceneManager.LoadScene(nextSceneName);
         }else{
-            FindObjectOfType<AnalyticsScript>().WrongCollection();
+            return;
         }
+        // List<GameObject> collList = new List<GameObject> ();
+        // foreach (var obj in bagStack)
+        // {
+        //     collList.Add(obj);
+        // }
+
+        // if (collList.Count != collItemList.Count)
+        // {
+        //     FindObjectOfType<AnalyticsScript>().WrongCollection();
+        //     return;
+        // }
+
+        // foreach (var item in collItemList) 
+        // {
+        //     Debug.Log(item.name);
+        //     if (collList.Exists(t => t == item))
+        //     {
+        //         collList.Remove(item);
+        //     }
+        //     else
+        //     {
+        //         break;
+        //     }
+        // }
+
+        // if (collList.Count == 0)
+        // {
+        //     // success, go to next level
+        //     FindObjectOfType<AnalyticsScript>().Success();
+        //     SceneManager.LoadScene(nextSceneName);
+        // }else{
+        //     FindObjectOfType<AnalyticsScript>().WrongCollection();
+        // }
     }
 
     private void OnTriggerExit2D(Collider2D col)
@@ -179,37 +186,7 @@ public class itemCollect : MonoBehaviour
                     		tool6.color = Color.clear;
 						}
                     }
-
-
-                    // //level 3. For copy power
-                    // if(FindObjectOfType<PlayerMovement>().collectCopy){
-                    //     if(onPickObject.name=="item1"){
-                    //         spawn_cloned_items1();
-                    //     }else if(onPickObject.name=="item2"){
-                    //         spawn_cloned_items2();
-                    //     }else if(onPickObject.name=="item3"){
-                    //         spawn_cloned_items3();
-                    //     }else if(onPickObject.name=="item11"){
-                    //         spawn_cloned_items11();
-                    //     }
-                    // }
-
                 }
-                // else
-                // {
-                //     // GameObject.Find("info").GetComponent<InfoShow>().showInfo("You Bag is full!");
-                // }
-                //Analytics codes
-                // if(itemNumber==1){
-                //     FindObjectOfType<AnalyticsScript>().Collect1();
-                // }else if(itemNumber==2){
-                //     FindObjectOfType<AnalyticsScript>().Collect2();
-                // }else if(itemNumber==3){
-                //     FindObjectOfType<AnalyticsScript>().Collect3();
-                // }else if(itemNumber==4){
-                //     FindObjectOfType<AnalyticsScript>().Collect4();
-                // }
-
             }
         }
         if (Input.GetKeyDown(KeyCode.E))
@@ -293,83 +270,5 @@ public class itemCollect : MonoBehaviour
         tool5 = tool5Obj.GetComponent<Image>();
         tool6 = tool6Obj.GetComponent<Image>();
     }
-
-    // // Level 3 codes; For copy power 
-    //  private void OnCollisionEnter2D(Collision2D col)
-    // {
-    //     if (col.collider.tag=="Treasure")
-    //     {
-    //         ++itemNumber;
-
-    //         // if(hasPower){
-    //         //     spaw_cloned_items();
-    //         // }
-
-    //         Destroy(col.gameObject);
-
-    //     }
-
-    //     if (col.collider.tag=="treasure(cloned)")
-    //     {
-    //         ++itemNumber;
-    //         Destroy(col.gameObject);
-    //     }
-
-
-    //     if (col.collider.tag=="Finish")
-    //     {
-    //         if (itemNumber == 4)
-    //         {
-    //             _renderer.color = Color.black; 
-    //             Destroy(col.gameObject);
-    //         }
-    //     }
-
-    //     // if(col.collider.tag=="spring(copy)"){
-    //     //     _renderer.color =col.gameObject.GetComponent<SpriteRenderer>().color;
-    //     //     // hasPower=true;
-    //     //     Destroy(col.gameObject);
-    //     // }
-
-    // }
-
-    //  void spawn_cloned_items1(){
-    //     cloned3.transform.position=new Vector3(this.transform.position.x-(this.transform.localScale.x+3),this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
-    //     cloned3.AddComponent<Rigidbody2D>();
-    //     cloned3.GetComponent<Rigidbody2D>().velocity=new Vector3(-1,0,0);
-
-    //     cloned1.transform.position=new Vector3(this.transform.position.x+this.transform.localScale.x+1,this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
-    //     cloned1.AddComponent<Rigidbody2D>();
-    //     cloned1.GetComponent<Rigidbody2D>().velocity=new Vector3(4,2,0);
-    // }
-
-    // void spawn_cloned_items2(){
-    //     cloned2.transform.position=new Vector3(this.transform.position.x-(this.transform.localScale.x+3),this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
-    //     cloned2.AddComponent<Rigidbody2D>();
-    //     cloned2.GetComponent<Rigidbody2D>().velocity=new Vector3(-2,0,0);
-
-    //     cloned3_3.transform.position=new Vector3(this.transform.position.x+this.transform.localScale.x+1,this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
-    //     cloned3_3.AddComponent<Rigidbody2D>();
-    //     cloned3_3.GetComponent<Rigidbody2D>().velocity=new Vector3(3,2,0);
-    // }
-
-
-    // void spawn_cloned_items3(){
-    //     cloned2_2.transform.position=new Vector3(this.transform.position.x-(this.transform.localScale.x+3),this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
-    //     cloned2_2.AddComponent<Rigidbody2D>();
-    //     cloned2_2.GetComponent<Rigidbody2D>().velocity=new Vector3(-3,0,0);
-
-    //     cloned3_2.transform.position=new Vector3(this.transform.position.x+this.transform.localScale.x+1,this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
-    //     cloned3_2.AddComponent<Rigidbody2D>();
-    //     cloned3_2.GetComponent<Rigidbody2D>().velocity=new Vector3(2,2,0);
-    // }
-
-    // void spawn_cloned_items11(){
-    //     item14.transform.position=new Vector3(this.transform.position.x-(this.transform.localScale.x+3),this.transform.position.y+this.transform.localScale.y+1,this.transform.position.z);
-    //     item14.AddComponent<Rigidbody2D>();
-    //     item14.GetComponent<Rigidbody2D>().velocity=new Vector3(-3,0,0);
-    // }
-
-
 
 }
