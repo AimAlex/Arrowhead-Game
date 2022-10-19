@@ -44,7 +44,7 @@ public class SideScrolling : MonoBehaviour
         }
         if (pathIndex < path.Count){
             transform.position = Vector3.Lerp(transform.position, path[pathIndex], Time.deltaTime);
-            // If need different waitting time for each point, please chage the float value in the if statement
+            // If need different waitting time for each point, please chage the float value, such as 0.5f
             if (Mathf.Abs(transform.position.x - path[pathIndex].x) <= 0.5f && Mathf.Abs(transform.position.y - path[pathIndex].y) <= 0.5f){
                 pathIndex++;
             }
