@@ -15,11 +15,10 @@ public class PlayerMovement : MonoBehaviour
     public static float jumpForce = 10f;
 
     public float dashDistance = 10f; 
-	
     public Transform groundCheck;
 	public LayerMask ground;
 
-	private bool isGround, isDashing;
+	private bool isGround, isDashing, isPreview;
 	bool jumpPressed;
 	int jumpCount, dashCount;
 
@@ -86,25 +85,34 @@ public class PlayerMovement : MonoBehaviour
         power2 = GameObject.Find("power2").GetComponent<Image>();
         power3 = GameObject.Find("power3").GetComponent<Image>();
 		power4 = GameObject.Find("power4").GetComponent<Image>();
-
+		isPreview = false;
     }
 
 
 	void Update() // Update is called once per frame
 	{
-		isGround = Physics2D.OverlapCircle(groundCheck.position, 0.7f, ground);
-		if (!isDashing)
+		if (Input.GetKeyDown(KeyCode.P))
+        {
+            isPreview = true;
+        }
+		if (Input.GetKeyUp(KeyCode.P))
 		{
-			GroundMovement();	
-		}
-		if (Input.GetButtonDown("Jump"))
-		{
-			Jump();
-		}
-
-		if (Input.GetKeyDown("w") || Input.GetKeyDown("w"))
-		{
-			StartCoroutine(Dash());
+			isPreview = false;
+		} 
+		if (!isPreview){
+			if (!isDashing)
+			{
+				GroundMovement();	
+			}
+			if (Input.GetButtonDown("Jump"))
+			{
+				isGround = Physics2D.OverlapCircle(groundCheck.position, 0.7f, ground);
+				Jump();
+			}
+			if (Input.GetKeyDown("w") || Input.GetKeyDown("w"))
+			{
+				StartCoroutine(Dash());
+			}
 		}
 	}
 
