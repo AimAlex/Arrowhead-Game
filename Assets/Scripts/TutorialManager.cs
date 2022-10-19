@@ -26,6 +26,13 @@ public class TutorialManager : MonoBehaviour
     {
         popUpIndex = 0;
         pauseCheck = 1;
+        if(levelNo == 3)
+        {
+            foreach(var popUp in popUps[2].Array)
+            {
+                popUp.SetActive(false);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -39,9 +46,7 @@ public class TutorialManager : MonoBehaviour
             Destroy(col.gameObject);
         } else if (col.gameObject.CompareTag("PausePoint"))
         {
-            Debug.Log(popUpIndex);
             ++popUpIndex;
-            Debug.Log(popUpIndex);
             pauseCheck = 1;
             Destroy(col.gameObject);
         }
@@ -167,6 +172,11 @@ public class TutorialManager : MonoBehaviour
         if (Weapon.laserGunPickUp)
         {
             foreach(var popUp in popUps[1].Array)
+            {
+                popUp.SetActive(true);
+            }
+
+            foreach(var popUp in popUps[2].Array)
             {
                 popUp.SetActive(true);
             }
