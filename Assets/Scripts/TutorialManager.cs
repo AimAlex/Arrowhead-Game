@@ -26,6 +26,13 @@ public class TutorialManager : MonoBehaviour
     {
         popUpIndex = 0;
         pauseCheck = 1;
+        if(levelNo == 3)
+        {
+            foreach(var popUp in popUps[2].Array)
+            {
+                popUp.SetActive(false);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -69,14 +76,30 @@ public class TutorialManager : MonoBehaviour
         {
             if (popUpIndex == 0)
             {
+                PauseUntilPress();
+            }
+            else if(popUpIndex == 2)
+            {
+                PauseUntilPress();
+            }
+            else if(popUpIndex == 3)
+            {
                 DoubleJumpTutorial();
+            }
+            else if(popUpIndex == 5)
+            {
+                PauseUntilPress();
             }
         } else if (levelNo == 2)
         {
             
         } else if (levelNo == 3)
         {
-            if (popUpIndex == 0)
+            if (popUpIndex == 1)
+            {
+                PauseUntilPress();
+            }
+            else if (popUpIndex == 2)
             {
                 ShootingTutorial();
             }
@@ -160,7 +183,15 @@ public class TutorialManager : MonoBehaviour
     {
         if (Weapon.laserGunPickUp)
         {
-            ++popUpIndex;
+            foreach(var popUp in popUps[1].Array)
+            {
+                popUp.SetActive(true);
+            }
+
+            foreach(var popUp in popUps[2].Array)
+            {
+                popUp.SetActive(true);
+            }
         }
     }
 

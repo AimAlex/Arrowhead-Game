@@ -12,55 +12,65 @@ public class SideScrolling : MonoBehaviour
     private Vector3 speedBack;
     private Vector3 speedLeft;
     private Vector3 speedRight;
-    public bool camaraMove, inFrame1, inFrame2;
+    public bool camaraMove, inFrame1, inFrame2, inPreviewMode, inCameraResume;
     private float originalSize = 9.306593f;
     private Camera mainCamera;
+    private int pathIndex;
+    private bool[] pathPiontCheck;
+    private List<Vector3> pathPoints;
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         startPosition = transform.position - player.position;
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        // camaraMove = true;
-        inFrame1 = true;
-        inFrame2 = false;
+        camaraMove = true;
         smoothing = 1.5f;
+        pathIndex = 0;
     }
     private void Start(){
+        InitCamera();
         initPosition = transform.position;
+        pathPoints = new List<Vector3>();
+        // demo camera tour code
+        pathPoints.Add(new Vector3(initPosition.x + 15, initPosition.y, transform.position.z));
+        pathPoints.Add(new Vector3(initPosition.x + 15, initPosition.y + 10, transform.position.z));
+        pathPoints.Add(new Vector3(initPosition.x + 30, initPosition.y + 5, transform.position.z));
+        pathPoints.Add(initPosition);
     }
-    private void turotialFrame(){
-        if (inFrame1){
-            // transform.position = Vector3.SmoothDamp(transform.position, new Vector3(initPosition.x + 5, initPosition.y, transform.position.z), ref direction, smoothing);
-            transform.position = new Vector3(initPosition.x + 5, initPosition.y, transform.position.z);
-            // infobox1 show
-            if (Input.GetKeyDown(KeyCode.Return)){
-                inFrame1 = false;
-                inFrame2 = true;
+
+    private void tourPosition(List<Vector3> path){
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)){
+            pathIndex = path.Count;
+        }
+        if (pathIndex < path.Count){
+            transform.position = Vector3.Lerp(transform.position, path[pathIndex], Time.deltaTime);
+            // If need different waitting time for each point, please chage the float value in the if statement
+            if (Mathf.Abs(transform.position.x - path[pathIndex].x) <= 0.5f && Mathf.Abs(transform.position.y - path[pathIndex].y) <= 0.5f){
+                pathIndex++;
             }
         }
-        else if (inFrame2){
-            transform.position = new Vector3(initPosition.x + 10, initPosition.y, transform.position.z);
-            // infobox2 show
-            if (Input.GetKeyDown(KeyCode.Return)){
-                inFrame2 = false;
-                inFrame1 = false;
-                camaraMove = false;
-                transform.position = initPosition;
-            }
+        else if (pathIndex == path.Count){
+            camaraMove = false;
         }
     }
+
     private void Update()
     {
-        // turotialFrame();
+        // tourPosition(pathPoints);
         if (Input.GetKeyDown(KeyCode.P))
         {
-            mainCamera.orthographicSize = 23f;
+            inPreviewMode = true;
         }
         else if (Input.GetKeyUp(KeyCode.P))
         {
-            mainCamera.orthographicSize = originalSize;
+            inPreviewMode = false;
         }
-        // GetDirection();
+        if (inPreviewMode){
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, 23f, Time.deltaTime);
+        }
+        else if (!inPreviewMode){
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, originalSize, Time.deltaTime);
+        }
     }
     private void LateUpdate()
     {
@@ -80,46 +90,34 @@ public class SideScrolling : MonoBehaviour
             transform.position = cameraPosition;
         }
     }
-    // private void GetDirection(Vector3 direction)
-    // {
-        
-        // speedForward = Vector3.zero;
-        // speedBack = Vector3.zero;
-        // speedLeft = Vector3.zero;
-        // speedRight = Vector3.zero;
-        // if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.B) || Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E)){
-        //     camaraMove = false;
-        // }
-        // if (Input.GetKey(KeyCode.I)){
-        //     speedForward = transform.up;
-        //     camaraMove = true;
-        // }
-        // if (Input.GetKey(KeyCode.K)){
-        //     speedBack = -transform.up;
-        //     camaraMove = true;
-        // }
-        // if (Input.GetKey(KeyCode.J)){
-        //     speedLeft = -transform.right;
-        //     camaraMove = true;
-        // }
-        // if (Input.GetKey(KeyCode.L)){
-        //     speedRight = transform.right;
-        //     camaraMove = true;
-        // }
-        // direction = speedForward + speedBack + speedLeft + speedRight;
-    //     direction.x *= 2;
-    //     direction.y *= 2;
-    //     transform.Translate(direction * Time.deltaTime, Space.World);
-
-    // }
-    // public void CameraTour(List<Vector3> tourPoints)
-    // {
-    //     camaraMove = true;
-    //     for (int i = 0; i < tourPoints.Count; i++)
-    //     {
-    //         transform.position = Vector3.Lerp(transform.position, tourPoints[i], Time.deltaTime);
-    //         Debug.Log(transform.position);
-    //     }
-    //     camaraMove = false;
-    // }
+    private void GetDirection(Vector3 direction)
+    {
+        speedForward = Vector3.zero;
+        speedBack = Vector3.zero;
+        speedLeft = Vector3.zero;
+        speedRight = Vector3.zero;
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.B) || Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E)){
+            camaraMove = false;
+        }
+        if (Input.GetKey(KeyCode.I)){
+            speedForward = transform.up;
+            camaraMove = true;
+        }
+        if (Input.GetKey(KeyCode.K)){
+            speedBack = -transform.up;
+            camaraMove = true;
+        }
+        if (Input.GetKey(KeyCode.J)){
+            speedLeft = -transform.right;
+            camaraMove = true;
+        }
+        if (Input.GetKey(KeyCode.L)){
+            speedRight = transform.right;
+            camaraMove = true;
+        }
+        direction = speedForward + speedBack + speedLeft + speedRight;
+        direction.x *= 2;
+        direction.y *= 2;
+        transform.Translate(direction * Time.deltaTime, Space.World);
+    }
 }
