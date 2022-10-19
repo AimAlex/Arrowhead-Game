@@ -1918,11 +1918,11 @@ GameObject:
   - component: {fileID: 278832820}
   - component: {fileID: 278832819}
   - component: {fileID: 278832818}
-  - component: {fileID: 278832817}
   - component: {fileID: 278832816}
   - component: {fileID: 278832815}
   - component: {fileID: 278832814}
   - component: {fileID: 278832813}
+  - component: {fileID: 278832824}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2106,23 +2106,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &278832817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278832812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0498c9c8498314ca4a8121bffff75556, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blood0: {fileID: 1099658618}
-  blood1: {fileID: 1087284756}
-  blood2: {fileID: 1234922265}
-  blood3: {fileID: 40252509}
-  blood4: {fileID: 2034179940}
 --- !u!114 &278832818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2135,7 +2118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f38be2fd617d4c479cbd02649dcdfae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 3-1
+  level: HP
 --- !u!114 &278832819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2272,6 +2255,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &278832824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278832812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d614ddb5bc2d42988cbbce256de9580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blood0: {fileID: 1099658618}
+  blood1: {fileID: 1087284756}
+  blood2: {fileID: 1234922265}
+  blood3: {fileID: 40252509}
+  blood4: {fileID: 2034179940}
 --- !u!1 &283168740
 GameObject:
   m_ObjectHideFlags: 0
@@ -11265,6 +11265,7 @@ MonoBehaviour:
   camaraMove: 0
   inFrame1: 0
   inFrame2: 0
+  inPreviewMode: 0
 --- !u!1 &1942269403
 GameObject:
   m_ObjectHideFlags: 0

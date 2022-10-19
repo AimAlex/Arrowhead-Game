@@ -13,7 +13,7 @@ public class PlayerLifeWithHP : MonoBehaviour
     float timer, timer1;
     float restartHoldDur = 2f;
     float restartTimeAfterDie = 3f;
-    public static string curScene;
+    private string curScene="HealthPoint";
     public Image blood0;
     public Image blood1;
     public Image blood2;
@@ -109,6 +109,8 @@ public class PlayerLifeWithHP : MonoBehaviour
             }
             if (Time.time - timer1 > restartTimeAfterDie)
             {
+                // Debug.Log("curScene=");
+                // Debug.Log(curScene);
                 SceneManager.LoadScene(curScene);
                 timer1 = float.PositiveInfinity;
             }
@@ -128,7 +130,7 @@ public class PlayerLifeWithHP : MonoBehaviour
     private void Die()
     {
         rb.bodyType = RigidbodyType2D.Static;
-        curScene = SceneManager.GetActiveScene().name;
+        // curScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene("DieScene");
     }
 
