@@ -51,7 +51,7 @@ public class SideScrolling : MonoBehaviour
     }
     private void Update()
     {
-        turotialFrame();
+        // turotialFrame();
         if (Input.GetKeyDown(KeyCode.P))
         {
             mainCamera.orthographicSize = 23f;
