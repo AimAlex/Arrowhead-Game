@@ -47,8 +47,10 @@ public class Weapon : MonoBehaviour
         
 
 
-            if(hitInfo && hitInfo.transform.tag != "Finish")
+            if(hitInfo)
             {
+            // if(hitInfo && hitInfo.transform.tag != "Finish")
+            // {
                 lineRenderer.SetPosition(0, firePoint.position);
                 lineRenderer.SetPosition(1, hitInfo.point);
                 Collider2D col = hitInfo.collider;
@@ -126,7 +128,7 @@ public class Weapon : MonoBehaviour
         }
 
         lineRenderer.enabled = true;
-        yield return new WaitForSeconds(0.02f);
+        yield return new WaitForSeconds(0.05f);
         lineRenderer.enabled = false;
     }
 

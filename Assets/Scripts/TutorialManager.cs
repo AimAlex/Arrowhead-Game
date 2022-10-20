@@ -36,13 +36,6 @@ public class TutorialManager : MonoBehaviour
         cameraScroll = camera.GetComponent<SideScrolling>();
         tourList = new List<Vector3>();
         currCameraPos = camera.transform.position;
-        if(levelNo == 3)
-        {
-            foreach(var popUp in popUps[2].Array)
-            {
-                popUp.SetActive(false);
-            }
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -82,8 +75,11 @@ public class TutorialManager : MonoBehaviour
                 PauseUntilPress();
             } else if (popUpIndex == 5)
             {
-                PauseUntilPress();
+                CameraMove();
             } else if (popUpIndex == 6)
+            {
+                PauseUntilPress();
+            } else if (popUpIndex == 7)
             {
                 ItemTutorial();
             }
@@ -110,13 +106,17 @@ public class TutorialManager : MonoBehaviour
             
         } else if (levelNo == 3)
         {
-            if (popUpIndex == 1)
+            if (popUpIndex == 0)
             {
                 PauseUntilPress();
             }
-            else if (popUpIndex == 2)
+            else if (popUpIndex == 1)
             {
                 ShootingTutorial();
+            }
+            else if (popUpIndex == 2)
+            {
+                PauseUntilPress();
             }
         } else if (levelNo == 4)
         {
@@ -126,6 +126,10 @@ public class TutorialManager : MonoBehaviour
             } else if (popUpIndex == 1)
             {
                 BombTutorial();
+            }
+            else if (popUpIndex == 2)
+            {
+                PauseUntilPress();
             }
         }
     }
@@ -235,10 +239,8 @@ public class TutorialManager : MonoBehaviour
     {
         if (Weapon.laserGunPickUp)
         {
-            foreach(var popUp in popUps[1].Array)
-            {
-                popUp.SetActive(true);
-            }
+            ++popUpIndex;
+            pauseCheck = 1;
         }
     }
 
