@@ -15,44 +15,48 @@ public class SideScrolling : MonoBehaviour
     public bool camaraMove, inFrame1, inFrame2, inPreviewMode, inCameraResume;
     private float originalSize = 9.306593f;
     private Camera mainCamera;
-    private int pathIndex;
+    public int pathIndex;
     private bool[] pathPiontCheck;
-    private List<Vector3> pathPoints;
+    // private List<Vector3> pathPoints;
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         startPosition = transform.position - player.position;
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         // tourPosition variable, when use the tour camera, must uncomment next line
-        // camaraMove = true;
+        camaraMove = true;
         smoothing = 1.5f;
         pathIndex = 0;
     }
     private void Start(){
         InitCamera();
         initPosition = transform.position;
-        pathPoints = new List<Vector3>();
+        // pathPoints = new List<Vector3>();
         // demo camera tour code
-        pathPoints.Add(new Vector3(initPosition.x + 15, initPosition.y, transform.position.z));
-        pathPoints.Add(new Vector3(initPosition.x + 15, initPosition.y + 10, transform.position.z));
-        pathPoints.Add(new Vector3(initPosition.x + 30, initPosition.y + 5, transform.position.z));
-        pathPoints.Add(initPosition);
+        // pathPoints.Add(new Vector3(initPosition.x + 15, initPosition.y, transform.position.z));
+        // pathPoints.Add(new Vector3(initPosition.x + 15, initPosition.y + 10, transform.position.z));
+        // pathPoints.Add(new Vector3(initPosition.x + 30, initPosition.y + 5, transform.position.z));
+        // pathPoints.Add(initPosition);
     }
 
-    private void tourPosition(List<Vector3> path){
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)){
-            pathIndex = path.Count;
-        }
+    public bool tourPosition(List<Vector3> path){
+        // if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)){
+        //     pathIndex = path.Count;
+        // }
         if (pathIndex < path.Count){
-            transform.position = Vector3.Lerp(transform.position, path[pathIndex], Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(path[pathIndex].x, path[pathIndex].y, transform.position.z), Time.deltaTime);
             // If need different waitting time for each point, please chage the float value, such as 0.5f
             if (Mathf.Abs(transform.position.x - path[pathIndex].x) <= 0.5f && Mathf.Abs(transform.position.y - path[pathIndex].y) <= 0.5f){
                 pathIndex++;
             }
+            return true;
         }
-        else if (pathIndex == path.Count){
-            camaraMove = false;
+        if (pathIndex == path.Count){
+            // camaraMove = false;
+            return false;
         }
+
+        return false;
     }
 
     private void Update()

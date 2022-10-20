@@ -6,14 +6,21 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Vector3 = UnityEngine.Vector3;
 
 public class TutorialManager : MonoBehaviour
 {
     [SerializeField] public int levelNo;
     [SerializeField] public CustomArrays[] popUps;
+    [SerializeField] public CustomArrays[] cameraTours;
+
+    [SerializeField] public GameObject camera;
     // [SerializeField] public GameObject Background;
     private int trapCheck, pauseCheck;
     private int popUpIndex;
+    private List<Vector3> tourList;
+    private SideScrolling cameraScroll;
+    private Vector3 currCameraPos;
 
     [System.Serializable]
     public class CustomArrays
@@ -26,6 +33,9 @@ public class TutorialManager : MonoBehaviour
     {
         popUpIndex = 0;
         pauseCheck = 1;
+        cameraScroll = camera.GetComponent<SideScrolling>();
+        tourList = new List<Vector3>();
+        currCameraPos = camera.transform.position;
         if(levelNo == 3)
         {
             foreach(var popUp in popUps[2].Array)
@@ -57,18 +67,23 @@ public class TutorialManager : MonoBehaviour
     {
         UpdatePopUp();
         CheckPause();
+
         if (levelNo == 0)
         {
             if (popUpIndex == 0)
             {
-                PauseUntilPress();
-            } else if (popUpIndex == 2)
+                CameraMove();
+            }
+            if (popUpIndex == 1)
             {
                 PauseUntilPress();
-            } else if (popUpIndex == 4)
+            } else if (popUpIndex == 3)
             {
                 PauseUntilPress();
             } else if (popUpIndex == 5)
+            {
+                PauseUntilPress();
+            } else if (popUpIndex == 6)
             {
                 ItemTutorial();
             }
@@ -134,7 +149,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
     }
-
+    
     void CheckPause()
     {
         if (Time.timeScale == 0 && Input.anyKeyDown)
@@ -144,15 +159,51 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    void PauseUntilPress()
+    void CameraMove()
+    {
+        if (pauseCheck == 1)
+        {
+            if (tourList.Count == 0)
+            {
+                currCameraPos = camera.transform.position;
+            }
+            
+            if (cameraTours.Length < popUpIndex + 1 || cameraTours[popUpIndex].Array.Length == 0)
+            {
+                ++popUpIndex;
+                return;
+            }
+
+            tourList.Clear();
+            foreach (var obj in cameraTours[popUpIndex].Array)
+            {
+                tourList.Add(obj.transform.position);
+            }
+            tourList.Add(currCameraPos);
+            
+            if (!cameraScroll.tourPosition(tourList))
+            {
+                tourList.Clear();
+                cameraScroll.pathIndex = 0;
+                ++popUpIndex;
+            }
+        }
+    }
+
+    bool PauseUntilPress()
     {
         if (pauseCheck == 1)
         {
             // darkBackground();
             Time.timeScale = 0;
             pauseCheck = 0;
+            return true;
         }
+
+        return false;
     }
+    
+    
 
     // void darkBackground()
     // {
