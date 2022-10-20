@@ -5,7 +5,8 @@ using UnityEngine;
 public class trapMovement : MonoBehaviour
 {
     [SerializeField] private float vertical, horizontal;
-    [SerializeField] private float speed = 0;
+    // [SerializeField] private float speed = 0;
+    [SerializeField] public float speed = 0;
     private Vector2 startPosition;
     private int verticalDir = 0;
     private int horizontalDir = 0;

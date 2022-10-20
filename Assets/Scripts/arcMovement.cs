@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class arcMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 0;
+    // [SerializeField] private float speed = 0;
+    [SerializeField] public float speed = 0;
     [SerializeField] private float radius = 1;
     // Start is called before the first frame update
     void Start()
