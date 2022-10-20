@@ -67,7 +67,7 @@ public class TutorialManager : MonoBehaviour
             {
                 CameraMove();
             }
-            if (popUpIndex == 1)
+            else if (popUpIndex == 1)
             {
                 PauseUntilPress();
             } else if (popUpIndex == 3)
@@ -75,11 +75,9 @@ public class TutorialManager : MonoBehaviour
                 PauseUntilPress();
             } else if (popUpIndex == 5)
             {
-                CameraMove();
-            } else if (popUpIndex == 6)
-            {
                 PauseUntilPress();
-            } else if (popUpIndex == 7)
+            }
+            else if (popUpIndex == 6)
             {
                 ItemTutorial();
             }
