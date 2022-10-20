@@ -9,9 +9,9 @@ public class Pickupbomb : MonoBehaviour
 {
     public static bool collectBomb;
     public GameObject player;
-    public GameObject bomb1;
-	public GameObject bomb2;
-	public GameObject bomb3;
+    public GameObject bomb;
+	//public GameObject bomb2;
+	//public GameObject bomb3;
     public int bomb_count;
     public Vector2 player_position;
     public Vector2 bomb_position;
@@ -37,9 +37,9 @@ public class Pickupbomb : MonoBehaviour
         collectBomb = false;
         Debug.Log("Awake");
         player = GameObject.Find("Player");
-        bomb1 = GameObject.Find("Bomb1");
-        bomb2 = GameObject.Find("Bomb2");
-        bomb3 = GameObject.Find("Bomb3");
+        bomb = GameObject.Find("Bomb");
+        //bomb2 = GameObject.Find("Bomb2");
+        //bomb3 = GameObject.Find("Bomb3");
 		bomb_count=0;
      
     }
@@ -67,15 +67,15 @@ public class Pickupbomb : MonoBehaviour
         player_position = player.transform.position;
         pos_x = player_position.x;
         pos_y = player_position.y;
-		if(bomb_count==0){
-        bomb_position = bomb1.transform.position;
+	
+        bomb_position = bomb.transform.position;
         bomb_position.x = pos_x + 1;
         bomb_position.y = pos_y;
-        bomb1.GetComponent<Transform>().position = bomb_position;
-        bomb1.GetComponent<SpriteRenderer>().color = Color.green;
+        bomb.GetComponent<Transform>().position = bomb_position;
+        bomb.GetComponent<SpriteRenderer>().color = Color.green;
         bomb_count+=1;
-		}
-       else if(bomb_count==1){
+		
+       /*else if(bomb_count==1){
         bomb_position = bomb2.transform.position;
         bomb_position.x = pos_x + 1;
         bomb_position.y = pos_y;
@@ -91,6 +91,6 @@ public class Pickupbomb : MonoBehaviour
         bomb3.GetComponent<Transform>().position = bomb_position;
         bomb3.GetComponent<SpriteRenderer>().color = Color.green;
         bomb_count+=1;
-		}   
+		}   */
     }
 }
