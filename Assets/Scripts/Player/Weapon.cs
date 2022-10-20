@@ -47,8 +47,10 @@ public class Weapon : MonoBehaviour
         
 
 
-            if(hitInfo && hitInfo.transform.tag != "Finish")
+            if(hitInfo)
             {
+            // if(hitInfo && hitInfo.transform.tag != "Finish")
+            // {
                 lineRenderer.SetPosition(0, firePoint.position);
                 lineRenderer.SetPosition(1, hitInfo.point);
                 Collider2D col = hitInfo.collider;
