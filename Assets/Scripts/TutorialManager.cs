@@ -118,6 +118,9 @@ public class TutorialManager : MonoBehaviour
             else if (popUpIndex == 3)
             {
                 PauseUntilPress();
+            } else if (popUpIndex == 6)
+            {
+                PauseUntilPress();
             }
         } else if (levelNo == 3)
         {
