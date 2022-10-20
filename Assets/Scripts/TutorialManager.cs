@@ -111,6 +111,13 @@ public class TutorialManager : MonoBehaviour
             {
                 ShootingTutorial();
             }
+            else if (popUpIndex == 3)
+            {
+                foreach(var popUp in popUps[2].Array)
+                {
+                    popUp.SetActive(true);
+                }
+            }
         } else if (levelNo == 4)
         {
             if (popUpIndex == 0)
@@ -229,10 +236,6 @@ public class TutorialManager : MonoBehaviour
         if (Weapon.laserGunPickUp)
         {
             ++popUpIndex;
-            // foreach(var popUp in popUps[1].Array)
-            // {
-            //     popUp.SetActive(true);
-            // }
         }
     }
 
