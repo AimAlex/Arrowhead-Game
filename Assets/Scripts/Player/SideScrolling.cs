@@ -12,7 +12,7 @@ public class SideScrolling : MonoBehaviour
     private Vector3 speedBack;
     private Vector3 speedLeft;
     private Vector3 speedRight;
-    public bool camaraMove, inFrame1, inFrame2, inPreviewMode, inCameraResume;
+    public bool camaraMove, inPreviewMode;
     private float originalSize = 9.306593f;
     private Camera mainCamera;
     private int pathIndex;
