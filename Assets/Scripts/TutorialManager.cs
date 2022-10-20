@@ -103,7 +103,22 @@ public class TutorialManager : MonoBehaviour
             }
         } else if (levelNo == 2)
         {
-            
+            if (popUpIndex == 0)
+            {
+                CameraMove();
+            }
+            else if (popUpIndex == 1)
+            {
+                PauseUntilPress();
+            }
+            else if (popUpIndex == 2)
+            {
+                DashTutorial();
+            }
+            else if (popUpIndex == 3)
+            {
+                PauseUntilPress();
+            }
         } else if (levelNo == 3)
         {
             if (popUpIndex == 0)
@@ -232,6 +247,15 @@ public class TutorialManager : MonoBehaviour
         if (PlayerMovement.collectDoubleJump)
         {
             ++popUpIndex;
+        }
+    }
+
+    void DashTutorial()
+    {
+        if (PlayerMovement.collectDash)
+        {
+            ++popUpIndex;
+            pauseCheck = 1;
         }
     }
 
