@@ -5,7 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float vertical, horizontal;
-    [SerializeField] private float speed = 0.5f;
+    // [SerializeField] private float speed = 0.5f;
+    [SerializeField] public float speed = 0.5f;
     private Vector2 startPosition;
     private int verticalDir = 0;
     private int horizontalDir = 0;
