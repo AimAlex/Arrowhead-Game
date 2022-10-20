@@ -30,6 +30,11 @@ public class SceneChanger : MonoBehaviour
         Application.Quit();
     }
 
+	public void StartLevel1_0()
+    {
+        SceneManager.LoadScene("level1-0");
+    }
+
 	public void StartLevel1_1()
     {
         SceneManager.LoadScene("level1_1");

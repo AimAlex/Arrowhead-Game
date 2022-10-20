@@ -10,7 +10,7 @@ public class Pickupbomb : MonoBehaviour
     public static bool collectBomb;
     public GameObject player;
     public GameObject bomb;
-    
+    public int bomb_count;
     public Vector2 player_position;
     public Vector2 bomb_position;
     public float bomb_x;
@@ -35,6 +35,7 @@ public class Pickupbomb : MonoBehaviour
         Debug.Log("Awake");
         player = GameObject.Find("Player");
         bomb = GameObject.Find("Bomb");
+		bomb_count=0;
     }
 
     //current setting: only use bomb for one time in one frame
@@ -43,6 +44,8 @@ public class Pickupbomb : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B)&&collectBomb==true)
         {
             DropBomb();
+			bomb_count+=1;
+			
         }
     }
     
