@@ -101,13 +101,13 @@ public class PlayerMovement : MonoBehaviour
 			isPreview = false;
 		} 
 		if (!isPreview){
+			isGround = Physics2D.OverlapCircle(groundCheck.position, 0.7f, ground);
 			if (!isDashing)
 			{
 				GroundMovement();	
 			}
 			if (Input.GetButtonDown("Jump"))
 			{
-				isGround = Physics2D.OverlapCircle(groundCheck.position, 0.7f, ground);
 				Jump();
 			}
 			if (Input.GetKeyDown("w") || Input.GetKeyDown("w"))
