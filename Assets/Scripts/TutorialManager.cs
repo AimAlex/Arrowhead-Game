@@ -75,8 +75,11 @@ public class TutorialManager : MonoBehaviour
                 PauseUntilPress();
             } else if (popUpIndex == 5)
             {
-                PauseUntilPress();
+                CameraMove();
             } else if (popUpIndex == 6)
+            {
+                PauseUntilPress();
+            } else if (popUpIndex == 7)
             {
                 ItemTutorial();
             }
