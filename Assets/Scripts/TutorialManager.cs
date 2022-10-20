@@ -107,16 +107,9 @@ public class TutorialManager : MonoBehaviour
             {
                 PauseUntilPress();
             }
-            else if (popUpIndex == 2)
-            {
-                ShootingTutorial();
-            }
             else if (popUpIndex == 3)
             {
-                foreach(var popUp in popUps[2].Array)
-                {
-                    popUp.SetActive(true);
-                }
+                ShootingTutorial();
             }
         } else if (levelNo == 4)
         {
