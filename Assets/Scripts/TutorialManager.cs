@@ -127,6 +127,10 @@ public class TutorialManager : MonoBehaviour
             {
                 BombTutorial();
             }
+            else if (popUpIndex == 2)
+            {
+                PauseUntilPress();
+            }
         }
     }
 
