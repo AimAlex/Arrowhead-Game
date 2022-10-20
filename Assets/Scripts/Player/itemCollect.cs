@@ -79,46 +79,47 @@ public class itemCollect : MonoBehaviour
     
     private void checkFinish()
     {
-        if(tool4.color == Color.clear && tool5.color == Color.clear && tool6.color == Color.clear){
+
+        List<GameObject> collList = new List<GameObject> ();
+        foreach (var obj in bagStack)
+        {
+            collList.Add(obj);
+        }
+
+        if (collList.Count != collItemList.Count)
+        {
+            FindObjectOfType<AnalyticsScript>().WrongCollection();
+            return;
+        }
+
+        foreach (var item in collItemList) 
+        {
+            Debug.Log(item.name);
+            if (collList.Exists(t => t == item))
+            {
+                collList.Remove(item);
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        if (collList.Count == 0)
+        {
             // success, go to next level
             FindObjectOfType<AnalyticsScript>().Success();
             SceneManager.LoadScene(nextSceneName);
         }else{
-            return;
+            if(tool4.color == Color.clear && tool5.color == Color.clear && tool6.color == Color.clear){
+                // success, go to next level
+                FindObjectOfType<AnalyticsScript>().Success();
+                SceneManager.LoadScene(nextSceneName);
+            }else{
+                FindObjectOfType<AnalyticsScript>().WrongCollection();
+                return;
+            }
         }
-        // List<GameObject> collList = new List<GameObject> ();
-        // foreach (var obj in bagStack)
-        // {
-        //     collList.Add(obj);
-        // }
-
-        // if (collList.Count != collItemList.Count)
-        // {
-        //     FindObjectOfType<AnalyticsScript>().WrongCollection();
-        //     return;
-        // }
-
-        // foreach (var item in collItemList) 
-        // {
-        //     Debug.Log(item.name);
-        //     if (collList.Exists(t => t == item))
-        //     {
-        //         collList.Remove(item);
-        //     }
-        //     else
-        //     {
-        //         break;
-        //     }
-        // }
-
-        // if (collList.Count == 0)
-        // {
-        //     // success, go to next level
-        //     FindObjectOfType<AnalyticsScript>().Success();
-        //     SceneManager.LoadScene(nextSceneName);
-        // }else{
-        //     FindObjectOfType<AnalyticsScript>().WrongCollection();
-        // }
     }
 
     private void OnTriggerExit2D(Collider2D col)
