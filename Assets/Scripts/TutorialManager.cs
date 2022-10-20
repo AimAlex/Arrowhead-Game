@@ -166,6 +166,7 @@ public class TutorialManager : MonoBehaviour
             if (tourList.Count == 0)
             {
                 currCameraPos = camera.transform.position;
+                cameraScroll.camaraMove = true;
             }
             
             if (cameraTours.Length < popUpIndex + 1 || cameraTours[popUpIndex].Array.Length == 0)

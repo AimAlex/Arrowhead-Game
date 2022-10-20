@@ -24,7 +24,7 @@ public class SideScrolling : MonoBehaviour
         startPosition = transform.position - player.position;
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         // tourPosition variable, when use the tour camera, must uncomment next line
-        camaraMove = true;
+        // camaraMove = true;
         smoothing = 1.5f;
         pathIndex = 0;
     }
@@ -52,7 +52,7 @@ public class SideScrolling : MonoBehaviour
             return true;
         }
         if (pathIndex == path.Count){
-            // camaraMove = false;
+            camaraMove = false;
             return false;
         }
 
