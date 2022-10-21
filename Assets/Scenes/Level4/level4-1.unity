@@ -1133,10 +1133,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.5, y: 0.5}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: 0.5}
+    - - {x: -0.30307317, y: 0.27271682}
+      - {x: -0.25923705, y: -0.27221406}
+      - {x: 0.23950434, y: -0.28092003}
+      - {x: 0.29967082, y: 0.2683636}
 --- !u!251 &306001409
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -1201,7 +1201,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306001406}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -6263,7 +6263,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692485216}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -9152,6 +9152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 188585044086968370, guid: 2b2a6722a22b945aca7d15b0550bda50, type: 3}
   bomb: {fileID: 0}
+  bomb_count: 0
   player_position: {x: 0, y: 0}
   bomb_position: {x: 0, y: 0}
   bomb_x: 0
@@ -9444,6 +9445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
+  jumpForce: 10
   dashDistance: 10
   groundCheck: {fileID: 1269638153}
   ground:
@@ -10458,6 +10460,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tourCamera: {fileID: 0}
   smoothing: 0
+  camaraMove: 0
+  inPreviewMode: 0
+  pathIndex: 0
 --- !u!1 &2001421553
 GameObject:
   m_ObjectHideFlags: 0
@@ -10671,10 +10676,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.5, y: 0.5}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: 0.5}
+    - - {x: -0.3131984, y: 0.2567242}
+      - {x: -0.25527245, y: -0.28049162}
+      - {x: 0.21425891, y: -0.27383006}
+      - {x: 0.30590895, y: 0.26100042}
 --- !u!251 &2115444524
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -10739,7 +10744,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115444521}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0

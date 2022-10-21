@@ -1084,6 +1084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 188585044086968370, guid: 2b2a6722a22b945aca7d15b0550bda50, type: 3}
   bomb: {fileID: 0}
+  bomb_count: 0
   player_position: {x: 0, y: 0}
   bomb_position: {x: 0, y: 0}
   bomb_x: 0
@@ -1376,6 +1377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
+  jumpForce: 10
   dashDistance: 10
   groundCheck: {fileID: 496776778}
   ground:
@@ -3560,10 +3562,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.5, y: 0.5}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: 0.5}
+    - - {x: -0.3284111, y: 0.28220153}
+      - {x: -0.23601675, y: -0.2766173}
+      - {x: 0.20301819, y: -0.28220177}
+      - {x: 0.32181168, y: 0.2822013}
 --- !u!251 &1169921443
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -3628,7 +3630,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169921440}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -5080,10 +5082,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.5, y: 0.5}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: 0.5}
+    - - {x: -0.34737015, y: 0.27397773}
+      - {x: -0.15658331, y: -0.29335093}
+      - {x: 0.12605667, y: -0.29335093}
+      - {x: 0.36263323, y: 0.20939988}
+      - {x: 0.33210707, y: 0.2675198}
 --- !u!251 &1395833147
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -5148,7 +5151,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395833144}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -5708,10 +5711,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.5, y: 0.5}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: 0.5}
+    - - {x: -0.3220477, y: 0.26083827}
+      - {x: -0.1964345, y: -0.2874117}
+      - {x: 0.20690203, y: -0.2785535}
+      - {x: 0.34298325, y: 0.25198007}
 --- !u!251 &1615459941
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -5776,7 +5779,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615459938}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -5908,10 +5911,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.5, y: 0.5}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: 0.5}
+    - - {x: -0.30118322, y: 0.3011725}
+      - {x: -0.21081305, y: -0.3011725}
+      - {x: 0.18370199, y: -0.30881977}
+      - {x: 0.36444378, y: 0.29352546}
 --- !u!251 &1623315906
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -5976,7 +5979,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623315903}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -6331,7 +6334,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673628164}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -11134,9 +11137,8 @@ MonoBehaviour:
   tourCamera: {fileID: 0}
   smoothing: 0
   camaraMove: 0
-  inFrame1: 0
-  inFrame2: 0
   inPreviewMode: 0
+  pathIndex: 0
 --- !u!81 &2142694257
 AudioListener:
   m_ObjectHideFlags: 0
