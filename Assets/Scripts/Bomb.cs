@@ -10,7 +10,7 @@ public class Bomb: MonoBehaviour
 {
 
     public float waitTime;
-    public float radius = 0.01F;
+    public float radius = 2;
     private Collider2D Coll;
     private Rigidbody2D Rb;
     public GameObject bomb;
