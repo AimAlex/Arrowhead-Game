@@ -24,7 +24,8 @@ public class PlayerMovement : MonoBehaviour
 	int jumpCount, dashCount;
 
 	public static bool collectDoubleJump, collectDash;
-
+	AudioSource audioSource;
+	AudioClip jumpAudio;
 	public Image power1;
     public Image power2;
     public Image power3;
@@ -87,6 +88,10 @@ public class PlayerMovement : MonoBehaviour
         power3 = GameObject.Find("power3").GetComponent<Image>();
 		power4 = GameObject.Find("power4").GetComponent<Image>();
 		isPreview = false;
+		// add audio
+		audioSource = gameObject.AddComponent<AudioSource>();
+		audioSource.playOnAwake = false; 
+		jumpAudio = Resources.Load<AudioClip>("music/DM-CGS-50");
     }
 
 
@@ -146,6 +151,9 @@ public class PlayerMovement : MonoBehaviour
 			rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpForce);
 			jumpCount--;
 			jumpPressed = false;
+			// play audio
+			// audioSource.clip = jumpAudio;
+			// audioSource.Play();
 		}
 
 	}
