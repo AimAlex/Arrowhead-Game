@@ -89,9 +89,8 @@ public class PlayerMovement : MonoBehaviour
 		power4 = GameObject.Find("power4").GetComponent<Image>();
 		isPreview = false;
 		// add audio
-		audioSource = gameObject.AddComponent<AudioSource>();
-		audioSource.playOnAwake = false; 
-		jumpAudio = Resources.Load<AudioClip>("music/DM-CGS-50");
+		audioSource = gameObject.GetComponent<AudioSource>();
+		jumpAudio = Resources.Load<AudioClip>("music/jump");
     }
 
 
@@ -152,8 +151,8 @@ public class PlayerMovement : MonoBehaviour
 			jumpCount--;
 			jumpPressed = false;
 			// play audio
-			// audioSource.clip = jumpAudio;
-			// audioSource.Play();
+			audioSource.clip = jumpAudio;
+			audioSource.Play();
 		}
 
 	}
