@@ -22,7 +22,7 @@ public class Bomb: MonoBehaviour
 private void Awake()
 {
     Debug.Log("Bomb");
-    bomb = GameObject.Find("Bomb");
+    bomb = GameObject.Find("Bomb"); // muti thread, 1.3个 2.set(available, inuse) 3.add: a -> inuse 4.delete: inuse -> available
     Coll = GetComponent<Collider2D>();
 
 }
