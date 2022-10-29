@@ -10,22 +10,28 @@ using UnityEngine.UI;
 public class Animation : MonoBehaviour
 {
     public bool isDead=false;
+    // private bool isIdle=false;
+    // private bool isRunning=false;
     private bool deathPauseStarted=false;
     private float deathPauseDur=1.5f;
     private float timer;
     private arcMovement[] arcs;
     private trapMovement[] traps;
     private Enemy[] enemies;
-    private Animator anim;
+    public static Animator anim;
+    public static Rigidbody2D rb;
+
 
     // Start is called before the first frame update
     private void Start()
     {
         anim=GetComponent<Animator>();
+        rb=GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
+
         if(isDead && !deathPauseStarted){
             anim.SetBool("dead",true);
             deathPauseStarted=true;
@@ -52,7 +58,7 @@ public class Animation : MonoBehaviour
 
         if(deathPauseStarted){
             if(Time.time-timer>deathPauseDur){
-                FindObjectOfType<PlayerLifeWithAnim>().Die();
+                PlayerLife.Die();
             }
         }
 

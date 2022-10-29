@@ -26,13 +26,16 @@ public class PlayerLife : MonoBehaviour
         if (col.gameObject.CompareTag("trap"))
         {
             FindObjectOfType<AnalyticsScript>().KilledByTrap();
-            Die();
+            FindObjectOfType<Animation>().isDead=true;
+            // Die();
         }else if(col.gameObject.CompareTag("Enemy")){
             FindObjectOfType<AnalyticsScript>().KilledByEnemy();
-            Die();
+            FindObjectOfType<Animation>().isDead=true;
+            // Die();
         }else if(col.gameObject.CompareTag("Deadzone")){
             FindObjectOfType<AnalyticsScript>().KilledByDeadzone();
-            Die();
+            FindObjectOfType<Animation>().isDead=true;
+            // Die();
         }
     }
 
@@ -41,7 +44,8 @@ public class PlayerLife : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             FindObjectOfType<AnalyticsScript>().KilledByEnemy();
-            Die();
+            FindObjectOfType<Animation>().isDead=true;
+            // Die();
         }
     }
 
