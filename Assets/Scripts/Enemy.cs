@@ -11,19 +11,29 @@ public class Enemy : MonoBehaviour
 
     public Vector2 direction;
 
+    private float time;
+
+    private float timeDelay;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        time = 0f;
+        timeDelay = 2f;
     }
 
     // Update is called once per frame
     void Update ()
     {
-        var random = Random.Range(0f, 260f);
-        Vector2 randomVector = Random.insideUnitCircle;
-        direction = randomVector;
-        StartCoroutine(Shoot());
+        time = time + 1f * Time.deltaTime;
+        if (time >= timeDelay)
+        {
+            time = 0f;
+            var random = Random.Range(0f, 260f);
+            Vector2 randomVector = Random.insideUnitCircle;
+            direction = randomVector;
+            StartCoroutine(Shoot());
+        }
     }
 
     IEnumerator Shoot()
