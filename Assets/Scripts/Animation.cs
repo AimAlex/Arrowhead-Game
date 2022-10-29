@@ -46,7 +46,7 @@ public class Animation : MonoBehaviour
                 traps[i].speed=0;
             }
             for(int i=0;i<enemies.Length;i++){
-                enemies[i].speed=0;
+                //enemies[i].speed=0;
             }
         }
 

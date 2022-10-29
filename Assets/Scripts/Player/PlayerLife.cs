@@ -8,7 +8,7 @@ using Unity.VisualScripting;
 
 public class PlayerLife : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public static Rigidbody2D rb;
     float timer, timer1;
     float restartHoldDur = 2f;
     float restartTimeAfterDie = 3f;
@@ -84,7 +84,7 @@ public class PlayerLife : MonoBehaviour
         SceneManager.LoadScene(curScene);
     }
 
-    private void Die()
+    public static void Die()
     {
         rb.bodyType = RigidbodyType2D.Static;
         curScene = SceneManager.GetActiveScene().name;
