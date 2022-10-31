@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
 
     public Vector2 direction;
 
+    private RaycastHit2D hitInfo;
+
     private float time;
 
     private float timeDelay;
@@ -39,17 +41,31 @@ public class Enemy : MonoBehaviour
     IEnumerator Shoot()
     {
         RaycastHit2D[] hitInfos = Physics2D.RaycastAll(firePoint.position, direction);
-        lineRenderer.SetPosition(0, firePoint.position);
-        lineRenderer.SetPosition(1, direction*100);
-        foreach(var hitInfo in hitInfos)
+        if (hitInfos[0].transform.tag == "Enemy")
         {
+            hitInfo = hitInfos[1];
+        }
+        else
+        {
+            hitInfo = hitInfos[0];
+        }
+
+        if (hitInfo)
+        {
+            lineRenderer.SetPosition(0, firePoint.position);
+            lineRenderer.SetPosition(1, hitInfo.point);
             if (hitInfo.transform.tag == "Player")
             {
                 PlayerLife.Die();
             }
         }
+        else
+        {
+            lineRenderer.SetPosition(0, firePoint.position);
+            lineRenderer.SetPosition(1, direction*100);
+        }
         lineRenderer.enabled = true;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(0.05f);
         lineRenderer.enabled = false;
     }
 }
