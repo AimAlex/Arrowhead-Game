@@ -1,66 +1,71 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float vertical, horizontal;
-    // [SerializeField] private float speed = 0.5f;
-    [SerializeField] public float speed = 0.5f;
-    private Vector2 startPosition;
-    private int verticalDir = 0;
-    private int horizontalDir = 0;
-    private float verticalDistance = 0;
-    private float horizontalDistance = 0;
+    public Transform firePoint;
+
+    public LineRenderer lineRenderer;
+
+    public Vector2 direction;
+
+    private RaycastHit2D hitInfo;
+
+    private float time;
+
+    private float timeDelay;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (vertical > 0)
-        {
-            verticalDir = 1;
-            verticalDistance = vertical;
-        }
-        else if (vertical < 0)
-        {
-            verticalDir = -1;
-            verticalDistance = -vertical;
-        }
-
-        if (horizontal > 0)
-        {
-            horizontalDir = 1;
-            horizontalDistance = horizontal;
-        }
-        else if (horizontal < 0)
-        {
-            horizontalDir = -1;
-            horizontalDistance = -horizontal;
-        }
-        startPosition = transform.position;
-
+        time = 0f;
+        timeDelay = 2f;
     }
 
     // Update is called once per frame
     void Update ()
     {
-        if (verticalDistance > 0 && transform.position.y - startPosition.y > verticalDistance) {
-            verticalDir = -1;
+        time = time + 1f * Time.deltaTime;
+        if (time >= timeDelay)
+        {
+            time = 0f;
+            var random = Random.Range(0f, 260f);
+            Vector2 randomVector = Random.insideUnitCircle;
+            direction = randomVector;
+            StartCoroutine(Shoot());
         }
-        else if (verticalDistance > 0 && startPosition.y - transform.position.y > verticalDistance) {
-            verticalDir = 1;
+    }
+
+    IEnumerator Shoot()
+    {
+        RaycastHit2D[] hitInfos = Physics2D.RaycastAll(firePoint.position, direction);
+        if (hitInfos[0].transform.tag == "Enemy")
+        {
+            hitInfo = hitInfos[1];
+        }
+        else
+        {
+            hitInfo = hitInfos[0];
         }
 
-        if (horizontalDistance > 0 && transform.position.x - startPosition.x > horizontalDistance)
+        if (hitInfo)
         {
-            horizontalDir = -1;
+            lineRenderer.SetPosition(0, firePoint.position);
+            lineRenderer.SetPosition(1, hitInfo.point);
+            if (hitInfo.transform.tag == "Player")
+            {
+                PlayerLife.Die();
+            }
         }
-        else if (horizontalDistance > 0 && startPosition.x - transform.position.x > horizontalDistance)
+        else
         {
-            horizontalDir = 1;
+            lineRenderer.SetPosition(0, firePoint.position);
+            lineRenderer.SetPosition(1, direction*100);
         }
-        
-        transform.Translate(verticalDir * speed * Time.deltaTime * Vector3.up);
-        transform.Translate(horizontalDir * speed * Time.deltaTime * Vector3.right);
+        lineRenderer.enabled = true;
+        yield return new WaitForSeconds(0.05f);
+        lineRenderer.enabled = false;
     }
 }
