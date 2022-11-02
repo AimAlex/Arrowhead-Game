@@ -130,9 +130,6 @@ public class PlayerMovement : MonoBehaviour
 		if (horizontalMove != 0)
 		{
 			transform.localScale = new Vector3(horizontalMove, 1, 1);
-			Animation.anim.SetBool("running",true);
-		}else{
-			Animation.anim.SetBool("running",false);
 		}
 	}
 

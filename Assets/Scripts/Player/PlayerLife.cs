@@ -8,7 +8,7 @@ using Unity.VisualScripting;
 
 public class PlayerLife : MonoBehaviour
 {
-    public static Rigidbody2D rb;
+    private Rigidbody2D rb;
     float timer, timer1;
     float restartHoldDur = 2f;
     float restartTimeAfterDie = 3f;
@@ -25,21 +25,14 @@ public class PlayerLife : MonoBehaviour
     {
         if (col.gameObject.CompareTag("trap"))
         {
-            if(!FindObjectOfType<healthPoint>().UpdateHurt()){
-                FindObjectOfType<AnalyticsScript>().KilledByTrap();
-                FindObjectOfType<Animation>().isDead=true;
-            }
-            // Die();
+            FindObjectOfType<AnalyticsScript>().KilledByTrap();
+            Die();
         }else if(col.gameObject.CompareTag("Enemy")){
-            if(!FindObjectOfType<healthPoint>().UpdateHurt()){
-                FindObjectOfType<AnalyticsScript>().KilledByEnemy();
-                FindObjectOfType<Animation>().isDead=true;
-            }
-            // Die();
+            FindObjectOfType<AnalyticsScript>().KilledByEnemy();
+            Die();
         }else if(col.gameObject.CompareTag("Deadzone")){
             FindObjectOfType<AnalyticsScript>().KilledByDeadzone();
-            FindObjectOfType<Animation>().isDead=true;
-            // Die();
+            Die();
         }
     }
 
@@ -47,11 +40,8 @@ public class PlayerLife : MonoBehaviour
     {
         if (col.CompareTag("Enemy"))
         {
-            if(!FindObjectOfType<healthPoint>().UpdateHurt()){
-                FindObjectOfType<AnalyticsScript>().KilledByEnemy();
-                FindObjectOfType<Animation>().isDead=true;
-            }
-            // Die();
+            FindObjectOfType<AnalyticsScript>().KilledByEnemy();
+            Die();
         }
     }
 
@@ -94,7 +84,7 @@ public class PlayerLife : MonoBehaviour
         SceneManager.LoadScene(curScene);
     }
 
-    public static void Die()
+    private void Die()
     {
         rb.bodyType = RigidbodyType2D.Static;
         curScene = SceneManager.GetActiveScene().name;
