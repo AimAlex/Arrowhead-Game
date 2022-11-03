@@ -13,13 +13,12 @@ public class Weapon : MonoBehaviour
     // public GameObject ground;
     Vector2 mousePos;
     RaycastHit2D hitInfo;
-    AudioSource audioSource;
 	AudioClip shootAudio;
-
+    private PlayerMovement playerMovement;
     private void Awake()
     {
         laserGunPickUp = false;
-        audioSource = gameObject.GetComponent<AudioSource>();
+        playerMovement = gameObject.GetComponent<PlayerMovement>();
 		shootAudio = Resources.Load<AudioClip>("music/laser-shoot");
     }
 
@@ -31,8 +30,7 @@ public class Weapon : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F) && laserGunPickUp == true)
         {
             StartCoroutine(Shoot());
-            audioSource.clip = shootAudio;
-			audioSource.Play();
+            playerMovement.PlayAudio(shootAudio);
         }
     }
 

@@ -20,8 +20,8 @@ public class PlayerLifeWithHP : MonoBehaviour
     public Image blood3;
     public Image blood4;
     private int hurt=0;
-
-
+    private PlayerMovement playerMovement;
+    private AudioClip dieAudio;
     // Start is called before the first frame update
     private void Start()
     {
@@ -31,6 +31,8 @@ public class PlayerLifeWithHP : MonoBehaviour
         blood2.enabled=false;
         blood3.enabled=false;
         blood4.enabled=false;
+        playerMovement = gameObject.GetComponent<PlayerMovement>();
+        dieAudio = Resources.Load<AudioClip>("music/die");
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -129,6 +131,7 @@ public class PlayerLifeWithHP : MonoBehaviour
 
     private void Die()
     {
+        playerMovement.PlayAudio(dieAudio);
         rb.bodyType = RigidbodyType2D.Static;
         // curScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene("DieScene");

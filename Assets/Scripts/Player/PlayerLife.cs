@@ -13,14 +13,19 @@ public class PlayerLife : MonoBehaviour
     float restartHoldDur = 2f;
     float restartTimeAfterDie = 3f;
     public static string curScene;
-
+    private PlayerMovement playerMovement;
+    private AudioClip dieAudio;
     // Start is called before the first frame update
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         timer1 = float.PositiveInfinity;
     }
-
+    private void Awake()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
+        dieAudio = Resources.Load<AudioClip>("music/die");
+    }
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("trap"))
