@@ -7,16 +7,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public Transform firePoint;
-
     public LineRenderer lineRenderer;
-
     public Vector2 direction;
-
     private RaycastHit2D hitInfo;
-
     private float time;
-
     private float timeDelay;
+    public bool hurtStarted=false;
 
     // Start is called before the first frame update
     void Start()
@@ -65,10 +61,15 @@ public class Enemy : MonoBehaviour
 
                 if (hitInfo.transform.tag == "Player")
                 {
-                    bool isDied = FindObjectOfType<healthPoint>().UpdateHurt();
-                    if (!isDied)
-                    {
-                        PlayerLife.Die();
+                    if(!hurtStarted){
+                        hurtStarted=true;
+                        bool isStillAlive = FindObjectOfType<healthPoint>().UpdateHurt();
+                        if (!isStillAlive)
+                        {
+                            PlayerLife.Die();
+                        }else{
+                            FindObjectOfType<Animation>().isHurt=true;
+                        }
                     }
                     
                 }

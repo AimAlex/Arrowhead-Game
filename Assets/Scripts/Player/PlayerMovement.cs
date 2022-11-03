@@ -140,8 +140,10 @@ public class PlayerMovement : MonoBehaviour
 		{
 			transform.localScale = new Vector3(horizontalMove, 1, 1);
 			Animation.anim.SetBool("running",true);
+			Animation.anim.SetBool("idle",false);
 		}else{
 			Animation.anim.SetBool("running",false);
+			Animation.anim.SetBool("idle",true);
 		}
 	}
 
@@ -191,8 +193,5 @@ public class PlayerMovement : MonoBehaviour
 			isDashing = false;
 		}
 	}
-
-	
-
 
 }

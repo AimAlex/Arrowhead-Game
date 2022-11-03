@@ -14,7 +14,7 @@ public class Animation : MonoBehaviour
     // private bool isRunning=false;
     private bool deathPauseStarted=false;
     private float deathPauseDur=1.5f;
-    private float timer;
+    private float timer_death,timer_hurt;
     private arcMovement[] arcs;
     private trapMovement[] traps;
     private Enemy[] enemies;
@@ -22,6 +22,9 @@ public class Animation : MonoBehaviour
     public static Rigidbody2D rb;
     private PlayerMovement playerMovement;
     private AudioClip dieAudio;
+    public bool isHurt=false;
+    private float hurtDur=3f;
+    private bool hurtDurStarted=false;
 
     // Start is called before the first frame update
     private void Start()
@@ -34,11 +37,31 @@ public class Animation : MonoBehaviour
 
     void Update()
     {
+        if(isHurt && !hurtDurStarted){
+            hurtDurStarted=true;
+            anim.SetBool("dead",true);
+            timer_hurt=Time.time;
+            // this.GetComponent<Rigidbody2D>().velocity=new Vector3(0,0,0);
+            // this.GetComponent<Rigidbody2D>().gravityScale=0;
+        }
+        
+        if(hurtDurStarted){
+            if(Time.time-timer_hurt>hurtDur){
+                anim.SetBool("idle",true);
+                anim.SetBool("dead",false);
+                isHurt=false;
+                hurtDurStarted=false;
+                FindObjectOfType<PlayerLife>().hurtStarted=false;
+                FindObjectOfType<Enemy>().hurtStarted=false;
+                // this.GetComponent<Rigidbody2D>().velocity=new Vector3(0,0,0);
+                // this.GetComponent<Rigidbody2D>().gravityScale=1;
+            }
+        }
 
         if(isDead && !deathPauseStarted){
             anim.SetBool("dead",true);
             deathPauseStarted=true;
-            timer=Time.time;
+            timer_death=Time.time;
 
             FindObjectOfType<PlayerMovement>().moveSpeed=0;
             FindObjectOfType<PlayerMovement>().jumpForce=0;
@@ -60,7 +83,7 @@ public class Animation : MonoBehaviour
         }
 
         if(deathPauseStarted){
-            if(Time.time-timer>deathPauseDur){
+            if(Time.time-timer_death>deathPauseDur){
                 playerMovement.PlayAudio(dieAudio);
                 PlayerLife.Die();
             }
