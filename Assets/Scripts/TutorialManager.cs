@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -199,18 +200,27 @@ public class TutorialManager : MonoBehaviour
             }
 
             tourList.Clear();
+            
+            // zoom and speed
+            List<float> zoom = new List<float>();
+            List<float> speed = new List<float>();
+            
             foreach (var obj in cameraTours[popUpIndex].Array)
             {
                 tourList.Add(obj.transform.position);
+                zoom.Add(39.306593f);
+                speed.Add(1);
             }
             tourList.Add(currCameraPos);
-            
-            // if (!cameraScroll.tourPosition(tourList))
-            // {
-            //     tourList.Clear();
-            //     cameraScroll.pathIndex = 0;
-            //     ++popUpIndex;
-            // }
+            zoom.Add(9.306593f);
+            speed.Add(1);
+
+            if (!cameraScroll.tourPosition(tourList, zoom, speed))
+            {
+                tourList.Clear();
+                cameraScroll.pathIndex = 0;
+                ++popUpIndex;
+            }
         }
     }
 
