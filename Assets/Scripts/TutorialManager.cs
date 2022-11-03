@@ -66,7 +66,8 @@ public class TutorialManager : MonoBehaviour
         {
             if (popUpIndex == 0)
             {
-                CameraMove();
+                // CameraMove();
+                PauseUntilPress();
             }
             else if (popUpIndex == 1)
             {
