@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEditor.Search;
 using UnityEngine;
 
@@ -41,31 +42,50 @@ public class Enemy : MonoBehaviour
     IEnumerator Shoot()
     {
         RaycastHit2D[] hitInfos = Physics2D.RaycastAll(firePoint.position, direction);
-        if (hitInfos[0].transform.tag == "Enemy")
+        if (hitInfos.Length == 0 || (hitInfos.Length==1 && hitInfos[0].transform.tag == "Enemy"))
         {
-            hitInfo = hitInfos[1];
+            lineRenderer.SetPosition(0, firePoint.position);
+            lineRenderer.SetPosition(1, direction*100); 
         }
         else
         {
-            hitInfo = hitInfos[0];
-        }
-
-        if (hitInfo)
-        {
-            lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, hitInfo.point);
-            if (hitInfo.transform.tag == "Player")
+            if (hitInfos[0].transform.tag == "Enemy")
             {
-                if(!FindObjectOfType<healthPoint>().UpdateHurt()){
+                hitInfo = hitInfos[1];
+            }
+            else
+            {
+                hitInfo = hitInfos[0];
+            }
+
+            if (hitInfo)
+            {
+                lineRenderer.SetPosition(0, firePoint.position);
+                lineRenderer.SetPosition(1, hitInfo.point);
+
+                if (hitInfo.transform.tag == "Player")
+                {
+                    bool isDied = FindObjectOfType<healthPoint>().UpdateHurt();
+                    if (!isDied)
+                    {
+                        PlayerLife.Die();
+                    }
+                    
+                }
+                /*
+                if (hitInfo.transform.tag == "Player")
+                {
                     PlayerLife.Die();
                 }
+                */
+            }
+            else
+            {
+                lineRenderer.SetPosition(0, firePoint.position);
+                lineRenderer.SetPosition(1, direction*100);
             }
         }
-        else
-        {
-            lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, direction*100);
-        }
+
         lineRenderer.enabled = true;
         yield return new WaitForSeconds(0.05f);
         lineRenderer.enabled = false;

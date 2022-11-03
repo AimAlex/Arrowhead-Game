@@ -1014,7 +1014,7 @@ GameObject:
   - component: {fileID: 260408674}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3363,7 +3363,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  radius: 1
+  rotateCenterX: 0
+  rotateCenterY: 0
 --- !u!114 &977094832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6241,9 +6242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0418499dfe3ba416a82acf54ce7f61c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vertical: 0
-  horizontal: 1
-  speed: 1
+  firePoint: {fileID: 0}
+  lineRenderer: {fileID: 0}
+  direction: {x: 0, y: 0}
 --- !u!114 &1673628166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11174,6 +11175,10 @@ MonoBehaviour:
   camaraMove: 0
   inPreviewMode: 0
   pathIndex: 0
+  cameraPreviewSize: 30
+  pathPoints: []
+  pathZoom: []
+  pathSpeed: []
 --- !u!81 &2142694257
 AudioListener:
   m_ObjectHideFlags: 0
