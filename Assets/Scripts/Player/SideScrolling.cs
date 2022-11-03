@@ -17,7 +17,7 @@ public class SideScrolling : MonoBehaviour
     private Camera mainCamera;
     public int pathIndex;
     private bool[] pathPiontCheck;
-
+    public float cameraPreviewSize = 30f;
     public List<Vector3> pathPoints;
     public List<float> pathZoom;
     public List<float> pathSpeed;
@@ -86,7 +86,7 @@ public class SideScrolling : MonoBehaviour
             inPreviewMode = false;
         }
         if (inPreviewMode){
-            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, 23f, Time.deltaTime);
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, cameraPreviewSize, Time.deltaTime);
         }
         else if (!inPreviewMode){
             mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, originalSize, Time.deltaTime);
