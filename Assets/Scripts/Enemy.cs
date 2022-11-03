@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
                 if (hitInfo.transform.tag == "Player")
                 {
                     bool isDied = FindObjectOfType<healthPoint>().UpdateHurt();
-                    if (isDied)
+                    if (!isDied)
                     {
                         PlayerLife.Die();
                     }
@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
         }
 
         lineRenderer.enabled = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.05f);
         lineRenderer.enabled = false;
     }
 }
