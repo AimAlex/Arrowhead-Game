@@ -17,7 +17,10 @@ public class SideScrolling : MonoBehaviour
     private Camera mainCamera;
     public int pathIndex;
     private bool[] pathPiontCheck;
-    // private List<Vector3> pathPoints;
+    public float cameraPreviewSize = 30f;
+    public List<Vector3> pathPoints;
+    public List<float> pathZoom;
+    public List<float> pathSpeed;
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -31,20 +34,32 @@ public class SideScrolling : MonoBehaviour
     private void Start(){
         InitCamera();
         initPosition = transform.position;
-        // pathPoints = new List<Vector3>();
         // demo camera tour code
+        // pathPoints = new List<Vector3>();
         // pathPoints.Add(new Vector3(initPosition.x + 15, initPosition.y, transform.position.z));
         // pathPoints.Add(new Vector3(initPosition.x + 15, initPosition.y + 10, transform.position.z));
         // pathPoints.Add(new Vector3(initPosition.x + 30, initPosition.y + 5, transform.position.z));
         // pathPoints.Add(initPosition);
+        // pathZoom = new List<float>();
+        // pathZoom.Add(23.0f);
+        // pathZoom.Add(3.0f);
+        // pathZoom.Add(1.0f);
+        // pathZoom.Add(9.306593f);
+        // pathSpeed = new List<float>();
+        // pathSpeed.Add(0.5f);
+        // pathSpeed.Add(0.6f);
+        // pathSpeed.Add(0.8f);
+        // pathSpeed.Add(1f);
+
     }
 
-    public bool tourPosition(List<Vector3> path){
+    public bool tourPosition(List<Vector3> path, List<float> zoom, List<float> speed){
         // if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)){
         //     pathIndex = path.Count;
         // }
         if (pathIndex < path.Count){
-            transform.position = Vector3.Lerp(transform.position, new Vector3(path[pathIndex].x, path[pathIndex].y, transform.position.z), Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(path[pathIndex].x, path[pathIndex].y, transform.position.z), speed[pathIndex] * Time.deltaTime);
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, zoom[pathIndex], speed[pathIndex] * Time.deltaTime);
             // If need different waitting time for each point, please chage the float value, such as 0.5f
             if (Mathf.Abs(transform.position.x - path[pathIndex].x) <= 0.5f && Mathf.Abs(transform.position.y - path[pathIndex].y) <= 0.5f){
                 pathIndex++;
@@ -61,7 +76,7 @@ public class SideScrolling : MonoBehaviour
 
     private void Update()
     {
-        // tourPosition(pathPoints);
+        // tourPosition(pathPoints, pathZoom, pathSpeed);
         if (Input.GetKeyDown(KeyCode.P))
         {
             inPreviewMode = true;
@@ -71,7 +86,7 @@ public class SideScrolling : MonoBehaviour
             inPreviewMode = false;
         }
         if (inPreviewMode){
-            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, 23f, Time.deltaTime);
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, cameraPreviewSize, Time.deltaTime);
         }
         else if (!inPreviewMode){
             mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, originalSize, Time.deltaTime);

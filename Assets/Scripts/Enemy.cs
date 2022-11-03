@@ -56,7 +56,9 @@ public class Enemy : MonoBehaviour
             lineRenderer.SetPosition(1, hitInfo.point);
             if (hitInfo.transform.tag == "Player")
             {
-                PlayerLife.Die();
+                if(!FindObjectOfType<healthPoint>().UpdateHurt()){
+                    PlayerLife.Die();
+                }
             }
         }
         else
