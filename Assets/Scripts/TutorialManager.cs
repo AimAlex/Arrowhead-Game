@@ -176,7 +176,7 @@ public class TutorialManager : MonoBehaviour
     
     void CheckPause()
     {
-        if (Time.timeScale == 0 && Input.anyKeyDown)
+        if (Time.timeScale == 0 && Input.GetKeyDown(KeyCode.Return))
         {
             Time.timeScale = 1;
             ++popUpIndex;
