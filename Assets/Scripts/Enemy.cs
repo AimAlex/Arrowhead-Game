@@ -62,9 +62,22 @@ public class Enemy : MonoBehaviour
             {
                 lineRenderer.SetPosition(0, firePoint.position);
                 lineRenderer.SetPosition(1, hitInfo.point);
-                if(!FindObjectOfType<healthPoint>().UpdateHurt()){
+
+                if (hitInfo.transform.tag == "Player")
+                {
+                    bool isDied = FindObjectOfType<healthPoint>().UpdateHurt();
+                    if (isDied)
+                    {
+                        PlayerLife.Die();
+                    }
+                    
+                }
+                /*
+                if (hitInfo.transform.tag == "Player")
+                {
                     PlayerLife.Die();
                 }
+                */
             }
             else
             {
@@ -74,7 +87,7 @@ public class Enemy : MonoBehaviour
         }
 
         lineRenderer.enabled = true;
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
         lineRenderer.enabled = false;
     }
 }
