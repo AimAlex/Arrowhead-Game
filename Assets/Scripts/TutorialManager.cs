@@ -66,8 +66,7 @@ public class TutorialManager : MonoBehaviour
         {
             if (popUpIndex == 0)
             {
-                // CameraMove();
-                PauseUntilPress();
+                CameraMove();
             }
             else if (popUpIndex == 1)
             {
@@ -214,7 +213,7 @@ public class TutorialManager : MonoBehaviour
             }
             tourList.Add(currCameraPos);
             zoom.Add(9.306593f);
-            speed.Add(1);
+            speed.Add(2);
 
             if (!cameraScroll.tourPosition(tourList, zoom, speed))
             {
