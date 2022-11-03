@@ -25,11 +25,17 @@ public class PlayerMovement : MonoBehaviour
 
 	public static bool collectDoubleJump, collectDash;
 	AudioSource audioSource;
-	AudioClip jumpAudio;
+	AudioClip jumpAudio, dashAudio;
 	public Image power1;
     public Image power2;
     public Image power3;
 	public Image power4;
+
+	public void PlayAudio(AudioClip audioclip)
+	{
+		audioSource.clip = audioclip;
+		audioSource.Play();
+	}
 
 	private void UpdatePowerShow(Collider2D col)
 	{
@@ -91,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
 		// add audio
 		audioSource = gameObject.GetComponent<AudioSource>();
 		jumpAudio = Resources.Load<AudioClip>("music/jump");
+		dashAudio = Resources.Load<AudioClip>("music/dash");
     }
 
 
@@ -117,6 +124,8 @@ public class PlayerMovement : MonoBehaviour
 			if (Input.GetKeyDown("w") || Input.GetKeyDown("w"))
 			{
 				StartCoroutine(Dash());
+				audioSource.clip = dashAudio;
+				audioSource.Play();
 			}
 		}
 	}

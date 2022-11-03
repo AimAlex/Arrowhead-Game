@@ -20,13 +20,16 @@ public class Animation : MonoBehaviour
     private Enemy[] enemies;
     public static Animator anim;
     public static Rigidbody2D rb;
-
+    private PlayerMovement playerMovement;
+    private AudioClip dieAudio;
 
     // Start is called before the first frame update
     private void Start()
     {
         anim=GetComponent<Animator>();
         rb=GetComponent<Rigidbody2D>();
+        playerMovement = gameObject.GetComponent<PlayerMovement>();
+        dieAudio = Resources.Load<AudioClip>("music/die");
     }
 
     void Update()
@@ -58,6 +61,7 @@ public class Animation : MonoBehaviour
 
         if(deathPauseStarted){
             if(Time.time-timer>deathPauseDur){
+                playerMovement.PlayAudio(dieAudio);
                 PlayerLife.Die();
             }
         }
