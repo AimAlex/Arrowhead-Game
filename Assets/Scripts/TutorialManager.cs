@@ -205,12 +205,12 @@ public class TutorialManager : MonoBehaviour
             }
             tourList.Add(currCameraPos);
             
-            if (!cameraScroll.tourPosition(tourList))
-            {
-                tourList.Clear();
-                cameraScroll.pathIndex = 0;
-                ++popUpIndex;
-            }
+            // if (!cameraScroll.tourPosition(tourList))
+            // {
+            //     tourList.Clear();
+            //     cameraScroll.pathIndex = 0;
+            //     ++popUpIndex;
+            // }
         }
     }
 
