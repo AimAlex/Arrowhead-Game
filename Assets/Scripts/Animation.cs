@@ -62,7 +62,7 @@ public class Animation : MonoBehaviour
             anim.SetBool("dead",true);
             deathPauseStarted=true;
             timer_death=Time.time;
-
+            playerMovement.PlayAudio(dieAudio);
             FindObjectOfType<PlayerMovement>().moveSpeed=0;
             FindObjectOfType<PlayerMovement>().jumpForce=0;
             this.GetComponent<Rigidbody2D>().velocity=new Vector3(0,0,0);
@@ -84,7 +84,6 @@ public class Animation : MonoBehaviour
 
         if(deathPauseStarted){
             if(Time.time-timer_death>deathPauseDur){
-                playerMovement.PlayAudio(dieAudio);
                 PlayerLife.Die();
             }
         }
