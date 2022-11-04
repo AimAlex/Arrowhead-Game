@@ -56,7 +56,6 @@ IEnumerator Explotion()
                                 &&!item.CompareTag("Finish")
             )
         {
-
             Debug.Log(item);
             Destroy(item.gameObject);
         }
