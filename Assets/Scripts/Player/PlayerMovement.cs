@@ -124,8 +124,6 @@ public class PlayerMovement : MonoBehaviour
 			if (Input.GetKeyDown("w") || Input.GetKeyDown("w"))
 			{
 				StartCoroutine(Dash());
-				audioSource.clip = dashAudio;
-				audioSource.Play();
 			}
 		}
 	}
@@ -177,6 +175,8 @@ public class PlayerMovement : MonoBehaviour
 		{
 			isDashing = true;
 			float d = dashDistance;
+			audioSource.clip = dashAudio;
+			audioSource.Play();
 			if (rigidbody.velocity.x < 0)
 			{
 				d = -d;
