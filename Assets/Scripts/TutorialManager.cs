@@ -17,7 +17,7 @@ public class TutorialManager : MonoBehaviour
 
     [SerializeField] public GameObject camera;
     // [SerializeField] public GameObject Background;
-    private int trapCheck, pauseCheck;
+    public int trapCheck, pauseCheck;
     private int popUpIndex;
     private List<Vector3> tourList;
     private SideScrolling cameraScroll;

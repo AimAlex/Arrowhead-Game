@@ -30,7 +30,8 @@ public class PlayerMovement : MonoBehaviour
     public Image power2;
     public Image power3;
 	public Image power4;
-
+	private SideScrolling cameraScroll;
+	[SerializeField] public Camera camera;
 	public void PlayAudio(AudioClip audioclip)
 	{
 		audioSource.clip = audioclip;
@@ -98,6 +99,8 @@ public class PlayerMovement : MonoBehaviour
 		audioSource = gameObject.GetComponent<AudioSource>();
 		jumpAudio = Resources.Load<AudioClip>("music/jump");
 		dashAudio = Resources.Load<AudioClip>("music/dash");
+		camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+		cameraScroll = camera.GetComponent<SideScrolling>();
     }
 
 
@@ -111,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			isPreview = false;
 		} 
-		if (!isPreview){
+		if (!isPreview && Time.timeScale != 0 && !cameraScroll.camaraMove){
 			isGround = Physics2D.OverlapCircle(groundCheck.position, 0.7f, ground);
 			if (!isDashing)
 			{
