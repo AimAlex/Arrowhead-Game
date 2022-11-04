@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 
 
@@ -14,7 +15,7 @@ public class AnalyticsScript : MonoBehaviour
     private long _sessionID;
     private int _numHints=0;
     private string success="NO";
-    public string level;
+    private string level;
     // private long _Ticks_collect1=0;
     // private long _Ticks_collect2=0;
     // private long _Ticks_collect3=0;
@@ -30,10 +31,14 @@ public class AnalyticsScript : MonoBehaviour
      private int _wrongCollection=0;
     private long _endTicks;
 
+    private string curScene;
+
     // Start is called before the first frame update
     void Start()
     {
         _sessionID=DateTime.Now.Ticks;
+        curScene = SceneManager.GetActiveScene().name;
+        level=curScene;
     }
 
 
