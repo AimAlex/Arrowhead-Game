@@ -32,6 +32,7 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         popUpIndex = 0;
         pauseCheck = 1;
         cameraScroll = camera.GetComponent<SideScrolling>();
