@@ -31,7 +31,7 @@ public class itemCollect : MonoBehaviour
 	private Color white = new Color(100,100,100);
 	private Color green = new Color(0,255,0);
     private PlayerMovement playerMovement;
-    private AudioClip pickAudio, successAudio;
+    private AudioClip pickAudio;
 	// private Color black = new Color(0,0,0);
     
     // // Level 3 variables; For copy power
@@ -109,14 +109,12 @@ public class itemCollect : MonoBehaviour
 
         if (collList.Count == 0)
         {
-            playerMovement.PlayAudio(successAudio);
             // success, go to next level
             FindObjectOfType<AnalyticsScript>().Success();
             SceneManager.LoadScene(nextSceneName);
         }else{
             if(tool4.color == Color.clear && tool5.color == Color.clear && tool6.color == Color.clear){
                 // success, go to next level
-                playerMovement.PlayAudio(successAudio);
                 FindObjectOfType<AnalyticsScript>().Success();
                 SceneManager.LoadScene(nextSceneName);
             }else{
@@ -276,7 +274,6 @@ public class itemCollect : MonoBehaviour
         tool6 = tool6Obj.GetComponent<Image>();
         playerMovement = gameObject.GetComponent<PlayerMovement>();
         pickAudio = Resources.Load<AudioClip>("music/pickuptreasure");
-        successAudio = Resources.Load<AudioClip>("music/succeed");
     }
 
 }
