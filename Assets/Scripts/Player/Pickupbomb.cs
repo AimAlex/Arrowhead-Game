@@ -9,9 +9,9 @@ public class Pickupbomb : MonoBehaviour
 {
     public static bool collectBomb;
     public GameObject player;
-    public GameObject bomb;
-	//public GameObject bomb2;
-	//public GameObject bomb3;
+    public GameObject bomb1;
+	public GameObject bomb2;
+	public GameObject bomb3;
     public int bomb_count;
     public Vector2 player_position;
     public Vector2 bomb_position;
@@ -19,7 +19,7 @@ public class Pickupbomb : MonoBehaviour
     public float bomb_y;
     public float pos_x;
     public float pos_y;
-    public Dictionary<int,string> bomb_dict;
+    public Dictionary<string,bool> bomb_dict;
     private void OnTriggerEnter2D(Collider2D col)
     {
         if(col.CompareTag("Booster"))
@@ -35,13 +35,19 @@ public class Pickupbomb : MonoBehaviour
     private void Awake()
     {
         collectBomb = false;
-        Debug.Log("Awake");
+        // Debug.Log("Awake");
         player = GameObject.Find("Player");
-        bomb = GameObject.Find("Bomb");
-        //bomb2 = GameObject.Find("Bomb2");
-        //bomb3 = GameObject.Find("Bomb3");
+        bomb1 = GameObject.Find("Bomb1");
+        bomb2 = GameObject.Find("Bomb2");
+        bomb3 = GameObject.Find("Bomb3");
+        bomb1.GetComponent<SpriteRenderer>().color = Color.clear;
+        bomb2.GetComponent<SpriteRenderer>().color = Color.clear;
+        bomb3.GetComponent<SpriteRenderer>().color = Color.clear;
 		bomb_count=0;
-     
+        bomb_dict = new Dictionary<string, bool>();
+        bomb_dict[bomb1.name] = false;
+        bomb_dict[bomb2.name] = false;
+        bomb_dict[bomb3.name] = false; 
     }
 
     //current setting: only place three bombs in a row at most in one frame
@@ -49,19 +55,21 @@ public class Pickupbomb : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B)&&collectBomb==true)
         {
-            DropBomb();
-			bomb_count+=1;
-			
+            if (bomb_dict[bomb1.name] == false && bomb1.GetComponent<SpriteRenderer>().color == Color.clear){
+                DropBomb(bomb1);
+            } else if (bomb_dict[bomb2.name] == false && bomb2.GetComponent<SpriteRenderer>().color == Color.clear){
+                DropBomb(bomb2);
+            } else if (bomb_dict[bomb3.name] == false && bomb3.GetComponent<SpriteRenderer>().color == Color.clear){
+                DropBomb(bomb3);
+            }
         }
-		if (bomb_count==3){
-			bomb_count=0;
-       }
     }
     
-    private void DropBomb()
+    private void DropBomb(GameObject bomb)
     {
-        Debug.Log("dropbomb");
-        
+        Debug.Log(bomb.name);
+        bomb_dict[bomb.name] = true;
+        bomb.GetComponent<SpriteRenderer>().color = Color.green;
         // get the player object location, get the bomb object,   make it visible, change the location
         //GameObject new_bomb = GameObject.Instantiate(bomb) as GameObject;
         player_position = player.transform.position;
@@ -72,7 +80,7 @@ public class Pickupbomb : MonoBehaviour
         bomb_position.x = pos_x + 1;
         bomb_position.y = pos_y;
         bomb.GetComponent<Transform>().position = bomb_position;
-        bomb.GetComponent<SpriteRenderer>().color = Color.green;
+        
         bomb_count+=1;
 		
        /*else if(bomb_count==1){
