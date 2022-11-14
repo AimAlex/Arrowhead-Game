@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
                         bool isStillAlive = FindObjectOfType<healthPoint>().UpdateHurt();
                         if (!isStillAlive)
                         {
-                            PlayerLife.Die();
+                            FindObjectOfType<Animation>().isDead=true;
                         }else{
                             FindObjectOfType<Animation>().isHurt=true;
                         }

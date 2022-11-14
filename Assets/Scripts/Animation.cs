@@ -39,7 +39,7 @@ public class Animation : MonoBehaviour
     {
         if(isHurt && !hurtDurStarted){
             hurtDurStarted=true;
-            anim.SetBool("dead",true);
+            anim.SetBool("hurt",true);
             timer_hurt=Time.time;
             // this.GetComponent<Rigidbody2D>().velocity=new Vector3(0,0,0);
             // this.GetComponent<Rigidbody2D>().gravityScale=0;
@@ -48,7 +48,7 @@ public class Animation : MonoBehaviour
         if(hurtDurStarted){
             if(Time.time-timer_hurt>hurtDur){
                 anim.SetBool("idle",true);
-                anim.SetBool("dead",false);
+                anim.SetBool("hurt",false);
                 isHurt=false;
                 hurtDurStarted=false;
                 FindObjectOfType<PlayerLife>().hurtStarted=false;
