@@ -13,7 +13,7 @@ public class Animation : MonoBehaviour
     // private bool isIdle=false;
     // private bool isRunning=false;
     private bool deathPauseStarted=false;
-    private float deathPauseDur=1.5f;
+    private float deathPauseDur=0.5f;
     private float timer_death,timer_hurt;
     private arcMovement[] arcs;
     private trapMovement[] traps;
@@ -23,7 +23,7 @@ public class Animation : MonoBehaviour
     private PlayerMovement playerMovement;
     private AudioClip dieAudio;
     public bool isHurt=false;
-    private float hurtDur=3f;
+    private float hurtDur=0.5f;
     private bool hurtDurStarted=false;
 
     // Start is called before the first frame update
