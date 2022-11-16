@@ -15,7 +15,8 @@ public class healthPoint : MonoBehaviour
     public Image blood3;
     public Image blood4;
     private int hurt=0;
-
+    private PlayerMovement playerMovement;
+    private AudioClip healthPointDownAudio;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +25,17 @@ public class healthPoint : MonoBehaviour
         blood2.enabled=false;
         blood3.enabled=false;
         blood4.enabled=false;
+        playerMovement = gameObject.GetComponent<PlayerMovement>();
+        healthPointDownAudio = Resources.Load<AudioClip>("music/DM-CGS-30");
     }
 
     // Update is called once per frame
     public bool UpdateHurt()
     {
         hurt++;
+        if (hurt != 4){
+            playerMovement.PlayAudio(healthPointDownAudio);
+        }
         if(hurt==1){
             blood0.enabled=false;
             blood1.enabled=true;
