@@ -97,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
 		isPreview = false;
 		// add audio
 		audioSource = gameObject.GetComponent<AudioSource>();
+		audioSource.volume = 0.2f;
 		jumpAudio = Resources.Load<AudioClip>("music/jump");
 		dashAudio = Resources.Load<AudioClip>("music/dash");
 		camera = GameObject.Find("Main Camera").GetComponent<Camera>();
