@@ -55,7 +55,11 @@ public class Animation : MonoBehaviour
                 isHurt=false;
                 hurtDurStarted=false;
                 FindObjectOfType<PlayerLife>().hurtStarted=false;
-                FindObjectOfType<Enemy>().hurtStarted=false;
+                if (FindObjectOfType<Enemy>() is not null)
+                {
+                    FindObjectOfType<Enemy>().hurtStarted=false;
+                }
+                
                 // this.GetComponent<Rigidbody2D>().velocity=new Vector3(0,0,0);
                 // this.GetComponent<Rigidbody2D>().gravityScale=1;
             }
