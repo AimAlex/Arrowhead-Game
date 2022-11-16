@@ -19,13 +19,13 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
 	public LayerMask ground;
 
-	private bool isGround, isDashing, isPreview;
+	private bool isGround, isDashing, isPreview, isMoved;
 	bool jumpPressed;
 	int jumpCount, dashCount;
 
 	public static bool collectDoubleJump, collectDash;
-	AudioSource audioSource;
-	AudioClip jumpAudio, dashAudio;
+	AudioSource audioSource, audioSource2;
+	AudioClip jumpAudio, dashAudio, pickPowerAudio;
 	public Image power1;
     public Image power2;
     public Image power3;
@@ -37,9 +37,17 @@ public class PlayerMovement : MonoBehaviour
 		audioSource.clip = audioclip;
 		audioSource.Play();
 	}
+	public void PlayAudio2(AudioClip audioclip)
+	{
+		audioSource2.clip = audioclip;
+		audioSource2.Play();
+	}
 
 	private void UpdatePowerShow(Collider2D col)
 	{
+		if (isMoved){
+		PlayAudio2(pickPowerAudio);
+		}
 		if (power1.sprite == null)
 		{
 			power1.sprite = col.gameObject.GetComponent<SpriteRenderer>().sprite;
@@ -88,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
     {
 	    collectDoubleJump = false;
 	    collectDash = false;
+		isMoved = false;
 	    rigidbody = GetComponent<Rigidbody2D>();
 		jumpForce = 10f;
 		power1 = GameObject.Find("power1").GetComponent<Image>();
@@ -97,8 +106,12 @@ public class PlayerMovement : MonoBehaviour
 		isPreview = false;
 		// add audio
 		audioSource = gameObject.GetComponent<AudioSource>();
+		audioSource2 = GameObject.Find("Grid").GetComponent<AudioSource>();
+		audioSource.volume = 0.25f;
+		audioSource2.volume = 0.25f;
 		jumpAudio = Resources.Load<AudioClip>("music/jump");
 		dashAudio = Resources.Load<AudioClip>("music/dash");
+		pickPowerAudio = Resources.Load<AudioClip>("music/DM-CGS-15");
 		camera = GameObject.Find("Main Camera").GetComponent<Camera>();
 		cameraScroll = camera.GetComponent<SideScrolling>();
     }
@@ -116,6 +129,9 @@ public class PlayerMovement : MonoBehaviour
 		} 
 		if (!isPreview && Time.timeScale != 0 && !cameraScroll.camaraMove){
 			isGround = Physics2D.OverlapCircle(groundCheck.position, 0.7f, ground);
+			if (!isMoved){
+				isMoved = true;
+			}
 			if (!isDashing)
 			{
 				GroundMovement();	

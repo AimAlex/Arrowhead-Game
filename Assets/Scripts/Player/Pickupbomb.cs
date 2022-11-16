@@ -20,6 +20,8 @@ public class Pickupbomb : MonoBehaviour
     public float pos_x;
     public float pos_y;
     public Dictionary<string,bool> bomb_dict;
+    private PlayerMovement playerMovement;
+    private AudioClip bombDropAudio;
     private void OnTriggerEnter2D(Collider2D col)
     {
         if(col.CompareTag("Booster"))
@@ -48,6 +50,8 @@ public class Pickupbomb : MonoBehaviour
         bomb_dict[bomb1.name] = false;
         bomb_dict[bomb2.name] = false;
         bomb_dict[bomb3.name] = false; 
+        playerMovement = gameObject.GetComponent<PlayerMovement>();
+        bombDropAudio = Resources.Load<AudioClip>("music/PutdownBomb");
     }
 
     //current setting: only place three bombs in a row at most in one frame
@@ -67,6 +71,8 @@ public class Pickupbomb : MonoBehaviour
     
     private void DropBomb(GameObject bomb)
     {
+
+        playerMovement.PlayAudio2(bombDropAudio);
         Debug.Log(bomb.name);
         bomb_dict[bomb.name] = true;
         bomb.GetComponent<SpriteRenderer>().color = Color.green;
