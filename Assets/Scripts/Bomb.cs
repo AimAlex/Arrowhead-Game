@@ -30,7 +30,7 @@ private void Awake()
     Coll = GetComponent<Collider2D>();
     pickupbomb = GameObject.Find("Player").GetComponent<Pickupbomb>();
     playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
-    bombExplodeAudio = Resources.Load<AudioClip>("music/Explode");
+    bombExplodeAudio = Resources.Load<AudioClip>("music/bomb_explosion");
 }
 void Update()
 {
@@ -53,7 +53,7 @@ IEnumerator Explotion(GameObject bomb)
     // Debug.Log("Explotion: " + pickupbomb.bomb_dict[bomb.name]);
     Coll.enabled = false;
     bomb_position = bomb.transform.position;
-
+    playerMovement.PlayAudio2(bombExplodeAudio);
     // Debug.Log(bomb_position);
     // Debug.Log(radius);
     Collider2D[] CollCheck = Physics2D.OverlapCircleAll(bomb_position, radius);
