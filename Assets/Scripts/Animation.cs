@@ -25,6 +25,9 @@ public class Animation : MonoBehaviour
     public bool isHurt=false;
     private float hurtDur=0.5f;
     private bool hurtDurStarted=false;
+    public bool isDash=false;
+    private bool dashDurStarted=false;
+    private bool dashDur=0.5f;
 
     // Start is called before the first frame update
     private void Start()
