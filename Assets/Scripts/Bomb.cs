@@ -51,7 +51,7 @@ IEnumerator Explotion(GameObject bomb)
     pickupbomb.bomb_dict[bomb.name] = false;
     yield return new WaitForSeconds(3);
     // Debug.Log("Explotion: " + pickupbomb.bomb_dict[bomb.name]);
-    Coll.enabled = false;
+    // Coll.enabled = false;
     bomb_position = bomb.transform.position;
     playerMovement.PlayAudio2(bombExplodeAudio);
     // Debug.Log(bomb_position);

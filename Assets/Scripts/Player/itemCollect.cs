@@ -136,7 +136,7 @@ public class itemCollect : MonoBehaviour
     {
         if (CanBePick)
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.U))
             {
                 if (bagStack.Count < 3)
                 {
@@ -192,7 +192,7 @@ public class itemCollect : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             if (itemNumber > 0)
             {
