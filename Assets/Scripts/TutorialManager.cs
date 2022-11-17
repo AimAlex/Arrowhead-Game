@@ -88,11 +88,12 @@ public class TutorialManager : MonoBehaviour
             }
         } else if (levelNo == 1)
         {
-            if (popUpIndex == 0)
-            {
-                PauseUntilPress();
-            }
-            else if(popUpIndex == 2)
+            // if (popUpIndex == 0)
+            // {
+            //     PauseUntilPress();
+                
+            // }
+            if(popUpIndex == 1)
             {
                 PauseUntilPress();
             }
@@ -103,7 +104,20 @@ public class TutorialManager : MonoBehaviour
             else if(popUpIndex == 5)
             {
                 PauseUntilPress();
+                // DoubleJumpTutorial();
             }
+            else if(popUpIndex == 7)
+            {
+                PauseUntilPress();
+            }
+            // else if(popUpIndex == 5)
+            // {
+            //     DoubleJumpTutorial();
+            // }
+            // else if(popUpIndex == 6)
+            // {
+            //     PauseUntilPress();
+            // }
         } else if (levelNo == 2)
         {
             if (popUpIndex == 0)

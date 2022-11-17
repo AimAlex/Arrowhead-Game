@@ -221,7 +221,7 @@ public class PlayerMovement : MonoBehaviour
 			rigidbody.AddForce(new Vector2(d, 0f), ForceMode2D.Impulse);
 			float gravity = rigidbody.gravityScale;
 			rigidbody.gravityScale = 0;
-			yield return new WaitForSeconds(0.2f);
+			yield return new WaitForSeconds(0.3f);
 			rigidbody.gravityScale = gravity;
 			--dashCount;
 			isDashing = false;
