@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
 	public LayerMask ground;
 
-	private bool isGround, isDashing, isPreview, isMoved;
+	private bool isGround, isDashing, isPreview, isMoved, isRunning;
 	bool jumpPressed;
 	int jumpCount, dashCount;
 
@@ -138,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
 			}
 			if (Input.GetButtonDown("Jump"))
 			{
-				Jump();
+				StartCoroutine(Jump());
 			}
 			if (Input.GetKeyDown("w") || Input.GetKeyDown("w"))
 			{
@@ -158,13 +158,15 @@ public class PlayerMovement : MonoBehaviour
 			transform.localScale = new Vector3(horizontalMove, 1, 1);
 			Animation.anim.SetBool("running",true);
 			Animation.anim.SetBool("idle",false);
+			isRunning = true;
 		}else{
 			Animation.anim.SetBool("running",false);
 			Animation.anim.SetBool("idle",true);
+			isRunning = false;
 		}
 	}
 
-	void Jump()
+	IEnumerator Jump()
 	{   
 		if (isGround)
 		{
@@ -178,12 +180,24 @@ public class PlayerMovement : MonoBehaviour
 
 		if (jumpPressed)
 		{
+			Animation.anim.SetBool("jump", true);
 			rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpForce);
 			jumpCount--;
 			jumpPressed = false;
 			// play audio
 			audioSource.clip = jumpAudio;
 			audioSource.Play();
+			yield return new WaitForSeconds(0.375f);
+			if (isRunning)
+			{
+				Animation.anim.SetBool("running", true);
+				Animation.anim.SetBool("jump", false);
+			}
+			else
+			{
+				Animation.anim.SetBool("idle", true);
+				Animation.anim.SetBool("jump", false);				
+			}
 		}
 
 	}
