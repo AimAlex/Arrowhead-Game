@@ -93,31 +93,18 @@ public class TutorialManager : MonoBehaviour
             //     PauseUntilPress();
                 
             // }
-            if(popUpIndex == 1)
+            if(popUpIndex == 0)
+            {
+                DoubleJumpTutorial();
+            }
+            else if(popUpIndex == 1)
             {
                 PauseUntilPress();
             }
             else if(popUpIndex == 3)
             {
-                DoubleJumpTutorial();
-            }
-            else if(popUpIndex == 5)
-            {
-                PauseUntilPress();
-                // DoubleJumpTutorial();
-            }
-            else if(popUpIndex == 7)
-            {
                 PauseUntilPress();
             }
-            // else if(popUpIndex == 5)
-            // {
-            //     DoubleJumpTutorial();
-            // }
-            // else if(popUpIndex == 6)
-            // {
-            //     PauseUntilPress();
-            // }
         } else if (levelNo == 2)
         {
             if (popUpIndex == 0)
@@ -251,17 +238,6 @@ public class TutorialManager : MonoBehaviour
 
         return false;
     }
-    
-    
-
-    // void darkBackground()
-    // {
-    //     foreach (Transform child in Background.transform.GetComponentInChildren<Transform>())
-    //     {
-    //         var renderer = child.GetComponent<Renderer>();
-    //         renderer.material.color = new Color((float)(renderer.material.color.r * 0.9), (float)(renderer.material.color.g * 0.9), (float)(renderer.material.color.b * 0.9));
-    //     }
-    // }
 
     void ItemTutorial()
     {
@@ -276,6 +252,7 @@ public class TutorialManager : MonoBehaviour
         if (PlayerMovement.collectDoubleJump)
         {
             ++popUpIndex;
+            pauseCheck = 1;
         }
     }
 
