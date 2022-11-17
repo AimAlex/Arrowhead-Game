@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private new Rigidbody2D rigidbody;
+    public new Rigidbody2D rigidbody;
 
     private Vector2 velocity;
 

@@ -6,12 +6,9 @@ public class Weapon : MonoBehaviour
 {
     public itemCollect items;
     public Transform firePoint;
-    // public GameObject bulletPrefab;
     public LineRenderer lineRenderer;
     public static bool laserGunPickUp;
     public Vector2 direction;
-    // public GameObject ground;
-    Vector2 mousePos;
     RaycastHit2D hitInfo;
 	AudioClip shootAudio;
     private PlayerMovement playerMovement;
@@ -25,9 +22,8 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        direction = mousePos - (Vector2)firePoint.position;
-        if(Input.GetKeyDown(KeyCode.F) && laserGunPickUp == true)
+        direction = FindObjectOfType<PlayerMovement>().rigidbody.velocity;
+        if(Input.GetKeyDown(KeyCode.J) && laserGunPickUp == true)
         {
             StartCoroutine(Shoot());
             playerMovement.PlayAudio(shootAudio);
@@ -40,7 +36,7 @@ public class Weapon : MonoBehaviour
         RaycastHit2D[] hitInfos = Physics2D.RaycastAll(firePoint.position, direction);
         if(hitInfos.Length==0 || (hitInfos.Length==1 && hitInfos[0].transform.tag=="Player")){
             lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, mousePos*100); 
+            lineRenderer.SetPosition(1, direction*100); 
         }else{
 
             if(hitInfos[0].transform.tag=="Player"){
@@ -126,7 +122,7 @@ public class Weapon : MonoBehaviour
                 }
             }else{
                 lineRenderer.SetPosition(0, firePoint.position);
-                lineRenderer.SetPosition(1, mousePos*100); 
+                lineRenderer.SetPosition(1, direction*100); 
             }
 
         }
