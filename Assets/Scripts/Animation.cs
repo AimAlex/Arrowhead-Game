@@ -14,7 +14,7 @@ public class Animation : MonoBehaviour
     // private bool isRunning=false;
     private bool deathPauseStarted=false;
     private float deathPauseDur=0.5f;
-    private float timer_death,timer_hurt;
+    private float timer_death,timer_hurt,timer_dash;
     private arcMovement[] arcs;
     private trapMovement[] traps;
     private Enemy[] enemies;
@@ -25,9 +25,6 @@ public class Animation : MonoBehaviour
     public bool isHurt=false;
     private float hurtDur=0.5f;
     private bool hurtDurStarted=false;
-    public bool isDash=false;
-    private bool dashDurStarted=false;
-    private float dashDur=0.5f;
 
     // Start is called before the first frame update
     private void Start()

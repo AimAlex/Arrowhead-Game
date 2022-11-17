@@ -193,6 +193,7 @@ public class PlayerMovement : MonoBehaviour
 		if (collectDash && (dashCount > 0 || isGround) && !isDashing)
 		{
 			isDashing = true;
+			Animation.anim.SetBool("dash", true);
 			float d = dashDistance;
 			audioSource.clip = dashAudio;
 			audioSource.Play();
@@ -210,6 +211,8 @@ public class PlayerMovement : MonoBehaviour
 			rigidbody.gravityScale = gravity;
 			--dashCount;
 			isDashing = false;
+			Animation.anim.SetBool("running", true);
+			Animation.anim.SetBool("dash", false);
 		}
 	}
 
