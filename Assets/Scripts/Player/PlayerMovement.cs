@@ -140,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
 			{
 				StartCoroutine(Jump());
 			}
-			if (Input.GetKeyDown("w") || Input.GetKeyDown("w"))
+			if (Input.GetKeyDown("l"))
 			{
 				StartCoroutine(Dash());
 			}
