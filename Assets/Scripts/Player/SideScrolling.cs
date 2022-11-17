@@ -18,9 +18,10 @@ public class SideScrolling : MonoBehaviour
     public int pathIndex;
     private bool[] pathPiontCheck;
     public float cameraPreviewSize = 30f;
-    public List<Vector3> pathPoints;
+    public List<GameObject> pathPoints;
     public List<float> pathZoom;
     public List<float> pathSpeed;
+    private List<Vector3> tourList;
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -34,6 +35,7 @@ public class SideScrolling : MonoBehaviour
     private void Start(){
         InitCamera();
         initPosition = transform.position;
+        InitCameraTour();
         // demo camera tour code
         // pathPoints = new List<Vector3>();
         // pathPoints.Add(new Vector3(initPosition.x + 15, initPosition.y, transform.position.z));
@@ -50,7 +52,42 @@ public class SideScrolling : MonoBehaviour
         // pathSpeed.Add(0.6f);
         // pathSpeed.Add(0.8f);
         // pathSpeed.Add(1f);
+    }
 
+    private void InitCameraTour()
+    {
+        tourList = new List<Vector3>();
+        for (int i = 0; i < pathPoints.Count; ++i)
+        {
+            tourList.Add(pathPoints[i].transform.position);
+            if (i >= pathZoom.Count)
+            {
+                pathZoom.Add(20f);
+            }
+
+            if (i >= pathSpeed.Count)
+            {
+                pathSpeed.Add(1);
+            }
+        }
+
+        tourList.Add(initPosition);
+        pathZoom.Add(originalSize);
+        pathSpeed.Add(3);
+    }
+
+    private void startCameraTour()
+    {
+        if (pathPoints.Count == 0)
+        {
+            return;
+        }
+        camaraMove = true;
+
+        if (!tourPosition(tourList, pathZoom, pathSpeed))
+        {
+            pathPoints.Clear();
+        }
     }
 
     public bool tourPosition(List<Vector3> path, List<float> zoom, List<float> speed){
@@ -76,6 +113,7 @@ public class SideScrolling : MonoBehaviour
 
     private void Update()
     {
+        startCameraTour();
         // tourPosition(pathPoints, pathZoom, pathSpeed);
         if (Input.GetKeyDown(KeyCode.P))
         {
