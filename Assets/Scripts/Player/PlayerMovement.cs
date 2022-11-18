@@ -19,12 +19,12 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
 	public LayerMask ground;
 
-	private bool isGround, isDashing, isPreview, isMoved, isRunning;
+	public bool isGround, isDashing, isPreview, isMoved, isRunning;
 	bool jumpPressed;
 	int jumpCount, dashCount;
 
 	public static bool collectDoubleJump, collectDash;
-	AudioSource audioSource, audioSource2;
+	public AudioSource audioSource, audioSource2;
 	AudioClip jumpAudio, dashAudio, pickPowerAudio;
 	public Image power1;
     public Image power2;
