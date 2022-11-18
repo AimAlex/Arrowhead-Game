@@ -57,7 +57,7 @@ public class Pickupbomb : MonoBehaviour
     //current setting: only place three bombs in a row at most in one frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B)&&collectBomb==true)
+        if (Input.GetKeyDown(KeyCode.K)&&collectBomb==true)
         {
             if (bomb_dict[bomb1.name] == false && bomb1.GetComponent<SpriteRenderer>().color == Color.clear){
                 DropBomb(bomb1);
