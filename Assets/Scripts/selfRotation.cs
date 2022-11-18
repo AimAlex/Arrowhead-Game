@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class arcMovement : MonoBehaviour
+public class selfRotation : MonoBehaviour
 {
     // [SerializeField] private float speed = 0;
-    [SerializeField] public float speed = 8;
+    [SerializeField] public float speed = 30;
     public float radiusX = 0;
-    public float radiusY = 0;
-    public float radiusZ = 1;
-    public float rotateCenterX=0;
-    public float rotateCenterY=0;
-    public float rotateCenterZ=0;
+    public float radiusY = 1;
+    public float radiusZ = 0;
+    private float rotateCenterX=0;
+    private float rotateCenterY=0;
+    private float rotateCenterZ=0;
     // Start is called before the first frame update
     void Start()
     {
-    //  rotateCenterX=this.transform.position.x;   
-    //  rotateCenterY=this.transform.position.y;   
-    //  rotateCenterZ=this.transform.position.z;   
+     rotateCenterX=this.transform.position.x;   
+     rotateCenterY=this.transform.position.y;   
+     rotateCenterZ=this.transform.position.z;   
     }
     // Update is called once per frame
     void Update()
