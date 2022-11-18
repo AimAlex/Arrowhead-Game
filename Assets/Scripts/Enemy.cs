@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour
     private float time;
     private float timeDelay;
     public bool hurtStarted=false;
+    private Rigidbody2D playerRigidbody;
+    private Vector3 enemyPos;
+    private Vector3 playerPos;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +26,10 @@ public class Enemy : MonoBehaviour
     void Update ()
     {
         time = time + 1f * Time.deltaTime;
-        if (time >= timeDelay)
+        playerRigidbody = FindObjectOfType<PlayerMovement>().rigidbody;
+        playerPos = playerRigidbody.position;
+        enemyPos = transform.position;
+        if (time >= timeDelay && Vector3.Distance(playerPos, enemyPos) < 3.0f)
         {
             time = 0f;
             var random = Random.Range(0f, 260f);
@@ -39,7 +45,7 @@ public class Enemy : MonoBehaviour
         if (hitInfos.Length == 0 || (hitInfos.Length==1 && hitInfos[0].transform.tag == "Enemy"))
         {
             lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, direction*100); 
+            lineRenderer.SetPosition(1, direction); 
         }
         else
         {
@@ -81,7 +87,7 @@ public class Enemy : MonoBehaviour
             else
             {
                 lineRenderer.SetPosition(0, firePoint.position);
-                lineRenderer.SetPosition(1, direction*100);
+                lineRenderer.SetPosition(1, direction);
             }
         }
 
