@@ -16,7 +16,7 @@ public class Instruction_manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             setIntr();
         }
