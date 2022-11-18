@@ -31,7 +31,7 @@ public class itemCollect : MonoBehaviour
 	private Color white = new Color(100,100,100);
 	private Color green = new Color(0,255,0);
     private PlayerMovement playerMovement;
-    private AudioClip pickAudio;
+    private AudioClip pickAudio, levelSuccessAudio;
 	// private Color black = new Color(0,0,0);
     
     // // Level 3 variables; For copy power
@@ -110,13 +110,23 @@ public class itemCollect : MonoBehaviour
         if (collList.Count == 0)
         {
             // success, go to next level
+            playerMovement.isPreview = true;
+            playerMovement.audioSource2.volume = 0.5f;
+            playerMovement.PlayAudio2(levelSuccessAudio);
+            playerMovement.audioSource2.volume = 0.25f;
             FindObjectOfType<AnalyticsScript>().Success();
-            SceneManager.LoadScene(nextSceneName);
+            StartCoroutine(enterNextLevel());
+            // SceneManager.LoadScene(nextSceneName);
         }else{
             if(tool4.color == Color.clear && tool5.color == Color.clear && tool6.color == Color.clear){
                 // success, go to next level
+                playerMovement.isPreview = true;
+                playerMovement.audioSource2.volume = 0.5f;
+                playerMovement.PlayAudio2(levelSuccessAudio);
+                playerMovement.audioSource2.volume = 0.25f;
                 FindObjectOfType<AnalyticsScript>().Success();
-                SceneManager.LoadScene(nextSceneName);
+                StartCoroutine(enterNextLevel());
+                // SceneManager.LoadScene(nextSceneName);
             }else{
                 FindObjectOfType<AnalyticsScript>().WrongCollection();
                 return;
@@ -131,7 +141,12 @@ public class itemCollect : MonoBehaviour
             CanBePick = false;
         }
     }
-
+    private IEnumerator enterNextLevel()
+    {
+        yield return new WaitForSeconds(0.3f);
+        playerMovement.isPreview = false;
+        SceneManager.LoadScene(nextSceneName);
+    }
     private void Update()
     {
         if (CanBePick)
@@ -198,6 +213,8 @@ public class itemCollect : MonoBehaviour
             {
                 GameObject item = bagStack.Pop();
                 item.SetActive(true);
+                // item.transform.position = transform.position + new Vector3(2, 0, 0); // out of bountry may need to judge
+                // item.transform.position = Vector3.Lerp(item.transform.position, item.transform.position + new Vector3(1, 0, 0), 0.5f);
                 --itemNumber;
                 if (item.GetComponent<SpriteRenderer>().sprite == tool1.sprite)
                 {
@@ -274,6 +291,7 @@ public class itemCollect : MonoBehaviour
         tool6 = tool6Obj.GetComponent<Image>();
         playerMovement = gameObject.GetComponent<PlayerMovement>();
         pickAudio = Resources.Load<AudioClip>("music/pickuptreasure");
+        levelSuccessAudio = Resources.Load<AudioClip>("music/small_passlevel");
     }
 
 }
