@@ -1328,7 +1328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6289326380462603904, guid: 02a5e9049607c473383905e49004399e, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 540999877824644046, guid: 02a5e9049607c473383905e49004399e, type: 3}
       propertyPath: tool1Obj
@@ -1355,6 +1355,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 540999877824644046, guid: 02a5e9049607c473383905e49004399e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 540999877824644046, guid: 02a5e9049607c473383905e49004399e, type: 3}
       propertyPath: nextSceneName
       value: level1_1
       objectReference: {fileID: 0}
@@ -1369,6 +1373,10 @@ PrefabInstance:
     - target: {fileID: 1256985939470511401, guid: 02a5e9049607c473383905e49004399e, type: 3}
       propertyPath: levelNo
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256985939470511401, guid: 02a5e9049607c473383905e49004399e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1256985939470511401, guid: 02a5e9049607c473383905e49004399e, type: 3}
       propertyPath: popUps.Array.size
@@ -1498,9 +1506,25 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2801c7e64dec9fd41ad02c95cc5b53e2, type: 3}
+    - target: {fileID: 8339593245593990658, guid: 02a5e9049607c473383905e49004399e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8339593245593990660, guid: 02a5e9049607c473383905e49004399e, type: 3}
       propertyPath: level
       value: 1-0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339593245593990660, guid: 02a5e9049607c473383905e49004399e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339593245593990661, guid: 02a5e9049607c473383905e49004399e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339593245593990662, guid: 02a5e9049607c473383905e49004399e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8339593245593990662, guid: 02a5e9049607c473383905e49004399e, type: 3}
       propertyPath: m_Parameters.colorGradient.ctime1
@@ -1542,12 +1566,24 @@ PrefabInstance:
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8339593245593990663, guid: 02a5e9049607c473383905e49004399e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8339593245593990666, guid: 02a5e9049607c473383905e49004399e, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8339593245593990666, guid: 02a5e9049607c473383905e49004399e, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339593245593990781, guid: 02a5e9049607c473383905e49004399e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339593245593990782, guid: 02a5e9049607c473383905e49004399e, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8339593245593990783, guid: 02a5e9049607c473383905e49004399e, type: 3}
@@ -1594,7 +1630,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8339593245593990658, guid: 02a5e9049607c473383905e49004399e, type: 3}
+    - {fileID: 540999877824644046, guid: 02a5e9049607c473383905e49004399e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 02a5e9049607c473383905e49004399e, type: 3}
 --- !u!1 &1179235269
 GameObject:
@@ -1677,7 +1715,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1193367443
@@ -1906,7 +1944,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1371314988
@@ -2348,7 +2386,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1710336886
