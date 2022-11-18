@@ -16,7 +16,7 @@ public class Weapon : MonoBehaviour
     {
         laserGunPickUp = false;
         playerMovement = gameObject.GetComponent<PlayerMovement>();
-		shootAudio = Resources.Load<AudioClip>("music/laser-shoot");
+		shootAudio = Resources.Load<AudioClip>("music/laser-shoot2");
     }
 
     // Update is called once per frame
