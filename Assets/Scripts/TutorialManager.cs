@@ -105,6 +105,10 @@ public class TutorialManager : MonoBehaviour
             {
                 PauseUntilPress();
             }
+            else if(popUpIndex == 5)
+            {
+                PauseUntilPress();
+            }
         } else if (levelNo == 2)
         {
             if (popUpIndex == 0)
