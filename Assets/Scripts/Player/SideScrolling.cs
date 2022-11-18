@@ -115,11 +115,11 @@ public class SideScrolling : MonoBehaviour
     {
         startCameraTour();
         // tourPosition(pathPoints, pathZoom, pathSpeed);
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             inPreviewMode = true;
         }
-        else if (Input.GetKeyUp(KeyCode.P))
+        else if (Input.GetKeyUp(KeyCode.O))
         {
             inPreviewMode = false;
         }

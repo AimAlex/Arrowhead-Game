@@ -119,11 +119,11 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update() // Update is called once per frame
 	{
-		if (Input.GetKeyDown(KeyCode.P))
+		if (Input.GetKeyDown(KeyCode.O))
         {
             isPreview = true;
         }
-		if (Input.GetKeyUp(KeyCode.P))
+		if (Input.GetKeyUp(KeyCode.O))
 		{
 			isPreview = false;
 		} 
