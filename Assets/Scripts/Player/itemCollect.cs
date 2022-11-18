@@ -212,9 +212,14 @@ public class itemCollect : MonoBehaviour
             if (itemNumber > 0)
             {
                 GameObject item = bagStack.Pop();
+                // item.transform.position = transform.position;
+                // item.GetComponent<Collider>().isTrigger = false;
                 item.SetActive(true);
+                // item.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+                // item.GetComponent<Rigidbody>().AddForce(new Vector2(1, 1));
+                // StartCoroutine(CheckTouchGround(item));
                 // item.transform.position = transform.position + new Vector3(2, 0, 0); // out of bountry may need to judge
-                // item.transform.position = Vector3.Lerp(item.transform.position, item.transform.position + new Vector3(1, 0, 0), 0.5f);
+                // item.transform.position = Vector3.Lerp(item.transform.position, item.transform.position + new Vector3(1, 0, 0), 0.5f);             
                 --itemNumber;
                 if (item.GetComponent<SpriteRenderer>().sprite == tool1.sprite)
                 {
@@ -264,6 +269,20 @@ public class itemCollect : MonoBehaviour
             }
         }
     }
+
+    // IEnumerator CheckTouchGround(GameObject toolItem)
+    // {
+    //     Collider2D[] CollCheck = Physics2D.OverlapCircleAll(toolItem.transform.position, 0.5f);
+
+    //     foreach (var item in CollCheck)
+    //     {
+    //         if (item.name == "level1_1_ground")
+    //         {
+    //             toolItem.GetComponent<Collider>().isTrigger = true;
+    //             yield break;
+    //         }
+    //     }
+    // }
 
     // Start is called before the first frame update
     void Start()

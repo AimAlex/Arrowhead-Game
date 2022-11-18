@@ -19,6 +19,7 @@ public class Pickupbomb : MonoBehaviour
     public float bomb_y;
     public float pos_x;
     public float pos_y;
+    private int player_face = 0; // 0: right, 1: left
     public Dictionary<string,bool> bomb_dict;
     private PlayerMovement playerMovement;
     private AudioClip bombDropAudio;
@@ -67,6 +68,11 @@ public class Pickupbomb : MonoBehaviour
                 DropBomb(bomb3);
             }
         }
+        if (Input.GetKeyDown(KeyCode.D)){
+            player_face = 0;
+        } else if (Input.GetKeyDown(KeyCode.A)){
+            player_face = 1;
+        }
     }
     
     private void DropBomb(GameObject bomb)
@@ -83,10 +89,15 @@ public class Pickupbomb : MonoBehaviour
         pos_y = player_position.y;
 	
         bomb_position = bomb.transform.position;
-        bomb_position.x = pos_x + 1;
-        bomb_position.y = pos_y;
+        bomb_position.x = pos_x;
+        bomb_position.y = pos_y + 0.3f;
         bomb.GetComponent<Transform>().position = bomb_position;
-        
+        Debug.Log(player_face);
+        if (player_face == 0){
+            bomb.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x + 4, player.GetComponent<Rigidbody2D>().velocity.y + 2);
+        } else if (player_face == 1){
+            bomb.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x - 4, player.GetComponent<Rigidbody2D>().velocity.y + 2);
+        }
         bomb_count+=1;
 		
        /*else if(bomb_count==1){
