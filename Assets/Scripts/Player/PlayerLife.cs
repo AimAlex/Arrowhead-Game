@@ -54,19 +54,7 @@ public class PlayerLife : MonoBehaviour
             FindObjectOfType<AnalyticsScript>().KilledByDeadzone();
             FindObjectOfType<Animation>().isDead=true;
         }
-    }
-
-    private void OnCollisionExit2D(Collision2D col){
-        if (col.gameObject.CompareTag("trap"))
-        {
-            collisionStarted=false;
-        }
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.CompareTag("Enemy"))
+        else if (col.gameObject.CompareTag("Enemy"))
         {
                 if(!collisionStarted){
                     timer_collision=Time.time;
@@ -86,14 +74,48 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D col)
-    {
-        if (col.CompareTag("Enemy"))
+    private void OnCollisionExit2D(Collision2D col){
+        if (col.gameObject.CompareTag("trap"))
+        {
+            collisionStarted=false;
+        }
+        else if (col.gameObject.CompareTag("Enemy"))
         {
             collisionStarted=false;
         }
 
     }
+
+    // private void OnTriggerEnter2D(Collider2D col)
+    // {
+    //     if (col.CompareTag("Enemy"))
+    //     {
+    //             if(!collisionStarted){
+    //                 timer_collision=Time.time;
+    //                 collisionStarted=true;
+    //                 collisionItem="Enemy";
+    //             }
+    //         if(!hurtStarted){
+    //             hurtStarted=true;
+    //             bool isStillAlive=FindObjectOfType<healthPoint>().UpdateHurt();
+    //             if(!isStillAlive){
+    //                 FindObjectOfType<AnalyticsScript>().KilledByEnemy();
+    //                 FindObjectOfType<Animation>().isDead=true;
+    //             }else{
+    //                 FindObjectOfType<Animation>().isHurt=true;
+    //             }
+    //         }
+    //     }
+    // }
+
+    // private void OnTriggerExit2D(Collider2D col)
+    // {
+    //     if (col.CompareTag("Enemy"))
+    //     {
+    //         collisionStarted=false;
+    //     }
+
+    // }
 
     
     void Update()
