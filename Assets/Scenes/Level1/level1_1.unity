@@ -442,6 +442,13 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 128
+  isGround: 0
+  isDashing: 0
+  isPreview: 0
+  isMoved: 0
+  isRunning: 0
+  audioSource: {fileID: 0}
+  audioSource2: {fileID: 0}
   power1: {fileID: 0}
   power2: {fileID: 0}
   power3: {fileID: 0}
@@ -3370,8 +3377,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1689707499
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 08aad89e2f37c584abba7b695c4414dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -8014,7 +8021,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c681bd4b1ec80c04eb51ca4dac63a424, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -10095,12 +10102,14 @@ MonoBehaviour:
   cameraPreviewSize: 30
   pathPoints:
   - {fileID: 67722085}
+  - {fileID: 21090026}
   - {fileID: 264368471}
   - {fileID: 511051886}
   pathZoom:
-  - 1
-  - 1
-  - 2
+  - 10
+  - 10
+  - 10
+  - 10
   pathSpeed:
   - 1
   - 2
