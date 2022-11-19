@@ -4886,7 +4886,7 @@ GameObject:
   - component: {fileID: 845168247}
   - component: {fileID: 845168248}
   - component: {fileID: 845168250}
-  - component: {fileID: 845168249}
+  - component: {fileID: 845168251}
   m_Layer: 5
   m_Name: Health Bar
   m_TagString: Untagged
@@ -4968,19 +4968,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &845168249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845168246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0d6625a27aeb4f6ba625efd107f6d4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 845168248}
 --- !u!114 &845168250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4996,6 +4983,19 @@ MonoBehaviour:
   _data:
     _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
+--- !u!114 &845168251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845168246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af29fead401ad4644acc2f3239d054ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 845168248}
 --- !u!1 &852654688
 GameObject:
   m_ObjectHideFlags: 0
@@ -112368,6 +112368,10 @@ PrefabInstance:
       propertyPath: MinDistance
       value: 0.13743591
       objectReference: {fileID: 0}
+    - target: {fileID: 5545342851805481053, guid: 266cf023449644c19bc9e21366f7b293, type: 3}
+      propertyPath: h1
+      value: 
+      objectReference: {fileID: 845168251}
     - target: {fileID: 5545342851805481053, guid: 266cf023449644c19bc9e21366f7b293, type: 3}
       propertyPath: blood0
       value: 
