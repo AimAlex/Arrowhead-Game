@@ -2693,7 +2693,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3014,10 +3014,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 75
     m_Data: {fileID: 21300052, guid: 5afbff6f96636d34d801464d3179b7d2, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300038, guid: 5afbff6f96636d34d801464d3179b7d2, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300038, guid: 5afbff6f96636d34d801464d3179b7d2, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 76
     m_Data:
@@ -5108,7 +5108,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &993447013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5263,7 +5263,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1161916417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5888,7 +5888,7 @@ GameObject:
   - component: {fileID: 1382035314}
   m_Layer: 7
   m_Name: 4_3ground-erase
-  m_TagString: trap
+  m_TagString: indestructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6626,7 +6626,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1493008791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6852,7 +6852,7 @@ Transform:
   m_GameObject: {fileID: 1524047784}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -39, y: -7.24, z: 0}
-  m_LocalScale: {x: 2.934952, y: 2.4956875, z: 1}
+  m_LocalScale: {x: 2.934952, y: 2.4956875, z: -1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1946103098}
@@ -7098,7 +7098,7 @@ Transform:
   m_GameObject: {fileID: 1721378031}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -16, y: 2, z: 10}
-  m_LocalScale: {x: 2.8, y: 2.8, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 326062884}
@@ -7168,7 +7168,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 148fadd14f8dd8a48a79773f21490bdb, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -11480,12 +11480,23 @@ MonoBehaviour:
   pathIndex: 0
   cameraPreviewSize: 30
   pathPoints:
-  - {fileID: 335319582}
+  - {fileID: 607096732}
   - {fileID: 1890264403}
   - {fileID: 1395111238}
+  - {fileID: 335319582}
   - {fileID: 1524047784}
-  pathZoom: []
-  pathSpeed: []
+  pathZoom:
+  - 6
+  - 10
+  - 10
+  - 10
+  - 6
+  pathSpeed:
+  - 1
+  - 3
+  - 3
+  - 3
+  - 3
 --- !u!81 &2142694257
 AudioListener:
   m_ObjectHideFlags: 0
