@@ -159,11 +159,11 @@ public class PlayerMovement : MonoBehaviour
 		{
 			if (horizontalMove > 0)
 			{
-				transform.localScale = new Vector3(-horizontalMove, 1, 1);
+				transform.localScale = new Vector3(horizontalMove, 1, 1);
 			}
 			else
 			{
-				transform.localScale = new Vector3(horizontalMove, 1, 1);
+				transform.localScale = new Vector3(-horizontalMove, 1, 1);
 			}
 			Animation.anim.SetBool("running",true);
 			Animation.anim.SetBool("idle",false);
@@ -174,11 +174,11 @@ public class PlayerMovement : MonoBehaviour
 			isRunning = false;
 		}
 
-		if (horizontalMove > 0 && !facingRight)
+		if (horizontalMove > 0 && facingRight)
 		{
 			Flip();
 		}
-		else if (horizontalMove < 0 && facingRight)
+		else if (horizontalMove < 0 && !facingRight)
 		{
 			Flip();
 		}

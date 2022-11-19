@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
             Debug.Log(firePoint.position.y);
         }
         */
-        direction = -firePoint.right;
+        direction = firePoint.right;
         if(Input.GetKeyDown(KeyCode.J) && laserGunPickUp == true)
         {
             StartCoroutine(Shoot());
