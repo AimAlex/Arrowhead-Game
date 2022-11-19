@@ -55,6 +55,7 @@ IEnumerator Explotion(GameObject bomb)
 	FindObjectOfType<BombAnimation>().second2=true;
 	yield return new WaitForSeconds(1);
 	FindObjectOfType<BombAnimation>().isExplode=true;
+	yield return new WaitForSeconds(3);
     // Debug.Log("Explotion: " + pickupbomb.bomb_dict[bomb.name]);
     // Coll.enabled = false;
     bomb_position = bomb.transform.position;
