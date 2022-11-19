@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
 	public Image power4;
 	private SideScrolling cameraScroll;
 	[SerializeField] public Camera camera;
+
+	public bool facingRight;
 	public void PlayAudio(AudioClip audioclip)
 	{
 		audioSource.clip = audioclip;
@@ -155,7 +157,14 @@ public class PlayerMovement : MonoBehaviour
 
 		if (horizontalMove != 0)
 		{
-			transform.localScale = new Vector3(horizontalMove, 1, 1);
+			if (horizontalMove > 0)
+			{
+				transform.localScale = new Vector3(horizontalMove, 1, 1);
+			}
+			else
+			{
+				transform.localScale = new Vector3(-horizontalMove, 1, 1);
+			}
 			Animation.anim.SetBool("running",true);
 			Animation.anim.SetBool("idle",false);
 			isRunning = true;
@@ -164,6 +173,21 @@ public class PlayerMovement : MonoBehaviour
 			Animation.anim.SetBool("idle",true);
 			isRunning = false;
 		}
+
+		if (horizontalMove > 0 && !facingRight)
+		{
+			Flip();
+		}
+		else if (horizontalMove < 0 && facingRight)
+		{
+			Flip();
+		}
+	}
+
+	void Flip()
+	{
+		facingRight = !facingRight;
+		transform.Rotate(0f, 180f, 0f);
 	}
 
 	IEnumerator Jump()

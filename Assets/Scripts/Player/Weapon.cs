@@ -23,6 +23,7 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         playerVelocity = FindObjectOfType<PlayerMovement>().rigidbody.velocity;
         if (playerVelocity.x > 0)
         {
@@ -34,8 +35,12 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            direction = new Vector2(playerVelocity.x, firePoint.position.y);
+            direction = playerVelocity;
+            Debug.Log(playerVelocity.x);
+            Debug.Log(firePoint.position.y);
         }
+        */
+        direction = firePoint.right;
         if(Input.GetKeyDown(KeyCode.J) && laserGunPickUp == true)
         {
             StartCoroutine(Shoot());
