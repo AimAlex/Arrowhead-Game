@@ -49,7 +49,12 @@ void Update()
 IEnumerator Explotion(GameObject bomb)
 {
     pickupbomb.bomb_dict[bomb.name] = false;
-    yield return new WaitForSeconds(3);
+    yield return new WaitForSeconds(1);
+	FindObjectOfType<BombAnimation>().second1=true;
+	yield return new WaitForSeconds(1);
+	FindObjectOfType<BombAnimation>().second2=true;
+	yield return new WaitForSeconds(1);
+	FindObjectOfType<BombAnimation>().isExplode=true;
     // Debug.Log("Explotion: " + pickupbomb.bomb_dict[bomb.name]);
     // Coll.enabled = false;
     bomb_position = bomb.transform.position;
@@ -80,6 +85,7 @@ IEnumerator Explotion(GameObject bomb)
     bomb_position.x = -27.9f;
     bomb_position.y = 4.48f;
     bomb.GetComponent<Transform>().position = bomb_position;
+    FindObjectOfType<BombAnimation>().idle=true;
 }
     
     
