@@ -34,7 +34,7 @@ public class PlayerLife : MonoBehaviour
         m_MyAudioSource = GetComponent<AudioSource>();
         m_MyAudioSource.volume = m_MySliderValue;
 
-        //Change instruction image
+        // Change instruction image
         Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
         for (int i = 0; i < objs.Length; i++)
         {
@@ -43,6 +43,8 @@ public class PlayerLife : MonoBehaviour
                 if (objs[i].name == "Picture")
                 {
                     objs[i].gameObject.GetComponent<RawImage>().texture=Resources.Load<Texture2D>("instruction_new");
+                    objs[i].gameObject.GetComponent<RectTransform>().sizeDelta=new Vector2(1000,600);
+                    objs[i].gameObject.GetComponent<RectTransform>().rotation = Quaternion.EulerAngles(0f, 0f, 0f);
                 }
             // }
         }
@@ -52,6 +54,7 @@ public class PlayerLife : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         dieAudio = Resources.Load<AudioClip>("music/die");
     }
+
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("trap"))

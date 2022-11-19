@@ -12,7 +12,9 @@ public class itemCollect : MonoBehaviour
 {
     [SerializeField] private List<GameObject> collItemList;
     [SerializeField] private string nextSceneName;
-    [SerializeField] private GameObject tool1Obj, tool2Obj, tool3Obj, tool4Obj, tool5Obj, tool6Obj;
+    // [SerializeField] private GameObject tool1Obj, tool2Obj, tool3Obj, tool4Obj, tool5Obj, tool6Obj;
+    // private List<GameObject> collItemList=new List<GameObject>();
+    private GameObject tool1Obj, tool2Obj, tool3Obj, tool4Obj, tool5Obj, tool6Obj;
     
     public static int itemNumber = 0;
     private SpriteRenderer _renderer;
@@ -36,17 +38,52 @@ public class itemCollect : MonoBehaviour
 	private Color green = new Color(0,255,0);
     private PlayerMovement playerMovement;
     private AudioClip pickAudio, levelSuccessAudio;
-	// private Color black = new Color(0,0,0);
-    
-    // // Level 3 variables; For copy power
-    // public GameObject cloned1;
-    // public GameObject cloned2;
-    // public GameObject cloned3;
-    // public GameObject cloned2_2;
-    // public GameObject cloned3_2;
-    // public GameObject cloned3_3;
-    // public GameObject item14;
-    // // public GameObject item4Prefab;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+        //Acquire item1-item3, tool1-tool6
+        // var item1=GameObject.Find("item1");
+        // var item2=GameObject.Find("item2");
+        // var item3=GameObject.Find("item3");
+        // Debug.Log("item1="+item1.ToString());
+        // collItemList.Add(item1);
+        // collItemList.Add(item2);
+        // collItemList.Add(item3);
+
+        tool1Obj=GameObject.Find("tool1");
+        tool2Obj=GameObject.Find("tool2");
+        tool3Obj=GameObject.Find("tool3");
+        tool4Obj=GameObject.Find("tool4");
+        tool5Obj=GameObject.Find("tool5");
+        tool6Obj=GameObject.Find("tool6");
+
+        tool1 = tool1Obj.GetComponent<Image>();
+        tool2 = tool2Obj.GetComponent<Image>();
+        tool3 = tool3Obj.GetComponent<Image>();
+		tool4 = tool4Obj.GetComponent<Image>();
+        tool5 = tool5Obj.GetComponent<Image>();
+        tool6 = tool6Obj.GetComponent<Image>();
+
+        Debug.Log("tool1Obj="+tool1Obj.ToString());
+
+
+        _renderer = GetComponent<SpriteRenderer>();
+		bagStack = new Stack<GameObject> ();
+		if (collItemList.Count == 3) {
+			tool4.sprite = collItemList[0].GetComponent<SpriteRenderer>().sprite;
+        	tool4.color = collItemList[0].GetComponent<SpriteRenderer>().color;
+        	tool5.sprite = collItemList[1].GetComponent<SpriteRenderer>().sprite;
+        	tool5.color = collItemList[1].GetComponent<SpriteRenderer>().color;
+        	tool6.sprite = collItemList[2].GetComponent<SpriteRenderer>().sprite;
+			tool6.color = collItemList[2].GetComponent<SpriteRenderer>().color;
+		}
+        // tool3.color = collItemList[2].GetComponent<SpriteRenderer>().color;
+
+
+    }
 
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -303,30 +340,16 @@ public class itemCollect : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        _renderer = GetComponent<SpriteRenderer>();
-		bagStack = new Stack<GameObject> ();
-		if (collItemList.Count == 3) {
-			tool4.sprite = collItemList[0].GetComponent<SpriteRenderer>().sprite;
-        	tool4.color = collItemList[0].GetComponent<SpriteRenderer>().color;
-        	tool5.sprite = collItemList[1].GetComponent<SpriteRenderer>().sprite;
-        	tool5.color = collItemList[1].GetComponent<SpriteRenderer>().color;
-        	tool6.sprite = collItemList[2].GetComponent<SpriteRenderer>().sprite;
-			tool6.color = collItemList[2].GetComponent<SpriteRenderer>().color;
-		}
-        // tool3.color = collItemList[2].GetComponent<SpriteRenderer>().color;
-    }
+
 
     void Awake()
     {
-        tool1 = tool1Obj.GetComponent<Image>();
-        tool2 = tool2Obj.GetComponent<Image>();
-        tool3 = tool3Obj.GetComponent<Image>();
-		tool4 = tool4Obj.GetComponent<Image>();
-        tool5 = tool5Obj.GetComponent<Image>();
-        tool6 = tool6Obj.GetComponent<Image>();
+        // tool1 = tool1Obj.GetComponent<Image>();
+        // tool2 = tool2Obj.GetComponent<Image>();
+        // tool3 = tool3Obj.GetComponent<Image>();
+		// tool4 = tool4Obj.GetComponent<Image>();
+        // tool5 = tool5Obj.GetComponent<Image>();
+        // tool6 = tool6Obj.GetComponent<Image>();
         playerMovement = gameObject.GetComponent<PlayerMovement>();
         pickAudio = Resources.Load<AudioClip>("music/pickuptreasure");
         levelSuccessAudio = Resources.Load<AudioClip>("music/small_passlevel");

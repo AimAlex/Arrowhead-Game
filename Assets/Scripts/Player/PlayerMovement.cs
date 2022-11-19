@@ -26,10 +26,14 @@ public class PlayerMovement : MonoBehaviour
 	public static bool collectDoubleJump, collectDash;
 	public AudioSource audioSource, audioSource2;
 	AudioClip jumpAudio, dashAudio, pickPowerAudio;
-	public Image power1;
-    public Image power2;
-    public Image power3;
-	public Image power4;
+	// public Image power1;
+    // public Image power2;
+    // public Image power3;
+	// public Image power4;
+	private Image power1;
+    private Image power2;
+    private Image power3;
+	private Image power4;
 	private SideScrolling cameraScroll;
 	[SerializeField] public Camera camera;
 
