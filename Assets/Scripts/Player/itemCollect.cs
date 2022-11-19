@@ -266,7 +266,7 @@ public class itemCollect : MonoBehaviour
             {
                 GameObject item = bagStack.Pop();
                 item.transform.position = transform.position + new Vector3(0, 0.8f, 0);
-                item.GetComponent<BoxCollider2D>().isTrigger = false;
+                // item.GetComponent<BoxCollider2D>().isTrigger = false;
                 item.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                 item.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
                 item.SetActive(true);
@@ -334,7 +334,7 @@ public class itemCollect : MonoBehaviour
         if (Physics2D.OverlapCircle(toolItem.transform.GetChild(0).gameObject.transform.position, 0.7f, playerMovement.ground))
         {
             toolItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-            toolItem.GetComponent<BoxCollider2D>().isTrigger = true;
+            // toolItem.GetComponent<BoxCollider2D>().isTrigger = true;
             needDeleteList.Add(toolItem);
             Debug.Log("touch ground");
         }
