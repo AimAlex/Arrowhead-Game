@@ -48,6 +48,49 @@ public class PlayerLife : MonoBehaviour
                 }
             // }
         }
+
+        //setup destination tag and collider
+        var checkObj=GameObject.Find("Destination");
+        if(checkObj.transform.childCount>0){
+            foreach (Transform child in checkObj.transform)
+            {
+                child.gameObject.tag="Finish";
+                // Debug.Log("collider="+child.gameObject.GetComponent<PolygonCollider2D>().ToString());
+                if(child.gameObject.GetComponent<PolygonCollider2D>()==null){
+                    child.gameObject.AddComponent<PolygonCollider2D>();
+                    child.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
+                }
+            }
+        }else{
+            checkObj.gameObject.tag="Finish";
+            // Debug.Log("collider="+destinations.gameObject.GetComponent<PolygonCollider2D>().ToString());
+            if(checkObj.gameObject.GetComponent<PolygonCollider2D>()==null){
+                checkObj.gameObject.AddComponent<PolygonCollider2D>();
+                checkObj.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
+            }
+        }
+
+        // check treasures tag and collider
+        checkObj=GameObject.Find("Treasure");
+        if(checkObj.transform.childCount>0){
+            foreach (Transform child in checkObj.transform)
+            {
+                child.gameObject.tag="Treasure";
+                // Debug.Log("collider="+child.gameObject.GetComponent<PolygonCollider2D>().ToString());
+                if(child.gameObject.GetComponent<PolygonCollider2D>()==null){
+                    child.gameObject.AddComponent<PolygonCollider2D>();
+                    child.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
+                }
+            }
+        }else{
+            checkObj.gameObject.tag="Treasure";
+            // Debug.Log("collider="+destinations.gameObject.GetComponent<PolygonCollider2D>().ToString());
+            if(checkObj.gameObject.GetComponent<PolygonCollider2D>()==null){
+                checkObj.gameObject.AddComponent<PolygonCollider2D>();
+                checkObj.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
+            }
+        }
+
     }
     private void Awake()
     {
