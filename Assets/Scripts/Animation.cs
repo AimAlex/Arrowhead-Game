@@ -14,7 +14,7 @@ public class Animation : MonoBehaviour
     // private bool isRunning=false;
     private bool deathPauseStarted=false;
     private float deathPauseDur=0.5f;
-    private float timer_death,timer_hurt,timer_dash;
+    private float timer_death,timer_hurt,timer_dash,timer_restart;
     private arcMovement[] arcs;
     private trapMovement[] traps;
     private Enemy[] enemies;
@@ -25,6 +25,9 @@ public class Animation : MonoBehaviour
     public bool isHurt=false;
     private float hurtDur=0.5f;
     private bool hurtDurStarted=false;
+    public bool isRestart = false;
+    private float restartDur = 1.0f;
+    public bool restartDurStarted = false;
 
     // Start is called before the first frame update
     private void Start()
@@ -61,6 +64,23 @@ public class Animation : MonoBehaviour
             }
         }
 
+        if (isRestart && !restartDurStarted)
+        {
+            restartDurStarted = true;
+            anim.SetBool("restart", true);
+            timer_restart = Time.time;
+        }
+
+        if (restartDurStarted)
+        {
+            if (Time.time - timer_restart > restartDur)
+            {
+                anim.SetBool("idle", true);
+                anim.SetBool("restart", false);
+                isRestart = false;
+                restartDurStarted = false;
+            }
+        }
         if(isDead && !deathPauseStarted){
             anim.SetBool("dead",true);
             deathPauseStarted=true;
