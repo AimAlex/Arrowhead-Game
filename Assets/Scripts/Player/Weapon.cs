@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour
     RaycastHit2D hitInfo;
 	AudioClip shootAudio;
     private PlayerMovement playerMovement;
+    public Vector2 playerVelocity;
     private void Awake()
     {
         laserGunPickUp = false;
@@ -22,7 +23,19 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction = FindObjectOfType<PlayerMovement>().rigidbody.velocity;
+        playerVelocity = FindObjectOfType<PlayerMovement>().rigidbody.velocity;
+        if (playerVelocity.x > 0)
+        {
+            direction = firePoint.right;
+        }
+        else if(playerVelocity.x < 0)
+        {
+            direction = -firePoint.right;
+        }
+        else
+        {
+            direction = new Vector2(playerVelocity.x, firePoint.position.y);
+        }
         if(Input.GetKeyDown(KeyCode.J) && laserGunPickUp == true)
         {
             StartCoroutine(Shoot());
