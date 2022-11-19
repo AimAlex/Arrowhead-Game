@@ -20,12 +20,17 @@ public class PlayerLife : MonoBehaviour
     private bool collisionStarted=false;
     private string collisionItem="";
     public bool hurtStarted=false;
+    AudioSource m_MyAudioSource;
+    private float m_MySliderValue=0.1f;
+
 
     // Start is called before the first frame update
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         timer1 = float.PositiveInfinity;
+        m_MyAudioSource = GetComponent<AudioSource>();
+        m_MyAudioSource.volume = m_MySliderValue;
     }
     private void Awake()
     {
