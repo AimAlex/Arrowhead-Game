@@ -207,12 +207,14 @@ public class PlayerLife : MonoBehaviour
         if (Input.GetKeyDown("s"))
         {
             timer = Time.time;
+            FindObjectOfType<Animation>().isRestart = true;
         }
         else if (Input.GetKey("s"))
         {
             if (Time.time - timer > restartHoldDur)
             {
                 timer = float.PositiveInfinity;
+                FindObjectOfType<Animation>().restartDurStarted = false;
                 RestartLevel();
             }
         }
