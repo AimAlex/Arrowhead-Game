@@ -29,8 +29,23 @@ public class PlayerLife : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         timer1 = float.PositiveInfinity;
+
+        //change audioSource volume
         m_MyAudioSource = GetComponent<AudioSource>();
         m_MyAudioSource.volume = m_MySliderValue;
+
+        //Change instruction image
+        Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
+        for (int i = 0; i < objs.Length; i++)
+        {
+            // if (objs[i].hideFlags == HideFlags.None)
+            // {
+                if (objs[i].name == "Picture")
+                {
+                    objs[i].gameObject.GetComponent<RawImage>().texture=Resources.Load<Texture2D>("instruction_new");
+                }
+            // }
+        }
     }
     private void Awake()
     {
