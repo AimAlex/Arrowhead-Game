@@ -174,11 +174,11 @@ public class PlayerMovement : MonoBehaviour
 			isRunning = false;
 		}
 
-		if (horizontalMove > 0 && !facingRight)
+		if (horizontalMove > 0 && facingRight)
 		{
 			Flip();
 		}
-		else if (horizontalMove < 0 && facingRight)
+		else if (horizontalMove < 0 && !facingRight)
 		{
 			Flip();
 		}

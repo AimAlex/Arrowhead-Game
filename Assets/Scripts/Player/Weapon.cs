@@ -54,7 +54,7 @@ public class Weapon : MonoBehaviour
         RaycastHit2D[] hitInfos = Physics2D.RaycastAll(firePoint.position, direction);
         if(hitInfos.Length==0 || (hitInfos.Length==1 && hitInfos[0].transform.tag=="Player")){
             lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, direction*100); 
+            lineRenderer.SetPosition(1, firePoint.position + (Vector3)direction*100); 
         }else{
 
             if(hitInfos[0].transform.tag=="Player"){
@@ -140,7 +140,7 @@ public class Weapon : MonoBehaviour
                 }
             }else{
                 lineRenderer.SetPosition(0, firePoint.position);
-                lineRenderer.SetPosition(1, direction*100); 
+                lineRenderer.SetPosition(1, firePoint.position + (Vector3)direction*100); 
             }
 
         }
