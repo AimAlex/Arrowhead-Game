@@ -13,13 +13,14 @@ public class healthPoint : MonoBehaviour
     private int health = 4;
     private PlayerMovement playerMovement;
     private AudioClip healthPointDownAudio;
-    public healthbar h1;
+    private healthbar h1;
     // Start is called before the first frame update
     void Start()
     {
         hurt=0;
         playerMovement = gameObject.GetComponent<PlayerMovement>();
         healthPointDownAudio = Resources.Load<AudioClip>("music/DM-CGS-30");
+        h1=GameObject.Find("Health Bar").GetComponent<healthbar>();
     }
 
 
