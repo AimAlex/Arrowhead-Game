@@ -23,6 +23,7 @@ public class PlayerLife : MonoBehaviour
     public bool hurtStarted=false;
     AudioSource m_MyAudioSource;
     private float m_MySliderValue=0.1f;
+    // private bool isFirstTimePressS = true;
 
 
     // Start is called before the first frame update
@@ -52,67 +53,73 @@ public class PlayerLife : MonoBehaviour
 
         //setup destination tag and collider
         var checkObj=GameObject.Find("Destination");
-        if(checkObj.transform.childCount>0){
-            foreach (Transform child in checkObj.transform)
-            {
-                child.gameObject.tag="Finish";
-                if(child.gameObject.GetComponent<PolygonCollider2D>()==null){
-                    child.gameObject.AddComponent<PolygonCollider2D>();
+        if(checkObj!=null){
+            if(checkObj.transform.childCount>0){
+                foreach (Transform child in checkObj.transform)
+                {
+                    child.gameObject.tag="Finish";
+                    if(child.gameObject.GetComponent<PolygonCollider2D>()==null){
+                        child.gameObject.AddComponent<PolygonCollider2D>();
+                    }
+                    child.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
                 }
-                child.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
+            }else{
+                checkObj.gameObject.tag="Finish";
+                if(checkObj.gameObject.GetComponent<PolygonCollider2D>()==null){
+                    checkObj.gameObject.AddComponent<PolygonCollider2D>();
+                }
+                checkObj.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
             }
-        }else{
-            checkObj.gameObject.tag="Finish";
-            if(checkObj.gameObject.GetComponent<PolygonCollider2D>()==null){
-                checkObj.gameObject.AddComponent<PolygonCollider2D>();
-            }
-            checkObj.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
         }
 
         // check treasures tag and collider
         checkObj=GameObject.Find("Treasure");
-        if(checkObj.transform.childCount>0){
-            foreach (Transform child in checkObj.transform)
-            {
-                child.gameObject.tag="Treasure";
-                if(child.gameObject.GetComponent<PolygonCollider2D>()==null){
-                    child.gameObject.AddComponent<PolygonCollider2D>();
+        if(checkObj!=null){
+            if(checkObj.transform.childCount>0){
+                foreach (Transform child in checkObj.transform)
+                {
+                    child.gameObject.tag="Treasure";
+                    if(child.gameObject.GetComponent<PolygonCollider2D>()==null){
+                        child.gameObject.AddComponent<PolygonCollider2D>();
+                    }
+                    child.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
                 }
-                child.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
+            }else{
+                checkObj.gameObject.tag="Treasure";
+                if(checkObj.gameObject.GetComponent<PolygonCollider2D>()==null){
+                    checkObj.gameObject.AddComponent<PolygonCollider2D>();
+                }
+                checkObj.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
             }
-        }else{
-            checkObj.gameObject.tag="Treasure";
-            if(checkObj.gameObject.GetComponent<PolygonCollider2D>()==null){
-                checkObj.gameObject.AddComponent<PolygonCollider2D>();
-            }
-            checkObj.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
         }
 
         // reset tilemap collider
         checkObj=GameObject.Find("Grid");
-        if(checkObj.transform.childCount>0){
-            foreach (Transform child in checkObj.transform)
-            {
-                if(child.transform.childCount>0){
-                    foreach (Transform child2 in checkObj.transform)
-                    {
-                        if(child2.gameObject.GetComponent<TilemapCollider2D>()!=null){
-                           Destroy(child2.gameObject.AddComponent<TilemapCollider2D>());
+        if(checkObj!=null){
+            if(checkObj.transform.childCount>0){
+                foreach (Transform child in checkObj.transform)
+                {
+                    if(child.transform.childCount>0){
+                        foreach (Transform child2 in checkObj.transform)
+                        {
+                            if(child2.gameObject.GetComponent<TilemapCollider2D>()!=null){
+                            Destroy(child2.gameObject.AddComponent<TilemapCollider2D>());
+                            }
+                            child2.gameObject.AddComponent<TilemapCollider2D>();
                         }
-                           child2.gameObject.AddComponent<TilemapCollider2D>();
+                    }else{
+                        if(child.gameObject.GetComponent<TilemapCollider2D>()!=null){
+                            Destroy(child.gameObject.AddComponent<TilemapCollider2D>());
+                        }
+                            child.gameObject.AddComponent<TilemapCollider2D>();
                     }
-                }else{
-                    if(child.gameObject.GetComponent<TilemapCollider2D>()!=null){
-                        Destroy(child.gameObject.AddComponent<TilemapCollider2D>());
-                    }
-                        child.gameObject.AddComponent<TilemapCollider2D>();
                 }
+            }else{
+                if(checkObj.gameObject.GetComponent<TilemapCollider2D>()!=null){
+                    Destroy(checkObj.gameObject.AddComponent<TilemapCollider2D>());
+                }
+                    checkObj.gameObject.AddComponent<TilemapCollider2D>();
             }
-        }else{
-            if(checkObj.gameObject.GetComponent<TilemapCollider2D>()!=null){
-                Destroy(checkObj.gameObject.AddComponent<TilemapCollider2D>());
-            }
-                checkObj.gameObject.AddComponent<TilemapCollider2D>();
         }
 
         
@@ -229,21 +236,29 @@ public class PlayerLife : MonoBehaviour
                 timer_collision=timer_collision+collisionDur;
             }
         }
-
+        
         if (Input.GetKeyDown("s"))
         {
             timer = Time.time;
-            FindObjectOfType<Animation>().isRestart = true;
+            // Animation.anim.SetBool("restart", true);
         }
         else if (Input.GetKey("s"))
         {
             if (Time.time - timer > restartHoldDur)
             {
                 timer = float.PositiveInfinity;
-                FindObjectOfType<Animation>().restartDurStarted = false;
+                // Animation.anim.SetBool("restart", false);
+                // Animation.anim.SetBool("idle", true);
                 RestartLevel();
             }
         }
+        /*
+        if (Input.GetKey("s"))
+        {
+            StartCoroutine(Restart());
+        }
+        */
+        
         else if (SceneManager.GetActiveScene().name == "DieScene")
         {
             if (timer1 == float.PositiveInfinity)
@@ -262,6 +277,16 @@ public class PlayerLife : MonoBehaviour
             timer1 = float.PositiveInfinity;
         }
     }
+    /*
+    public IEnumerator Restart()
+    {
+        // Animation.anim.SetBool("restart", true);
+        yield return new WaitForSeconds(2f);
+        // Animation.anim.SetBool("restart", false);
+        // Animation.anim.SetBool("idle", true);
+        RestartLevel();
+    }
+    */
     
     public void Retry()
     {
