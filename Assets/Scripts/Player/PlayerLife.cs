@@ -23,6 +23,7 @@ public class PlayerLife : MonoBehaviour
     public bool hurtStarted=false;
     AudioSource m_MyAudioSource;
     private float m_MySliderValue=0.1f;
+    private bool isFirstTimePressS = true;
 
 
     // Start is called before the first frame update
@@ -229,21 +230,29 @@ public class PlayerLife : MonoBehaviour
                 timer_collision=timer_collision+collisionDur;
             }
         }
-
+        
         if (Input.GetKeyDown("s"))
         {
             timer = Time.time;
-            FindObjectOfType<Animation>().isRestart = true;
+            // Animation.anim.SetBool("restart", true);
         }
         else if (Input.GetKey("s"))
         {
             if (Time.time - timer > restartHoldDur)
             {
                 timer = float.PositiveInfinity;
-                FindObjectOfType<Animation>().restartDurStarted = false;
+                // Animation.anim.SetBool("restart", false);
+                // Animation.anim.SetBool("idle", true);
                 RestartLevel();
             }
         }
+        /*
+        if (Input.GetKey("s"))
+        {
+            StartCoroutine(Restart());
+        }
+        */
+        
         else if (SceneManager.GetActiveScene().name == "DieScene")
         {
             if (timer1 == float.PositiveInfinity)
@@ -262,6 +271,16 @@ public class PlayerLife : MonoBehaviour
             timer1 = float.PositiveInfinity;
         }
     }
+    /*
+    public IEnumerator Restart()
+    {
+        // Animation.anim.SetBool("restart", true);
+        yield return new WaitForSeconds(2f);
+        // Animation.anim.SetBool("restart", false);
+        // Animation.anim.SetBool("idle", true);
+        RestartLevel();
+    }
+    */
     
     public void Retry()
     {

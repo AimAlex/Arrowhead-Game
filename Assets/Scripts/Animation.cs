@@ -25,9 +25,9 @@ public class Animation : MonoBehaviour
     public bool isHurt=false;
     private float hurtDur=0.5f;
     private bool hurtDurStarted=false;
-    public bool isRestart = false;
-    private float restartDur = 1.0f;
-    public bool restartDurStarted = false;
+    // public bool isRestart = false;
+    // private float restartDur = 1.0f;
+    // public bool restartDurStarted = false;
 
     // Start is called before the first frame update
     private void Start()
@@ -63,7 +63,7 @@ public class Animation : MonoBehaviour
                 // this.GetComponent<Rigidbody2D>().gravityScale=1;
             }
         }
-
+        /*
         if (isRestart && !restartDurStarted)
         {
             restartDurStarted = true;
@@ -81,6 +81,7 @@ public class Animation : MonoBehaviour
                 restartDurStarted = false;
             }
         }
+        */
         if(isDead && !deathPauseStarted){
             anim.SetBool("dead",true);
             deathPauseStarted=true;
