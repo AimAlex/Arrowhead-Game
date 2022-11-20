@@ -23,6 +23,10 @@ public class PlayerLife : MonoBehaviour
     public bool hurtStarted=false;
     AudioSource m_MyAudioSource;
     private float m_MySliderValue=0.1f;
+
+    private float timeRestart;
+
+    private bool restartStart = false;
     // private bool isFirstTimePressS = true;
 
 
@@ -240,16 +244,31 @@ public class PlayerLife : MonoBehaviour
         if (Input.GetKeyDown("s"))
         {
             timer = Time.time;
-            // Animation.anim.SetBool("restart", true);
+            
+            Debug.Log("restart begin");
         }
         else if (Input.GetKey("s"))
         {
+            // Debug.Log("restart in process");
             if (Time.time - timer > restartHoldDur)
             {
-                timer = float.PositiveInfinity;
-                // Animation.anim.SetBool("restart", false);
-                // Animation.anim.SetBool("idle", true);
-                RestartLevel();
+                Animation.anim.SetBool("restart", true);
+                if (!restartStart)
+                {
+                    restartStart = true;
+                    timeRestart = Time.time;
+                }
+                
+                if (restartStart && Time.time - timeRestart > 2f)
+                {
+                    timer = float.PositiveInfinity;
+                    restartStart = false;
+                    Animation.anim.SetBool("restart", false);
+                    Animation.anim.SetBool("idle", true);
+                    Debug.Log("restart end");
+                    RestartLevel();
+                }
+
             }
         }
         /*
