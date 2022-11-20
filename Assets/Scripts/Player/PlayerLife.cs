@@ -93,34 +93,34 @@ public class PlayerLife : MonoBehaviour
             }
         }
 
-        // reset tilemap collider
-        checkObj=GameObject.Find("Grid");
-        if(checkObj!=null){
-            if(checkObj.transform.childCount>0){
-                foreach (Transform child in checkObj.transform)
-                {
-                    if(child.transform.childCount>0){
-                        foreach (Transform child2 in checkObj.transform)
-                        {
-                            if(child2.gameObject.GetComponent<TilemapCollider2D>()!=null){
-                            Destroy(child2.gameObject.AddComponent<TilemapCollider2D>());
-                            }
-                            child2.gameObject.AddComponent<TilemapCollider2D>();
-                        }
-                    }else{
-                        if(child.gameObject.GetComponent<TilemapCollider2D>()!=null){
-                            Destroy(child.gameObject.AddComponent<TilemapCollider2D>());
-                        }
-                            child.gameObject.AddComponent<TilemapCollider2D>();
-                    }
-                }
-            }else{
-                if(checkObj.gameObject.GetComponent<TilemapCollider2D>()!=null){
-                    Destroy(checkObj.gameObject.AddComponent<TilemapCollider2D>());
-                }
-                    checkObj.gameObject.AddComponent<TilemapCollider2D>();
-            }
-        }
+        // // reset tilemap collider
+        // checkObj=GameObject.Find("Grid");
+        // if(checkObj!=null){
+        //     if(checkObj.transform.childCount>0){
+        //         foreach (Transform child in checkObj.transform)
+        //         {
+        //             if(child.transform.childCount>0){
+        //                 foreach (Transform child2 in checkObj.transform)
+        //                 {
+        //                     if(child2.gameObject.GetComponent<TilemapCollider2D>()!=null){
+        //                     Destroy(child2.gameObject.AddComponent<TilemapCollider2D>());
+        //                     }
+        //                     child2.gameObject.AddComponent<TilemapCollider2D>();
+        //                 }
+        //             }else{
+        //                 if(child.gameObject.GetComponent<TilemapCollider2D>()!=null){
+        //                     Destroy(child.gameObject.AddComponent<TilemapCollider2D>());
+        //                 }
+        //                     child.gameObject.AddComponent<TilemapCollider2D>();
+        //             }
+        //         }
+        //     }else{
+        //         if(checkObj.gameObject.GetComponent<TilemapCollider2D>()!=null){
+        //             Destroy(checkObj.gameObject.AddComponent<TilemapCollider2D>());
+        //         }
+        //             checkObj.gameObject.AddComponent<TilemapCollider2D>();
+        //     }
+        // }
 
         
 
