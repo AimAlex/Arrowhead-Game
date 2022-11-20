@@ -53,67 +53,73 @@ public class PlayerLife : MonoBehaviour
 
         //setup destination tag and collider
         var checkObj=GameObject.Find("Destination");
-        if(checkObj.transform.childCount>0){
-            foreach (Transform child in checkObj.transform)
-            {
-                child.gameObject.tag="Finish";
-                if(child.gameObject.GetComponent<PolygonCollider2D>()==null){
-                    child.gameObject.AddComponent<PolygonCollider2D>();
+        if(checkObj!=null){
+            if(checkObj.transform.childCount>0){
+                foreach (Transform child in checkObj.transform)
+                {
+                    child.gameObject.tag="Finish";
+                    if(child.gameObject.GetComponent<PolygonCollider2D>()==null){
+                        child.gameObject.AddComponent<PolygonCollider2D>();
+                    }
+                    child.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
                 }
-                child.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
+            }else{
+                checkObj.gameObject.tag="Finish";
+                if(checkObj.gameObject.GetComponent<PolygonCollider2D>()==null){
+                    checkObj.gameObject.AddComponent<PolygonCollider2D>();
+                }
+                checkObj.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
             }
-        }else{
-            checkObj.gameObject.tag="Finish";
-            if(checkObj.gameObject.GetComponent<PolygonCollider2D>()==null){
-                checkObj.gameObject.AddComponent<PolygonCollider2D>();
-            }
-            checkObj.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
         }
 
         // check treasures tag and collider
         checkObj=GameObject.Find("Treasure");
-        if(checkObj.transform.childCount>0){
-            foreach (Transform child in checkObj.transform)
-            {
-                child.gameObject.tag="Treasure";
-                if(child.gameObject.GetComponent<PolygonCollider2D>()==null){
-                    child.gameObject.AddComponent<PolygonCollider2D>();
+        if(checkObj!=null){
+            if(checkObj.transform.childCount>0){
+                foreach (Transform child in checkObj.transform)
+                {
+                    child.gameObject.tag="Treasure";
+                    if(child.gameObject.GetComponent<PolygonCollider2D>()==null){
+                        child.gameObject.AddComponent<PolygonCollider2D>();
+                    }
+                    child.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
                 }
-                child.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
+            }else{
+                checkObj.gameObject.tag="Treasure";
+                if(checkObj.gameObject.GetComponent<PolygonCollider2D>()==null){
+                    checkObj.gameObject.AddComponent<PolygonCollider2D>();
+                }
+                checkObj.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
             }
-        }else{
-            checkObj.gameObject.tag="Treasure";
-            if(checkObj.gameObject.GetComponent<PolygonCollider2D>()==null){
-                checkObj.gameObject.AddComponent<PolygonCollider2D>();
-            }
-            checkObj.gameObject.GetComponent<PolygonCollider2D>().isTrigger=true;
         }
 
         // reset tilemap collider
         checkObj=GameObject.Find("Grid");
-        if(checkObj.transform.childCount>0){
-            foreach (Transform child in checkObj.transform)
-            {
-                if(child.transform.childCount>0){
-                    foreach (Transform child2 in checkObj.transform)
-                    {
-                        if(child2.gameObject.GetComponent<TilemapCollider2D>()!=null){
-                           Destroy(child2.gameObject.AddComponent<TilemapCollider2D>());
+        if(checkObj!=null){
+            if(checkObj.transform.childCount>0){
+                foreach (Transform child in checkObj.transform)
+                {
+                    if(child.transform.childCount>0){
+                        foreach (Transform child2 in checkObj.transform)
+                        {
+                            if(child2.gameObject.GetComponent<TilemapCollider2D>()!=null){
+                            Destroy(child2.gameObject.AddComponent<TilemapCollider2D>());
+                            }
+                            child2.gameObject.AddComponent<TilemapCollider2D>();
                         }
-                           child2.gameObject.AddComponent<TilemapCollider2D>();
+                    }else{
+                        if(child.gameObject.GetComponent<TilemapCollider2D>()!=null){
+                            Destroy(child.gameObject.AddComponent<TilemapCollider2D>());
+                        }
+                            child.gameObject.AddComponent<TilemapCollider2D>();
                     }
-                }else{
-                    if(child.gameObject.GetComponent<TilemapCollider2D>()!=null){
-                        Destroy(child.gameObject.AddComponent<TilemapCollider2D>());
-                    }
-                        child.gameObject.AddComponent<TilemapCollider2D>();
                 }
+            }else{
+                if(checkObj.gameObject.GetComponent<TilemapCollider2D>()!=null){
+                    Destroy(checkObj.gameObject.AddComponent<TilemapCollider2D>());
+                }
+                    checkObj.gameObject.AddComponent<TilemapCollider2D>();
             }
-        }else{
-            if(checkObj.gameObject.GetComponent<TilemapCollider2D>()!=null){
-                Destroy(checkObj.gameObject.AddComponent<TilemapCollider2D>());
-            }
-                checkObj.gameObject.AddComponent<TilemapCollider2D>();
         }
 
         
