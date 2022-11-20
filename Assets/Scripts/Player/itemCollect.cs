@@ -161,7 +161,7 @@ public class itemCollect : MonoBehaviour
         }else{
             if(tool4.color == Color.clear && tool5.color == Color.clear && tool6.color == Color.clear){
                 // success, go to next level
-                playerMovement.isPreview = true;
+                gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
                 playerMovement.audioSource2.volume = 0.5f;
                 playerMovement.PlayAudio2(levelSuccessAudio);
                 playerMovement.audioSource2.volume = 0.25f;
@@ -184,8 +184,8 @@ public class itemCollect : MonoBehaviour
     }
     private IEnumerator enterNextLevel()
     {
-        yield return new WaitForSeconds(0.3f);
-        playerMovement.isPreview = false;
+        yield return new WaitForSeconds(0.4f);
+        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         SceneManager.LoadScene(nextSceneName);
     }
     private void Update()
