@@ -23,7 +23,7 @@ public class PlayerLife : MonoBehaviour
     public bool hurtStarted=false;
     AudioSource m_MyAudioSource;
     private float m_MySliderValue=0.1f;
-    private bool isFirstTimePressS = true;
+    // private bool isFirstTimePressS = true;
 
 
     // Start is called before the first frame update
