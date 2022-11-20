@@ -81,7 +81,8 @@ public class Pickupbomb : MonoBehaviour
         playerMovement.PlayAudio2(bombDropAudio);
         Debug.Log(bomb.name);
         bomb_dict[bomb.name] = true;
-        bomb.GetComponent<SpriteRenderer>().color = Color.green;
+        //bomb.GetComponent<SpriteRenderer>().color = Color.white;
+        bomb.GetComponent<SpriteRenderer>().color=new Color32(255,255,255,255);
         // get the player object location, get the bomb object,   make it visible, change the location
         //GameObject new_bomb = GameObject.Instantiate(bomb) as GameObject;
         player_position = player.transform.position;

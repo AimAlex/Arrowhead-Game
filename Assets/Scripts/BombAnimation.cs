@@ -30,6 +30,7 @@ public class BombAnimation : MonoBehaviour
             anim.SetBool("bomb2", false);
             isExplode = false;
             
+
         }
         else if (second1)
         {
@@ -48,6 +49,7 @@ public class BombAnimation : MonoBehaviour
         else if (idle)
         {
             anim.SetBool("Idle", true);
+            anim.SetBool("explode", false);
             idle = false;
             Debug.Log("Idle");
         }

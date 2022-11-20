@@ -19,6 +19,7 @@ public class Bomb: MonoBehaviour
     private Pickupbomb pickupbomb;
     private PlayerMovement playerMovement;
     private AudioClip bombExplodeAudio;
+    private  Color32 bombcolor;
     
 
 
@@ -31,16 +32,17 @@ private void Awake()
     pickupbomb = GameObject.Find("Player").GetComponent<Pickupbomb>();
     playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
     bombExplodeAudio = Resources.Load<AudioClip>("music/bomb_explosion");
+    bombcolor=new Color32(255,255,255,255);
 }
 void Update()
 {
-    if (bomb1.GetComponent<SpriteRenderer>().color == Color.green && pickupbomb.bomb_dict[bomb1.name])
+    if (bomb1.GetComponent<SpriteRenderer>().color == bombcolor && pickupbomb.bomb_dict[bomb1.name])
     {
         StartCoroutine(Explotion(bomb1));
-    } else if (bomb2.GetComponent<SpriteRenderer>().color == Color.green && pickupbomb.bomb_dict[bomb2.name])
+    } else if (bomb2.GetComponent<SpriteRenderer>().color == bombcolor && pickupbomb.bomb_dict[bomb2.name])
     {
         StartCoroutine(Explotion(bomb2));
-    } else if (bomb3.GetComponent<SpriteRenderer>().color == Color.green && pickupbomb.bomb_dict[bomb3.name])
+    } else if (bomb3.GetComponent<SpriteRenderer>().color == bombcolor && pickupbomb.bomb_dict[bomb3.name])
     {
         StartCoroutine(Explotion(bomb3));
     }
@@ -50,12 +52,14 @@ IEnumerator Explotion(GameObject bomb)
 {
     pickupbomb.bomb_dict[bomb.name] = false;
     yield return new WaitForSeconds(1);
+	
 	FindObjectOfType<BombAnimation>().second1=true;
 	yield return new WaitForSeconds(1);
+	//bomb.GetComponent<SpriteRenderer>().color = Color.red;
 	FindObjectOfType<BombAnimation>().second2=true;
 	yield return new WaitForSeconds(1);
 	FindObjectOfType<BombAnimation>().isExplode=true;
-	yield return new WaitForSeconds(3);
+	yield return new WaitForSeconds(1);
     // Debug.Log("Explotion: " + pickupbomb.bomb_dict[bomb.name]);
     // Coll.enabled = false;
     bomb_position = bomb.transform.position;
@@ -87,6 +91,7 @@ IEnumerator Explotion(GameObject bomb)
     bomb_position.y = 4.48f;
     bomb.GetComponent<Transform>().position = bomb_position;
     FindObjectOfType<BombAnimation>().idle=true;
+    
 }
     
     
