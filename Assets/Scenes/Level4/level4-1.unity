@@ -23402,6 +23402,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 19
       objectReference: {fileID: 0}
+    - target: {fileID: 2804844725429585515, guid: 9544a84f4fff1463fb58cc47d8a00b9e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804844725429585515, guid: 9544a84f4fff1463fb58cc47d8a00b9e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7251599421975552528, guid: 9544a84f4fff1463fb58cc47d8a00b9e, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -24446,6 +24454,7 @@ GameObject:
   - component: {fileID: 1526876033}
   - component: {fileID: 1526876032}
   - component: {fileID: 1526876031}
+  - component: {fileID: 1526876036}
   m_Layer: 0
   m_Name: Bomb3
   m_TagString: indestructible
@@ -24588,6 +24597,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1526876036
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526876030}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cb7e382f66e104c29bb29aedc86a227a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1569146520
 GameObject:
   m_ObjectHideFlags: 0
@@ -24732,6 +24761,7 @@ GameObject:
   - component: {fileID: 1607080530}
   - component: {fileID: 1607080529}
   - component: {fileID: 1607080528}
+  - component: {fileID: 1607080533}
   m_Layer: 0
   m_Name: Bomb2
   m_TagString: indestructible
@@ -24874,6 +24904,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1607080533
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607080527}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 56bdf6ed437b94b738763f03d919354a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1618256238
 GameObject:
   m_ObjectHideFlags: 0
@@ -25884,6 +25934,7 @@ GameObject:
   - component: {fileID: 2097899687}
   - component: {fileID: 2097899686}
   - component: {fileID: 2097899685}
+  - component: {fileID: 2097899690}
   m_Layer: 0
   m_Name: Bomb1
   m_TagString: indestructible
@@ -26026,3 +26077,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2097899690
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097899684}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8bcec32a119cf4b34a5b848257b84b76, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

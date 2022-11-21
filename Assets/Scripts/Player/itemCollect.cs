@@ -30,7 +30,7 @@ public class itemCollect : MonoBehaviour
     public static Image tool5;
     public static Image tool6;
     private int player_face = 0; // 0: right, 1: left
-
+    private GameObject popItem;
     private HashSet<GameObject> checkPopList = new HashSet<GameObject>();
     private HashSet<GameObject> needDeleteList = new HashSet<GameObject>();
 
@@ -60,14 +60,26 @@ public class itemCollect : MonoBehaviour
         tool5Obj=GameObject.Find("tool5");
         tool6Obj=GameObject.Find("tool6");
 
-        tool1 = tool1Obj.GetComponent<Image>();
-        tool2 = tool2Obj.GetComponent<Image>();
-        tool3 = tool3Obj.GetComponent<Image>();
-		tool4 = tool4Obj.GetComponent<Image>();
-        tool5 = tool5Obj.GetComponent<Image>();
-        tool6 = tool6Obj.GetComponent<Image>();
+        if(tool1Obj!=null){
+            tool1 = tool1Obj.GetComponent<Image>();
+        }
+        if(tool2Obj!=null){
+            tool2 = tool2Obj.GetComponent<Image>();
+        }
+        if(tool3Obj!=null){
+            tool3 = tool3Obj.GetComponent<Image>();
+        }
+        if(tool4Obj!=null){
+		    tool4 = tool4Obj.GetComponent<Image>();
+        }
+        if(tool5Obj!=null){
+            tool5 = tool5Obj.GetComponent<Image>();
+        }
+        if(tool6Obj!=null){
+            tool6 = tool6Obj.GetComponent<Image>();
+        }
 
-        Debug.Log("tool1Obj="+tool1Obj.ToString());
+        // Debug.Log("tool1Obj="+tool1Obj.ToString());
 
 
         _renderer = GetComponent<SpriteRenderer>();
@@ -86,9 +98,12 @@ public class itemCollect : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerStay2D(Collider2D col)
     {
-        if (col.CompareTag("Treasure"))
+        // if (onPickObject != null){
+        //     Debug.Log("cur pick item: " + onPickObject.name + " " + CanBePick);
+        // }
+        if (col.CompareTag("Treasure") && !checkPopList.Contains(col.gameObject))
         {
             CanBePick = true;
             onPickObject = col.gameObject;
@@ -137,7 +152,7 @@ public class itemCollect : MonoBehaviour
 
         foreach (var item in collItemList) 
         {
-            Debug.Log(item.name);
+            // Debug.Log(item.name);
             if (collList.Exists(t => t == item))
             {
                 collList.Remove(item);
@@ -202,12 +217,21 @@ public class itemCollect : MonoBehaviour
             checkPopList.Remove(deleteItem);
         }
         needDeleteList.Clear();
+        // foreach(var item in checkPopList){
+        //     Debug.Log("checkPopList: " + item.name);
+        // }
         if (CanBePick)
         {
             if (Input.GetKeyDown(KeyCode.U))
             {
                 if (bagStack.Count < 3)
                 {
+                    // if (onPickObject != null){
+                    //     Debug.Log("pick item: " + onPickObject.name);
+                    //     foreach(var item in checkPopList){
+                    //         Debug.Log("checkPopList: " + item.name);
+                    //     }
+                    // }
                     playerMovement.PlayAudio(pickAudio);
                     ++itemNumber;
                     onPickObject.SetActive(false);
@@ -264,22 +288,22 @@ public class itemCollect : MonoBehaviour
         {
             if (itemNumber > 0)
             {
-                GameObject item = bagStack.Pop();
-                item.transform.position = transform.position + new Vector3(0, 0.8f, 0);
+                popItem = bagStack.Pop();
+                popItem.transform.position = transform.position + new Vector3(0, 0.8f, 0);
                 // item.GetComponent<BoxCollider2D>().isTrigger = false;
-                item.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-                item.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-                item.SetActive(true);
+                popItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                popItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+                popItem.SetActive(true);
                 if (player_face == 0){
-                    item.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x + 3, gameObject.GetComponent<Rigidbody2D>().velocity.y + 2);
+                    popItem.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x + 3, gameObject.GetComponent<Rigidbody2D>().velocity.y + 2);
                 } else if (player_face == 1){
-                    item.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x - 3, gameObject.GetComponent<Rigidbody2D>().velocity.y + 2);
+                    popItem.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x - 3, gameObject.GetComponent<Rigidbody2D>().velocity.y + 2);
                 }
 
-                checkPopList.Add(item);
+                checkPopList.Add(popItem);
            
                 --itemNumber;
-                if (item.GetComponent<SpriteRenderer>().sprite == tool1.sprite)
+                if (popItem.GetComponent<SpriteRenderer>().sprite == tool1.sprite)
                 {
 					if (tool1.sprite == collItemList[0].GetComponent<SpriteRenderer>().sprite) {
 						tool4.sprite = tool1.sprite;
@@ -294,7 +318,7 @@ public class itemCollect : MonoBehaviour
                     tool1.sprite = null;
                     tool1.color = Color.clear;
                 }
-                else if (item.GetComponent<SpriteRenderer>().sprite == tool2.sprite)
+                else if (popItem.GetComponent<SpriteRenderer>().sprite == tool2.sprite)
                 {
 					if (tool2.sprite == collItemList[0].GetComponent<SpriteRenderer>().sprite) {
 						tool4.sprite = tool2.sprite;
@@ -330,13 +354,13 @@ public class itemCollect : MonoBehaviour
 
     private void CheckTouchGround(GameObject toolItem)
     {
-        Debug.Log(Physics2D.OverlapCircle(toolItem.transform.GetChild(0).gameObject.transform.position, 0.7f, playerMovement.ground));
+        // Debug.Log(Physics2D.OverlapCircle(toolItem.transform.GetChild(0).gameObject.transform.position, 0.7f, playerMovement.ground));
         if (Physics2D.OverlapCircle(toolItem.transform.GetChild(0).gameObject.transform.position, 0.7f, playerMovement.ground))
         {
             toolItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             // toolItem.GetComponent<BoxCollider2D>().isTrigger = true;
             needDeleteList.Add(toolItem);
-            Debug.Log("touch ground");
+            // Debug.Log("touch ground");
         }
     }
 
