@@ -6,9 +6,9 @@ public class bulletShooting : MonoBehaviour
 {
     public GameObject prefab_shootItem;
     private bool playerClose=false;
-    private float shootingRange=1000f;
+    private float shootingRange=230f;
     private float timer;
-    private float shotGap=1f;
+    private float shotGap=1.5f;
 
     void Start(){
         timer=Time.time-shotGap;
@@ -24,7 +24,7 @@ public class bulletShooting : MonoBehaviour
     void Update(){
        var dir= new Vector3(FindObjectOfType<PlayerMovement>().rigidbody.position.x,FindObjectOfType<PlayerMovement>().rigidbody.position.y,0)-this.transform.position;
     //    Debug.Log(dir.x*dir.x+dir.y*dir.y+dir.z*dir.z);
-       if(dir.x*dir.x+dir.y*dir.y+dir.z*dir.z<shootingRange){
+       if(dir.x*dir.x+dir.y*dir.y+dir.z*dir.z < shootingRange){
             playerClose=true;
        }else{
             playerClose=false;
@@ -39,6 +39,9 @@ public class bulletShooting : MonoBehaviour
         Debug.Log("shoot item");
         // prefab_shootItem=GameObject.Find("bullet");
         GameObject shotItem=Instantiate(prefab_shootItem);
+        shotItem.transform.tag = "bullet";
+
+    /*    prefab_shootItem.SetActive(true);*/
         // GameObject shotItem=Instantiate(prefab_shootItem,new Vector3(transform.position.x,transform.position.y,transform.position.z));
         // shotItem.GetComponent<ShootItem>().
     }
