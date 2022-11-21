@@ -398,7 +398,8 @@ public class itemCollect : MonoBehaviour
                 toolItem.GetComponent<Rigidbody2D>().velocity = new Vector2(0, velocity.y);
             }
             alreadyTouchWall.Add(toolItem);
-        }else if (Physics2D.OverlapArea(checkPos, checkPos + new Vector2(0.001f, -0.2f), playerMovement.ground))
+        }
+        if (Physics2D.OverlapArea(checkPos, checkPos + new Vector2(0.001f, -0.4f), playerMovement.ground))
         {
             toolItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             // toolItem.GetComponent<BoxCollider2D>().isTrigger = true;
