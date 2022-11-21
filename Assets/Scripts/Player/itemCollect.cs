@@ -21,6 +21,8 @@ public class itemCollect : MonoBehaviour
 
     // bag varialbes
     bool CanBePick = false;
+    private float timer;
+    private int count;
     public static GameObject onPickObject;
     public static Stack<GameObject> bagStack = new Stack<GameObject> ();
     public static Image tool1;
@@ -66,6 +68,9 @@ public class itemCollect : MonoBehaviour
             passLevel.SetActive(false);
             grayMask.SetActive(false);
         }
+        
+        timer = float.PositiveInfinity;
+        count = 0;
 
         if(tool1Obj!=null){
             tool1 = tool1Obj.GetComponent<Image>();
@@ -183,6 +188,7 @@ public class itemCollect : MonoBehaviour
                 passLevel.SetActive(true);
                 grayMask.SetActive(true);
                 Time.timeScale = 0f;
+                timer = Time.time;
             }
             else
             {
@@ -202,6 +208,7 @@ public class itemCollect : MonoBehaviour
                     passLevel.SetActive(true);
                     grayMask.SetActive(true);
                     Time.timeScale = 0f;
+                    timer = Time.time;
                 }
                 else
                 {
@@ -230,7 +237,23 @@ public class itemCollect : MonoBehaviour
         SceneManager.LoadScene(nextSceneName);
     }
     private void Update()
-    {   
+    {
+        Debug.Log("timer = " + timer);
+        Debug.Log("time = " + Time.time);
+        if (Time.time >= timer && Time.time - timer < 5f)
+        {
+            if (++count == 1000)
+            {
+                count = 0;
+                timer = float.PositiveInfinity;
+                Time.timeScale = 1f;
+                SceneManager.LoadScene(nextSceneName);
+                Debug.Log("timer = " + timer);
+            }
+            Debug.Log("count = " + count);
+            Debug.Log("scene name = " + nextSceneName);
+        }
+        
         if (Input.GetKeyDown(KeyCode.D)){
             player_face = 0;
         } else if (Input.GetKeyDown(KeyCode.A)){
