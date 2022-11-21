@@ -20,7 +20,8 @@ public class Bomb: MonoBehaviour
     private PlayerMovement playerMovement;
     private AudioClip bombExplodeAudio;
     private  Color32 bombcolor;
-    
+
+    // Start is called before the first frame update
 
 
 private void Awake()
@@ -38,27 +39,34 @@ void Update()
 {
     if (bomb1.GetComponent<SpriteRenderer>().color == bombcolor && pickupbomb.bomb_dict[bomb1.name])
     {
-        StartCoroutine(Explotion(bomb1));
+        StartCoroutine(Explotion(bomb1,bomb1.GetComponent<Animator>()));
     } else if (bomb2.GetComponent<SpriteRenderer>().color == bombcolor && pickupbomb.bomb_dict[bomb2.name])
     {
-        StartCoroutine(Explotion(bomb2));
+        StartCoroutine(Explotion(bomb2,bomb2.GetComponent<Animator>()));
     } else if (bomb3.GetComponent<SpriteRenderer>().color == bombcolor && pickupbomb.bomb_dict[bomb3.name])
     {
-        StartCoroutine(Explotion(bomb3));
+        StartCoroutine(Explotion(bomb3,bomb3.GetComponent<Animator>()));
     }
 }
 
-IEnumerator Explotion(GameObject bomb)
+IEnumerator Explotion(GameObject bomb, Animator anim)
 {
     pickupbomb.bomb_dict[bomb.name] = false;
     yield return new WaitForSeconds(1);
-	
-	FindObjectOfType<BombAnimation>().second1=true;
+    anim.SetBool("bomb1", true);
+    anim.SetBool("Idle", false);
+	//FindObjectOfType<BombAnimation>().second1=true;
 	yield return new WaitForSeconds(1);
 	//bomb.GetComponent<SpriteRenderer>().color = Color.red;
-	FindObjectOfType<BombAnimation>().second2=true;
+	//FindObjectOfType<BombAnimation>().second2=true;
+    anim.SetBool("bomb2", true);
+    anim.SetBool("bomb1", false);
 	yield return new WaitForSeconds(1);
-	FindObjectOfType<BombAnimation>().isExplode=true;
+    anim.SetBool("explode", true);
+    Debug.Log("anim="+anim.ToString());
+    anim.SetBool("bomb2", false);
+    
+	//FindObjectOfType<BombAnimation>().isExplode=true;
 	yield return new WaitForSeconds(1);
     // Debug.Log("Explotion: " + pickupbomb.bomb_dict[bomb.name]);
     // Coll.enabled = false;
@@ -85,12 +93,15 @@ IEnumerator Explotion(GameObject bomb)
     }
     
     //Destroy(bomb);
+    
     bomb.GetComponent<SpriteRenderer>().color = Color.clear;
     bomb_position = bomb.transform.position;
     bomb_position.x = -27.9f;
     bomb_position.y = 4.48f;
     bomb.GetComponent<Transform>().position = bomb_position;
-    FindObjectOfType<BombAnimation>().idle=true;
+    anim.SetBool("Idle", true);
+    anim.SetBool("explode", false);
+    //FindObjectOfType<BombAnimation>().idle=true;
     
 }
     

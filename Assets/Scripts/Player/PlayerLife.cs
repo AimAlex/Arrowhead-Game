@@ -36,9 +36,15 @@ public class PlayerLife : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         timer1 = float.PositiveInfinity;
 
-        //change audioSource volume
-        m_MyAudioSource = GetComponent<AudioSource>();
-        m_MyAudioSource.volume = m_MySliderValue;
+        // //change audioSource volume
+        // curScene = SceneManager.GetActiveScene().name;
+        // m_MyAudioSource = GetComponent<AudioSource>();
+        // Debug.Log("curScene="+curScene.ToString());
+        // if(curScene=="level3-0" || curScene=="level3-1" || curScene=="level3-2" || curScene=="level3-3"){
+        //     m_MyAudioSource.volume = 0.01f;
+        // }else{
+        //     m_MyAudioSource.volume = m_MySliderValue;
+        // }
 
         // Change instruction image
         Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
