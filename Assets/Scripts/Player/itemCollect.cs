@@ -60,14 +60,26 @@ public class itemCollect : MonoBehaviour
         tool5Obj=GameObject.Find("tool5");
         tool6Obj=GameObject.Find("tool6");
 
-        tool1 = tool1Obj.GetComponent<Image>();
-        tool2 = tool2Obj.GetComponent<Image>();
-        tool3 = tool3Obj.GetComponent<Image>();
-		tool4 = tool4Obj.GetComponent<Image>();
-        tool5 = tool5Obj.GetComponent<Image>();
-        tool6 = tool6Obj.GetComponent<Image>();
+        if(tool1Obj!=null){
+            tool1 = tool1Obj.GetComponent<Image>();
+        }
+        if(tool2Obj!=null){
+            tool2 = tool2Obj.GetComponent<Image>();
+        }
+        if(tool3Obj!=null){
+            tool3 = tool3Obj.GetComponent<Image>();
+        }
+        if(tool4Obj!=null){
+		    tool4 = tool4Obj.GetComponent<Image>();
+        }
+        if(tool5Obj!=null){
+            tool5 = tool5Obj.GetComponent<Image>();
+        }
+        if(tool6Obj!=null){
+            tool6 = tool6Obj.GetComponent<Image>();
+        }
 
-        Debug.Log("tool1Obj="+tool1Obj.ToString());
+        // Debug.Log("tool1Obj="+tool1Obj.ToString());
 
 
         _renderer = GetComponent<SpriteRenderer>();

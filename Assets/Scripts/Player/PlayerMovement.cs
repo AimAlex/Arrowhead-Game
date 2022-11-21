@@ -105,10 +105,19 @@ public class PlayerMovement : MonoBehaviour
 		isMoved = false;
 	    rigidbody = GetComponent<Rigidbody2D>();
 		jumpForce = 10f;
-		power1 = GameObject.Find("power1").GetComponent<Image>();
-        power2 = GameObject.Find("power2").GetComponent<Image>();
-        power3 = GameObject.Find("power3").GetComponent<Image>();
-		power4 = GameObject.Find("power4").GetComponent<Image>();
+		if(GameObject.Find("power1")){
+			power1 =GameObject.Find("power1").GetComponent<Image>();
+		}
+		if(GameObject.Find("power2")){
+        	power2 = GameObject.Find("power2").GetComponent<Image>();
+		}
+		if(GameObject.Find("power3")){
+        	power3 = GameObject.Find("power3").GetComponent<Image>();
+		}
+		if(GameObject.Find("power4")){
+			power4 = GameObject.Find("power4").GetComponent<Image>();
+		}
+		
 		isPreview = false;
 		// add audio
 		audioSource = gameObject.GetComponent<AudioSource>();
@@ -169,12 +178,16 @@ public class PlayerMovement : MonoBehaviour
 			{
 				transform.localScale = new Vector3(-horizontalMove, 1, 1);
 			}
-			Animation.anim.SetBool("running",true);
-			Animation.anim.SetBool("idle",false);
+			if(Animation.anim){
+				Animation.anim.SetBool("running",true);
+				Animation.anim.SetBool("idle",false);
+			}
 			isRunning = true;
 		}else{
-			Animation.anim.SetBool("running",false);
-			Animation.anim.SetBool("idle",true);
+			if(Animation.anim){
+				Animation.anim.SetBool("running",false);
+				Animation.anim.SetBool("idle",true);
+			}
 			isRunning = false;
 		}
 
@@ -218,13 +231,17 @@ public class PlayerMovement : MonoBehaviour
 			yield return new WaitForSeconds(0.375f);
 			if (isRunning)
 			{
-				Animation.anim.SetBool("running", true);
-				Animation.anim.SetBool("jump", false);
+				if(Animation.anim){
+					Animation.anim.SetBool("running", true);
+					Animation.anim.SetBool("jump", false);
+				}
 			}
 			else
 			{
-				Animation.anim.SetBool("idle", true);
-				Animation.anim.SetBool("jump", false);				
+				if(Animation.anim){
+					Animation.anim.SetBool("idle", true);
+					Animation.anim.SetBool("jump", false);
+				}
 			}
 		}
 

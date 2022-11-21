@@ -46,6 +46,7 @@ public class PlayerLife : MonoBehaviour
         //     m_MyAudioSource.volume = m_MySliderValue;
         // }
 
+
         // Change instruction image
         Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
         for (int i = 0; i < objs.Length; i++)
@@ -54,9 +55,15 @@ public class PlayerLife : MonoBehaviour
             // {
                 if (objs[i].name == "Picture")
                 {
-                    objs[i].gameObject.GetComponent<RawImage>().texture=Resources.Load<Texture2D>("instruction_new");
-                    objs[i].gameObject.GetComponent<RectTransform>().sizeDelta=new Vector2(1000,600);
-                    objs[i].gameObject.GetComponent<RectTransform>().rotation = Quaternion.EulerAngles(0f, 0f, 0f);
+                    if(objs[i].gameObject && objs[i].gameObject.GetComponent<RawImage>() && objs[i].gameObject.GetComponent<RawImage>().texture && Resources.Load<Texture2D>("instruction_new")){
+                        objs[i].gameObject.GetComponent<RawImage>().texture=Resources.Load<Texture2D>("instruction_new");
+                    }
+                    if(objs[i].gameObject && objs[i].gameObject.GetComponent<RectTransform>()){
+                        objs[i].gameObject.GetComponent<RectTransform>().sizeDelta=new Vector2(1000,600);
+                    }
+                    if(objs[i].gameObject && objs[i].gameObject.GetComponent<RectTransform>()){
+                        objs[i].gameObject.GetComponent<RectTransform>().rotation = Quaternion.EulerAngles(0f, 0f, 0f);
+                    }
                 }
             // }
         }
