@@ -8,7 +8,7 @@ public class SceneChanger : MonoBehaviour
     public void StartGame()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("level0-0");
+        SceneManager.LoadScene("level0-1");
     }
 
     public void SelectLevel()
