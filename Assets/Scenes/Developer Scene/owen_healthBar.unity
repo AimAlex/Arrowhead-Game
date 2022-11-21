@@ -429,11 +429,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0.09927912, g: 0.9150943, b: 0.7232434, a: 0.5}
   m_EffectDistance: {x: 1, y: 1}
   m_UseGraphicAlpha: 1
---- !u!1 &45439928 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7779201114725005833, guid: 266cf023449644c19bc9e21366f7b293, type: 3}
-  m_PrefabInstance: {fileID: 1107594517}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &48277129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,7 +1759,7 @@ GameObject:
   - component: {fileID: 436020916}
   m_Layer: 0
   m_Name: door1
-  m_TagString: Untagged
+  m_TagString: door1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1829,7 +1824,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436020913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -103.11, y: -12.7, z: 0}
+  m_LocalPosition: {x: -67.79, y: -12.7, z: 0}
   m_LocalScale: {x: 2.25875, y: 2.2567189, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1848,8 +1843,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e605d768e1d02274baa32be28878a361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Portal: {fileID: 1172148309}
-  Player: {fileID: 45439928}
+  isdoor1: 1
+  distance: 0.2
 --- !u!61 &436020917
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6088,7 +6083,7 @@ GameObject:
   - component: {fileID: 1172148312}
   m_Layer: 0
   m_Name: door2
-  m_TagString: Untagged
+  m_TagString: door2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6172,8 +6167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e605d768e1d02274baa32be28878a361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Portal: {fileID: 436020913}
-  Player: {fileID: 45439928}
+  isdoor1: 0
+  distance: 0.2
 --- !u!61 &1172148313
 BoxCollider2D:
   m_ObjectHideFlags: 0

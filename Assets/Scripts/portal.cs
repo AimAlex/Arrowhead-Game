@@ -13,11 +13,11 @@ public class portal : MonoBehaviour
     {
         if (isdoor1 == false)
         {
-            destination = GameObject.FindGameObjectWithTag("door1").GetComponent<Transform>();
+            destination = GameObject.Find("door1").transform;
         }
         else
         {
-            destination = GameObject.FindGameObjectWithTag("door2").GetComponent<Transform>();
+            destination = GameObject.Find("door2").transform;
         }
     }
 
