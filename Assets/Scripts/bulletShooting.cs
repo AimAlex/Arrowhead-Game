@@ -36,7 +36,7 @@ public class bulletShooting : MonoBehaviour
     }
 
     private void ShootItem(){
-        Debug.Log("shoot item");
+        // Debug.Log("shoot item");
         // prefab_shootItem=GameObject.Find("bullet");
         GameObject shotItem=Instantiate(prefab_shootItem);
         shotItem.transform.tag = "bullet";

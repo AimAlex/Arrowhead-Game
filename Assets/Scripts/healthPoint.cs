@@ -10,7 +10,7 @@ using Unity.VisualScripting;
 public class healthPoint : MonoBehaviour
 {
     private int hurt=0;
-    private int health = 4;
+    // private int health = 4;
     private PlayerMovement playerMovement;
     private AudioClip healthPointDownAudio;
     private healthbar h1;

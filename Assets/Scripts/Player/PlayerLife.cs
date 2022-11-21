@@ -22,7 +22,7 @@ public class PlayerLife : MonoBehaviour
     private string collisionItem="";
     public bool hurtStarted=false;
     AudioSource m_MyAudioSource;
-    private float m_MySliderValue=0.1f;
+    // private float m_MySliderValue=0.1f;
 
     private float timeRestart;
 
@@ -62,7 +62,7 @@ public class PlayerLife : MonoBehaviour
                         objs[i].gameObject.GetComponent<RectTransform>().sizeDelta=new Vector2(1000,600);
                     }
                     if(objs[i].gameObject && objs[i].gameObject.GetComponent<RectTransform>()){
-                        objs[i].gameObject.GetComponent<RectTransform>().rotation = Quaternion.EulerAngles(0f, 0f, 0f);
+                        objs[i].gameObject.GetComponent<RectTransform>().rotation = Quaternion.Euler(0f, 0f, 0f);
                     }
                 }
             // }

@@ -13,7 +13,7 @@ public class shootIem : MonoBehaviour
     {
         /*   gameObject.SetActive(false);*/
 
-        Debug.Log(transform.tag);
+        // Debug.Log(transform.tag);
 
     }
 
@@ -40,7 +40,7 @@ public class shootIem : MonoBehaviour
     public void shoot()
     {
 
-        Debug.Log("bullet start func");
+        // Debug.Log("bullet start func");
         var boss = GameObject.Find("Boss");
         this.transform.position = boss.transform.position;
         direction = new Vector3(FindObjectOfType<PlayerMovement>().rigidbody.position.x, FindObjectOfType<PlayerMovement>().rigidbody.position.y, 0) - this.transform.position;
