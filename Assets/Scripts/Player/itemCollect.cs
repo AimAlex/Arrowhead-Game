@@ -33,7 +33,7 @@ public class itemCollect : MonoBehaviour
     private GameObject popItem;
     private HashSet<GameObject> checkPopList = new HashSet<GameObject>();
     private HashSet<GameObject> needDeleteList = new HashSet<GameObject>();
-
+    private HashSet<GameObject> alreadyTouchWall = new HashSet<GameObject>();
 	private Color white = new Color(100,100,100);
 	private Color green = new Color(0,255,0);
     private PlayerMovement playerMovement;
@@ -315,15 +315,16 @@ public class itemCollect : MonoBehaviour
             if (itemNumber > 0)
             {
                 popItem = bagStack.Pop();
-                popItem.transform.position = transform.position + new Vector3(0, 0.8f, 0);
+                popItem.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
+                popItem.transform.position = transform.position + new Vector3(0, 0.4f, 0);
                 // item.GetComponent<BoxCollider2D>().isTrigger = false;
                 popItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                 popItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
                 popItem.SetActive(true);
                 if (player_face == 0){
-                    popItem.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x + 3, gameObject.GetComponent<Rigidbody2D>().velocity.y + 2);
+                    popItem.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x/3 + 3, gameObject.GetComponent<Rigidbody2D>().velocity.y/3 + 2.5f);
                 } else if (player_face == 1){
-                    popItem.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x - 3, gameObject.GetComponent<Rigidbody2D>().velocity.y + 2);
+                    popItem.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x/3 - 3, gameObject.GetComponent<Rigidbody2D>().velocity.y/3 + 2.5f);
                 }
 
                 checkPopList.Add(popItem);
@@ -380,12 +381,29 @@ public class itemCollect : MonoBehaviour
 
     private void CheckTouchGround(GameObject toolItem)
     {
+        
         // Debug.Log(Physics2D.OverlapCircle(toolItem.transform.GetChild(0).gameObject.transform.position, 0.7f, playerMovement.ground));
-        if (Physics2D.OverlapCircle(toolItem.transform.GetChild(0).gameObject.transform.position, 0.7f, playerMovement.ground))
+        // if (Physics2D.OverlapCircle(toolItem.transform.GetChild(0).gameObject.transform.position, 0.7f, playerMovement.ground))
+        Vector2 checkPos = toolItem.transform.GetChild(0).gameObject.transform.position;
+        Vector2 velocity = toolItem.GetComponent<Rigidbody2D>().velocity;
+        if (!alreadyTouchWall.Contains(toolItem) && Physics2D.OverlapArea(checkPos, checkPos + new Vector2(0.01f, 1.5f), playerMovement.ground)){  // close to upper ground
+            // Debug.Log("touch up wall");
+            toolItem.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            alreadyTouchWall.Add(toolItem);
+        } else if (!alreadyTouchWall.Contains(toolItem) && Physics2D.OverlapArea(checkPos, checkPos + new Vector2(1f, 0.01f), playerMovement.ground) || Physics2D.OverlapArea(checkPos, checkPos + new Vector2(-1f, 0.01f), playerMovement.ground)){
+            // Debug.Log("touch left or right wall");
+            if (toolItem.GetComponent<Rigidbody2D>().velocity.y > 0) {
+                toolItem.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            } else{
+                toolItem.GetComponent<Rigidbody2D>().velocity = new Vector2(0, velocity.y);
+            }
+            alreadyTouchWall.Add(toolItem);
+        }else if (Physics2D.OverlapArea(checkPos, checkPos + new Vector2(0.001f, -0.2f), playerMovement.ground))
         {
             toolItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             // toolItem.GetComponent<BoxCollider2D>().isTrigger = true;
             needDeleteList.Add(toolItem);
+            alreadyTouchWall.Remove(toolItem);
             // Debug.Log("touch ground");
         }
     }
