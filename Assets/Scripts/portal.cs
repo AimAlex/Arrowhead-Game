@@ -6,12 +6,13 @@ public class portal : MonoBehaviour
 
 {
     private Transform destination;
-    public bool isdoor1;
     public float distance = 0.2f;
     // Start is called before the first frame update
     void Start()
+
     {
-        if (isdoor1 == false)
+        var name = transform.name;
+        if (name=="door2")
         {
             destination = GameObject.Find("door1").transform;
         }
