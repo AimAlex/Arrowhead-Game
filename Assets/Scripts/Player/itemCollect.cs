@@ -14,7 +14,7 @@ public class itemCollect : MonoBehaviour
     [SerializeField] private string nextSceneName;
     // [SerializeField] private GameObject tool1Obj, tool2Obj, tool3Obj, tool4Obj, tool5Obj, tool6Obj;
     // private List<GameObject> collItemList=new List<GameObject>();
-    private GameObject tool1Obj, tool2Obj, tool3Obj, tool4Obj, tool5Obj, tool6Obj;
+    private GameObject tool1Obj, tool2Obj, tool3Obj, tool4Obj, tool5Obj, tool6Obj, passLevel, grayMask;
     
     public static int itemNumber = 0;
     private SpriteRenderer _renderer;
@@ -59,6 +59,13 @@ public class itemCollect : MonoBehaviour
         tool4Obj=GameObject.Find("tool4");
         tool5Obj=GameObject.Find("tool5");
         tool6Obj=GameObject.Find("tool6");
+        passLevel=GameObject.Find("passLevel");
+        grayMask=GameObject.Find("GrayMask");
+        if (SceneManager.GetActiveScene().name == "level1_1 1")
+        {
+            passLevel.SetActive(false);
+            grayMask.SetActive(false);
+        }
 
         if(tool1Obj!=null){
             tool1 = tool1Obj.GetComponent<Image>();
@@ -171,7 +178,16 @@ public class itemCollect : MonoBehaviour
             playerMovement.PlayAudio2(levelSuccessAudio);
             playerMovement.audioSource2.volume = 0.25f;
             FindObjectOfType<AnalyticsScript>().Success();
-            StartCoroutine(enterNextLevel());
+            if (SceneManager.GetActiveScene().name == "level1_1 1")
+            {
+                passLevel.SetActive(true);
+                grayMask.SetActive(true);
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                StartCoroutine(enterNextLevel());
+            }
             // SceneManager.LoadScene(nextSceneName);
         }else{
             if(tool4.color == Color.clear && tool5.color == Color.clear && tool6.color == Color.clear){
@@ -181,7 +197,17 @@ public class itemCollect : MonoBehaviour
                 playerMovement.PlayAudio2(levelSuccessAudio);
                 playerMovement.audioSource2.volume = 0.25f;
                 FindObjectOfType<AnalyticsScript>().Success();
-                StartCoroutine(enterNextLevel());
+                if (SceneManager.GetActiveScene().name == "level1_1 1")
+                {
+                    passLevel.SetActive(true);
+                    grayMask.SetActive(true);
+                    Time.timeScale = 0f;
+                }
+                else
+                {
+                    StartCoroutine(enterNextLevel());
+                }
+                // StartCoroutine(enterNextLevel());
                 // SceneManager.LoadScene(nextSceneName);
             }else{
                 FindObjectOfType<AnalyticsScript>().WrongCollection();
