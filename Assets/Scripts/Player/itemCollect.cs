@@ -69,8 +69,8 @@ public class itemCollect : MonoBehaviour
         }
         else
         {
-            passLevel.SetActive(false);
-            grayMask.SetActive(false);
+            // passLevel.SetActive(false);
+            // grayMask.SetActive(false);
         }
 
         timer = float.PositiveInfinity;
@@ -195,11 +195,12 @@ public class itemCollect : MonoBehaviour
             }
             else
             {
+                /*
                 passLevel.SetActive(true);
                 grayMask.SetActive(true);
                 Time.timeScale = 0f;
-                timer = Time.realtimeSinceStartup;
-                // StartCoroutine(enterNextLevel());
+                timer = Time.realtimeSinceStartup; */
+                StartCoroutine(enterNextLevel());
             }
             // SceneManager.LoadScene(nextSceneName);
         }else{
@@ -219,11 +220,12 @@ public class itemCollect : MonoBehaviour
                 }
                 else
                 {
+                    /*
                     passLevel.SetActive(true);
                     grayMask.SetActive(true);
                     Time.timeScale = 0f;
-                    timer = Time.realtimeSinceStartup;
-                    // StartCoroutine(enterNextLevel());
+                    timer = Time.realtimeSinceStartup; */
+                    StartCoroutine(enterNextLevel());
                 }
                 // StartCoroutine(enterNextLevel());
                 // SceneManager.LoadScene(nextSceneName);
