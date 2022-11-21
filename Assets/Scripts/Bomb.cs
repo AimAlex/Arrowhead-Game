@@ -20,15 +20,8 @@ public class Bomb: MonoBehaviour
     private PlayerMovement playerMovement;
     private AudioClip bombExplodeAudio;
     private  Color32 bombcolor;
-    public static Animator anim;
-    // Start is called before the first frame update
-    void Start()
-    {
-        anim = GetComponent<Animator>();
-        
-        //Debug.Log("anim="+anim.ToString());
-    }
 
+    // Start is called before the first frame update
 
 
 private void Awake()
@@ -46,17 +39,17 @@ void Update()
 {
     if (bomb1.GetComponent<SpriteRenderer>().color == bombcolor && pickupbomb.bomb_dict[bomb1.name])
     {
-        StartCoroutine(Explotion(bomb1));
+        StartCoroutine(Explotion(bomb1,bomb1.GetComponent<Animator>()));
     } else if (bomb2.GetComponent<SpriteRenderer>().color == bombcolor && pickupbomb.bomb_dict[bomb2.name])
     {
-        StartCoroutine(Explotion(bomb2));
+        StartCoroutine(Explotion(bomb2,bomb2.GetComponent<Animator>()));
     } else if (bomb3.GetComponent<SpriteRenderer>().color == bombcolor && pickupbomb.bomb_dict[bomb3.name])
     {
-        StartCoroutine(Explotion(bomb3));
+        StartCoroutine(Explotion(bomb3,bomb3.GetComponent<Animator>()));
     }
 }
 
-IEnumerator Explotion(GameObject bomb)
+IEnumerator Explotion(GameObject bomb, Animator anim)
 {
     pickupbomb.bomb_dict[bomb.name] = false;
     yield return new WaitForSeconds(1);
