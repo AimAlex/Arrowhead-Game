@@ -20,7 +20,15 @@ public class Bomb: MonoBehaviour
     private PlayerMovement playerMovement;
     private AudioClip bombExplodeAudio;
     private  Color32 bombcolor;
-    
+    public static Animator anim;
+    // Start is called before the first frame update
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+        
+        //Debug.Log("anim="+anim.ToString());
+    }
+
 
 
 private void Awake()
@@ -52,13 +60,20 @@ IEnumerator Explotion(GameObject bomb)
 {
     pickupbomb.bomb_dict[bomb.name] = false;
     yield return new WaitForSeconds(1);
-	
-	FindObjectOfType<BombAnimation>().second1=true;
+    anim.SetBool("bomb1", true);
+    anim.SetBool("Idle", false);
+	//FindObjectOfType<BombAnimation>().second1=true;
 	yield return new WaitForSeconds(1);
 	//bomb.GetComponent<SpriteRenderer>().color = Color.red;
-	FindObjectOfType<BombAnimation>().second2=true;
+	//FindObjectOfType<BombAnimation>().second2=true;
+    anim.SetBool("bomb2", true);
+    anim.SetBool("bomb1", false);
 	yield return new WaitForSeconds(1);
-	FindObjectOfType<BombAnimation>().isExplode=true;
+    anim.SetBool("explode", true);
+    Debug.Log("anim="+anim.ToString());
+    anim.SetBool("bomb2", false);
+    
+	//FindObjectOfType<BombAnimation>().isExplode=true;
 	yield return new WaitForSeconds(1);
     // Debug.Log("Explotion: " + pickupbomb.bomb_dict[bomb.name]);
     // Coll.enabled = false;
@@ -85,12 +100,15 @@ IEnumerator Explotion(GameObject bomb)
     }
     
     //Destroy(bomb);
+    
     bomb.GetComponent<SpriteRenderer>().color = Color.clear;
     bomb_position = bomb.transform.position;
     bomb_position.x = -27.9f;
     bomb_position.y = 4.48f;
     bomb.GetComponent<Transform>().position = bomb_position;
-    FindObjectOfType<BombAnimation>().idle=true;
+    anim.SetBool("Idle", true);
+    anim.SetBool("explode", false);
+    //FindObjectOfType<BombAnimation>().idle=true;
     
 }
     
