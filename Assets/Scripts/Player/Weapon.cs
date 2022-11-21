@@ -138,6 +138,16 @@ public class Weapon : MonoBehaviour
                     Debug.Log("Hit Enemy");
                     Destroy(item);
                 }
+                else if(hitInfo.transform.tag == "Boss")
+                {
+                    Debug.Log("Hit Boss");
+                    bool isStillAlive = FindObjectOfType<bossBar>().UpdateHurt();
+                    if (!isStillAlive)
+                    {
+                        Destroy(item);
+                    }
+                        
+                }
             }else{
                 lineRenderer.SetPosition(0, firePoint.position);
                 lineRenderer.SetPosition(1, firePoint.position + (Vector3)direction*100); 

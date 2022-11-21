@@ -137,6 +137,20 @@ public class PlayerLife : MonoBehaviour
                 }
             }
         }
+        else if (col.gameObject.CompareTag("bullet"))
+        {
+                bool isStillAlive = FindObjectOfType<healthPoint>().UpdateHurt();
+                if (!isStillAlive)
+                {
+                    FindObjectOfType<AnalyticsScript>().KilledByEnemy();
+                    FindObjectOfType<Animation>().isDead = true;
+                }
+                else
+                {
+                    FindObjectOfType<Animation>().isHurt = true;
+                }
+            
+        }
     }
 
     private void OnCollisionExit2D(Collision2D col){
@@ -147,6 +161,10 @@ public class PlayerLife : MonoBehaviour
         else if (col.gameObject.CompareTag("Enemy"))
         {
             collisionStarted=false;
+        }
+        else if (col.gameObject.CompareTag("bullet"))
+        {
+            collisionStarted = false;
         }
 
     }
