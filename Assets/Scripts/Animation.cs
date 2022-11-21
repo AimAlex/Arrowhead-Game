@@ -23,7 +23,7 @@ public class Animation : MonoBehaviour
     private PlayerMovement playerMovement;
     private AudioClip dieAudio;
     public bool isHurt=false;
-    private float hurtDur=1f;
+    private float hurtDur=0.8f;
     private bool hurtDurStarted=false;
     // public bool isRestart = false;
     // private float restartDur = 1.0f;
