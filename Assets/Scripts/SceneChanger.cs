@@ -32,6 +32,11 @@ public class SceneChanger : MonoBehaviour
         Application.Quit();
     }
 
+    public void StartLevelDemo()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("level1_1 1");
+    }
 	public void StartLevel1_0()
     {
         Time.timeScale = 1;
