@@ -67,7 +67,12 @@ public class itemCollect : MonoBehaviour
             passLevel.SetActive(false);
             grayMask.SetActive(false);
         }
-        
+        else
+        {
+            passLevel.SetActive(false);
+            grayMask.SetActive(false);
+        }
+
         timer = float.PositiveInfinity;
 
         if(tool1Obj!=null){
@@ -190,7 +195,11 @@ public class itemCollect : MonoBehaviour
             }
             else
             {
-                StartCoroutine(enterNextLevel());
+                passLevel.SetActive(true);
+                grayMask.SetActive(true);
+                Time.timeScale = 0f;
+                timer = Time.realtimeSinceStartup;
+                // StartCoroutine(enterNextLevel());
             }
             // SceneManager.LoadScene(nextSceneName);
         }else{
@@ -210,7 +219,11 @@ public class itemCollect : MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine(enterNextLevel());
+                    passLevel.SetActive(true);
+                    grayMask.SetActive(true);
+                    Time.timeScale = 0f;
+                    timer = Time.realtimeSinceStartup;
+                    // StartCoroutine(enterNextLevel());
                 }
                 // StartCoroutine(enterNextLevel());
                 // SceneManager.LoadScene(nextSceneName);
