@@ -182,6 +182,7 @@ public class itemCollect : MonoBehaviour
             {
                 passLevel.SetActive(true);
                 grayMask.SetActive(true);
+                Time.timeScale = 0f;
             }
             else
             {
@@ -200,6 +201,7 @@ public class itemCollect : MonoBehaviour
                 {
                     passLevel.SetActive(true);
                     grayMask.SetActive(true);
+                    Time.timeScale = 0f;
                 }
                 else
                 {
