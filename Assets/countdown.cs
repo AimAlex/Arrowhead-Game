@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class countdown : MonoBehaviour
 {
-    private float startTime=3f;
-    private float currentTime=3f;
-    public bool resetTime;
+    private float startTime=5f;
+    private float currentTime;
+    private bool resetTime;
     private float timer;
 
     // Start is called before the first frame update
