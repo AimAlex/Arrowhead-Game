@@ -10,7 +10,7 @@ public class Bomb: MonoBehaviour
 {
 
     public float waitTime;
-    public float radius = 2;
+    public float radius = 1.5f;
     private Collider2D Coll;
     private Rigidbody2D Rb;
     public GameObject bomb1, bomb2, bomb3;
@@ -65,15 +65,9 @@ IEnumerator Explotion(GameObject bomb, Animator anim)
     anim.SetBool("explode", true);
     Debug.Log("anim="+anim.ToString());
     anim.SetBool("bomb2", false);
-    
-	//FindObjectOfType<BombAnimation>().isExplode=true;
-	yield return new WaitForSeconds(1);
-    // Debug.Log("Explotion: " + pickupbomb.bomb_dict[bomb.name]);
-    // Coll.enabled = false;
-    bomb_position = bomb.transform.position;
     playerMovement.PlayAudio2(bombExplodeAudio);
-    // Debug.Log(bomb_position);
-    // Debug.Log(radius);
+
+    bomb_position = bomb.transform.position;
     Collider2D[] CollCheck = Physics2D.OverlapCircleAll(bomb_position, radius);
 
     foreach (var item in CollCheck)
@@ -91,6 +85,15 @@ IEnumerator Explotion(GameObject bomb, Animator anim)
             Destroy(item.gameObject);
         }
     }
+	//FindObjectOfType<BombAnimation>().isExplode=true;
+	yield return new WaitForSeconds(0.5f);
+    // Debug.Log("Explotion: " + pickupbomb.bomb_dict[bomb.name]);
+    // Coll.enabled = false;
+    
+    
+    // Debug.Log(bomb_position);
+    // Debug.Log(radius);
+
     
     //Destroy(bomb);
     
