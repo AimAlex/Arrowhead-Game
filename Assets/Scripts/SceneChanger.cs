@@ -153,6 +153,12 @@ public class SceneChanger : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("level4-3");
     }
+    
+    public void PassAllLevels()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Level4PassScene");
+    }
 
     public void ReturnToMenu()
     {
