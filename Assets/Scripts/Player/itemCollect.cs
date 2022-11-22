@@ -237,15 +237,15 @@ public class itemCollect : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log("timer = " + timer);
-        Debug.Log("time = " + Time.realtimeSinceStartup);
+        // Debug.Log("timer = " + timer);
+        // Debug.Log("time = " + Time.realtimeSinceStartup);
         if (Time.realtimeSinceStartup - timer > 5f)
         {
             timer = float.PositiveInfinity;
             Time.timeScale = 1f;
             SceneManager.LoadScene(nextSceneName);
-            Debug.Log("timer = " + timer);
-            Debug.Log("scene name = " + nextSceneName);
+            // Debug.Log("timer = " + timer);
+            // Debug.Log("scene name = " + nextSceneName);
         }
         
         if (Input.GetKeyDown(KeyCode.D)){
@@ -260,21 +260,12 @@ public class itemCollect : MonoBehaviour
             checkPopList.Remove(deleteItem);
         }
         needDeleteList.Clear();
-        // foreach(var item in checkPopList){
-        //     Debug.Log("checkPopList: " + item.name);
-        // }
         if (CanBePick)
         {
             if (Input.GetKeyDown(KeyCode.U))
             {
                 if (bagStack.Count < 3)
                 {
-                    // if (onPickObject != null){
-                    //     Debug.Log("pick item: " + onPickObject.name);
-                    //     foreach(var item in checkPopList){
-                    //         Debug.Log("checkPopList: " + item.name);
-                    //     }
-                    // }
                     playerMovement.PlayAudio(pickAudio);
                     ++itemNumber;
                     onPickObject.SetActive(false);
@@ -334,7 +325,6 @@ public class itemCollect : MonoBehaviour
                 popItem = bagStack.Pop();
                 popItem.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
                 popItem.transform.position = transform.position + new Vector3(0, 0.4f, 0);
-                // item.GetComponent<BoxCollider2D>().isTrigger = false;
                 popItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                 popItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
                 popItem.SetActive(true);
@@ -399,7 +389,6 @@ public class itemCollect : MonoBehaviour
     private void CheckTouchGround(GameObject toolItem)
     {
         
-        // Debug.Log(Physics2D.OverlapCircle(toolItem.transform.GetChild(0).gameObject.transform.position, 0.7f, playerMovement.ground));
         // if (Physics2D.OverlapCircle(toolItem.transform.GetChild(0).gameObject.transform.position, 0.7f, playerMovement.ground))
         Vector2 checkPos = toolItem.transform.GetChild(0).gameObject.transform.position;
         Vector2 velocity = toolItem.GetComponent<Rigidbody2D>().velocity;
@@ -419,7 +408,6 @@ public class itemCollect : MonoBehaviour
         if (Physics2D.OverlapArea(checkPos, checkPos + new Vector2(0.001f, -0.4f), playerMovement.ground))
         {
             toolItem.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-            // toolItem.GetComponent<BoxCollider2D>().isTrigger = true;
             needDeleteList.Add(toolItem);
             alreadyTouchWall.Remove(toolItem);
             // Debug.Log("touch ground");
