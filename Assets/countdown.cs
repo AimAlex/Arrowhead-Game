@@ -8,7 +8,7 @@ public class countdown : MonoBehaviour
 {
     private float startTime=5f;
     private float currentTime;
-    public bool resetTime;
+    private bool resetTime;
     private float timer;
 
     // Start is called before the first frame update
