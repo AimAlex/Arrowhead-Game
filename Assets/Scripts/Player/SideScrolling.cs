@@ -17,7 +17,7 @@ public class SideScrolling : MonoBehaviour
     private Camera mainCamera;
     public int pathIndex;
     private bool[] pathPiontCheck;
-    public float cameraPreviewSize = 30f;
+    private float cameraPreviewSize = 18f;
     public List<GameObject> pathPoints;
     public List<float> pathZoom;
     public List<float> pathSpeed;
@@ -124,6 +124,7 @@ public class SideScrolling : MonoBehaviour
             inPreviewMode = false;
         }
         if (inPreviewMode){
+            Debug.Log("inPreviewMode" + cameraPreviewSize);
             mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, cameraPreviewSize, Time.deltaTime);
         }
         else if (!inPreviewMode){
