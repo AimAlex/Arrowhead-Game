@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class countdown : MonoBehaviour
 {
-    private float startTime=3f;
-    private float currentTime=3f;
+    private float startTime=5f;
+    private float currentTime;
     public bool resetTime;
     private float timer;
 
