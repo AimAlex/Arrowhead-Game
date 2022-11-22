@@ -22,7 +22,7 @@ public class itemCollect : MonoBehaviour
     // bag varialbes
     bool CanBePick = false;
     private float timer;
-    private string[] levels = {"level1_1 1", "level0-1", "level0-2", "level0-3"};
+    private string[] levels = {"level1_1 1", "level0-1", "level0-2", "level0-3", "level3-0", "level3-1", "level3-2", "level3-3"};
     public static GameObject onPickObject;
     public static Stack<GameObject> bagStack = new Stack<GameObject> ();
     public static Image tool1;

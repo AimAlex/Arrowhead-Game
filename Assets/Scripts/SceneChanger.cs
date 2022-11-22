@@ -124,6 +124,12 @@ public class SceneChanger : MonoBehaviour
         SceneManager.LoadScene("level3-3");
     }
     
+    public void PassLevel3()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Level3PassScene");
+    }
+    
     public void StartLevel4_0()
     {
         Time.timeScale = 1;
