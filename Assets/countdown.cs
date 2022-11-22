@@ -7,10 +7,10 @@ using UnityEngine;
 public class countdown : MonoBehaviour
 {
     private float startTime=3f;
-    private float currentTime;
-    // public TextMeshProUGUI TextPro;
-    public static bool resetTime;
-    
+    private float currentTime=3f;
+    public bool resetTime;
+    private float timer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,17 +24,17 @@ public class countdown : MonoBehaviour
     void Update()
     {
         if(resetTime){
+            timer=Time.realtimeSinceStartup;;
             gameObject.SetActive(true);
             resetTime=false;
-            currentTime=startTime;
             print("reset time true");
         }
-        currentTime-=1*Time.deltaTime;
-        print("currentTime="+currentTime.ToString());
+        currentTime=startTime-(Time.realtimeSinceStartup - timer);
         if(currentTime<=0){
-            gameObject.SetActive(false);
-            print("hide countdown");
-        }
+        this.GetComponent<TextMeshProUGUI>().text="0s left before restart";
+
+        }else{
         this.GetComponent<TextMeshProUGUI>().text=currentTime.ToString("0")+"s left before restart";
+        }
     }
 }
