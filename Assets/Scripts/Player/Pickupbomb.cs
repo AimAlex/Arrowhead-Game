@@ -77,7 +77,7 @@ public class Pickupbomb : MonoBehaviour
     
     private void DropBomb(GameObject bomb)
     {
-
+        bomb.GetComponent<Rigidbody2D>().drag = 0.5f;
         playerMovement.PlayAudio2(bombDropAudio);
         // Debug.Log(bomb.name);
         bomb_dict[bomb.name] = true;
@@ -95,9 +95,9 @@ public class Pickupbomb : MonoBehaviour
         bomb.GetComponent<Transform>().position = bomb_position;
         // Debug.Log(player_face);
         if (player_face == 0){
-            bomb.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x/3 + 4, player.GetComponent<Rigidbody2D>().velocity.y/3 + 2);
+            bomb.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x/2.5f + 4, player.GetComponent<Rigidbody2D>().velocity.y/2.5f + 3);
         } else if (player_face == 1){
-            bomb.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x/3 - 4, player.GetComponent<Rigidbody2D>().velocity.y/3 + 2);
+            bomb.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x/2.5f - 4, player.GetComponent<Rigidbody2D>().velocity.y/2.5f + 3);
         }
         bomb_count+=1;
 		
