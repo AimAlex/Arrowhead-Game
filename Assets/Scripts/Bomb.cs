@@ -79,8 +79,9 @@ IEnumerator Explotion(GameObject bomb, Animator anim)
                     && !item.CompareTag("Booster") 
                         &&!item.CompareTag("Treasure")
                             &&!item.CompareTag("indestructible")
-                            &&item.name!="Square"
-                                &&!item.CompareTag("Finish")
+                                &&item.name!="Square"
+                                    &&!item.CompareTag("Finish")
+                                        &&!item.CompareTag("entry")
             )
         {
             // Debug.Log(item);
