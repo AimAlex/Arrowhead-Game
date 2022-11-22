@@ -25,7 +25,7 @@ public class BombAnimation : MonoBehaviour
         
         if (isExplode)
         {
-            Debug.Log("explode");
+            // Debug.Log("explode");
             anim.SetBool("explode", true);
             anim.SetBool("bomb2", false);
             isExplode = false;
@@ -34,14 +34,14 @@ public class BombAnimation : MonoBehaviour
         }
         else if (second1)
         {
-            Debug.Log("bomb1");
+            // Debug.Log("bomb1");
             anim.SetBool("bomb1", true);
             anim.SetBool("Idle", false);
             second1 = false;
         }
         else if (second2)
         {
-            Debug.Log("bomb2");
+            // Debug.Log("bomb2");
             anim.SetBool("bomb2", true);
             anim.SetBool("bomb1", false);
             second2 = false;
@@ -51,7 +51,7 @@ public class BombAnimation : MonoBehaviour
             anim.SetBool("Idle", true);
             anim.SetBool("explode", false);
             idle = false;
-            Debug.Log("Idle");
+            // Debug.Log("Idle");
         }
     }
 }

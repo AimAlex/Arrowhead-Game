@@ -244,7 +244,7 @@ public class PlayerLife : MonoBehaviour
                     restartStart = false;
                     Animation.anim.SetBool("restart", false);
                     Animation.anim.SetBool("idle", true);
-                    Debug.Log("restart end");
+                    // Debug.Log("restart end");
                     RestartLevel();
                 }
 
