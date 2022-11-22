@@ -47,27 +47,6 @@ public class PlayerLife : MonoBehaviour
         // }
 
 
-        // Change instruction image
-        Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
-        for (int i = 0; i < objs.Length; i++)
-        {
-            // if (objs[i].hideFlags == HideFlags.None)
-            // {
-                if (objs[i].name == "Picture")
-                {
-                    if(objs[i].gameObject && objs[i].gameObject.GetComponent<RawImage>() && objs[i].gameObject.GetComponent<RawImage>().texture && Resources.Load<Texture2D>("instruction_new")){
-                        objs[i].gameObject.GetComponent<RawImage>().texture=Resources.Load<Texture2D>("instruction_new");
-                    }
-                    if(objs[i].gameObject && objs[i].gameObject.GetComponent<RectTransform>()){
-                        objs[i].gameObject.GetComponent<RectTransform>().sizeDelta=new Vector2(1000,600);
-                    }
-                    if(objs[i].gameObject && objs[i].gameObject.GetComponent<RectTransform>()){
-                        objs[i].gameObject.GetComponent<RectTransform>().rotation = Quaternion.Euler(0f, 0f, 0f);
-                    }
-                }
-            // }
-        }
-
         //setup destination tag and collider
         var checkObj=GameObject.Find("Destination");
         if(checkObj!=null){

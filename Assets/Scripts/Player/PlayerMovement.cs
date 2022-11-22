@@ -122,8 +122,8 @@ public class PlayerMovement : MonoBehaviour
 		// add audio
 		audioSource = gameObject.GetComponent<AudioSource>();
 		audioSource2 = GameObject.Find("Grid").GetComponent<AudioSource>();
-		audioSource.volume = 0.25f;
-		audioSource2.volume = 0.25f;
+		audioSource.volume = 0.05f;
+		audioSource2.volume = 0.1f;
 		jumpAudio = Resources.Load<AudioClip>("music/jump");
 		dashAudio = Resources.Load<AudioClip>("music/dash");
 		pickPowerAudio = Resources.Load<AudioClip>("music/DM-CGS-15");

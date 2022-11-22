@@ -20,7 +20,9 @@ public class healthPoint : MonoBehaviour
         hurt=0;
         playerMovement = gameObject.GetComponent<PlayerMovement>();
         healthPointDownAudio = Resources.Load<AudioClip>("music/DM-CGS-30");
-        h1=GameObject.Find("Health Bar").GetComponent<healthbar>();
+        if (GameObject.Find("Health Bar") != null){
+            h1 = GameObject.Find("Health Bar").GetComponent<healthbar>();
+        }
     }
 
 
