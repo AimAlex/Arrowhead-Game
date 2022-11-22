@@ -6,10 +6,10 @@ public class Instruction_manager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] public GameObject instructionObj;
-    private bool instrShow;
+    // private bool instrShow;
     void Start()
     {
-        instrShow = false;
+        // instrShow = false;
         instructionObj.SetActive(false);
     }
 
