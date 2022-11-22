@@ -22,7 +22,6 @@ public class itemCollect : MonoBehaviour
     // bag varialbes
     bool CanBePick = false;
     private float timer;
-    private string[] levels = {"level1_1 1", "level0-1", "level0-2", "level0-3", "level3-0", "level3-1", "level3-2", "level3-3", "level1-0", "level1_1", "level1_2", "level1_3", "level4-0", "level4-1", "level4-2", "level4-3"};
     public static GameObject onPickObject;
     public static Stack<GameObject> bagStack = new Stack<GameObject> ();
     public static Image tool1;
@@ -63,11 +62,9 @@ public class itemCollect : MonoBehaviour
         tool6Obj=GameObject.Find("tool6");
         passLevel=GameObject.Find("passLevel");
         grayMask=GameObject.Find("GrayMask");
-        if (Array.IndexOf(levels, SceneManager.GetActiveScene().name) != -1)
-        {
-            passLevel.SetActive(false);
-            grayMask.SetActive(false);
-        }
+        
+        passLevel.SetActive(false);
+        grayMask.SetActive(false);
 
         timer = float.PositiveInfinity;
 
@@ -182,17 +179,12 @@ public class itemCollect : MonoBehaviour
             playerMovement.PlayAudio2(levelSuccessAudio);
             playerMovement.audioSource2.volume = 0.25f;
             FindObjectOfType<AnalyticsScript>().Success();
-            if (Array.IndexOf(levels, SceneManager.GetActiveScene().name) != -1)
-            {
-                passLevel.SetActive(true);
-                grayMask.SetActive(true);
-                Time.timeScale = 0f;
-                timer = Time.realtimeSinceStartup;
-            }
-            else
-            {
-                StartCoroutine(enterNextLevel());
-            }
+            
+            passLevel.SetActive(true);
+            grayMask.SetActive(true);
+            Time.timeScale = 0f;
+            timer = Time.realtimeSinceStartup;
+            // StartCoroutine(enterNextLevel());
             // SceneManager.LoadScene(nextSceneName);
         }else{
             if(tool4.color == Color.clear && tool5.color == Color.clear && tool6.color == Color.clear){
@@ -202,17 +194,11 @@ public class itemCollect : MonoBehaviour
                 playerMovement.PlayAudio2(levelSuccessAudio);
                 playerMovement.audioSource2.volume = 0.25f;
                 FindObjectOfType<AnalyticsScript>().Success();
-                if (Array.IndexOf(levels, SceneManager.GetActiveScene().name) != -1)
-                {
-                    passLevel.SetActive(true);
-                    grayMask.SetActive(true);
-                    Time.timeScale = 0f;
-                    timer = Time.realtimeSinceStartup;
-                }
-                else
-                {
-                    StartCoroutine(enterNextLevel());
-                }
+                
+                passLevel.SetActive(true);
+                grayMask.SetActive(true);
+                Time.timeScale = 0f;
+                timer = Time.realtimeSinceStartup;
                 // StartCoroutine(enterNextLevel());
                 // SceneManager.LoadScene(nextSceneName);
             }else{
