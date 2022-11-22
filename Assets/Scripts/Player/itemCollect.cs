@@ -182,6 +182,13 @@ public class itemCollect : MonoBehaviour
             
             passLevel.SetActive(true);
             grayMask.SetActive(true);
+
+            GameObject tmp = GameObject.Find("popup");
+            if (tmp)
+            {
+                tmp.SetActive(false);
+            }
+            
             Time.timeScale = 0f;
             timer = Time.realtimeSinceStartup;
             // StartCoroutine(enterNextLevel());
@@ -197,6 +204,9 @@ public class itemCollect : MonoBehaviour
                 
                 passLevel.SetActive(true);
                 grayMask.SetActive(true);
+                
+                
+                
                 Time.timeScale = 0f;
                 timer = Time.realtimeSinceStartup;
                 // StartCoroutine(enterNextLevel());
