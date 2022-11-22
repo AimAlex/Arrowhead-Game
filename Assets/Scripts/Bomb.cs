@@ -63,7 +63,7 @@ IEnumerator Explotion(GameObject bomb, Animator anim)
     anim.SetBool("bomb1", false);
 	yield return new WaitForSeconds(1);
     anim.SetBool("explode", true);
-    Debug.Log("anim="+anim.ToString());
+    // Debug.Log("anim="+anim.ToString());
     anim.SetBool("bomb2", false);
     playerMovement.PlayAudio2(bombExplodeAudio);
 
