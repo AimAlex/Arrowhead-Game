@@ -17,7 +17,7 @@ public class SideScrolling : MonoBehaviour
     private Camera mainCamera;
     public int pathIndex;
     private bool[] pathPiontCheck;
-    private float cameraPreviewSize = 18f;
+    public float cameraPreviewSize = 18f;
     public List<GameObject> pathPoints;
     public List<float> pathZoom;
     public List<float> pathSpeed;
