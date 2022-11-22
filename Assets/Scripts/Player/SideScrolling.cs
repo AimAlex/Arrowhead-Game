@@ -124,7 +124,7 @@ public class SideScrolling : MonoBehaviour
             inPreviewMode = false;
         }
         if (inPreviewMode){
-            Debug.Log("inPreviewMode" + cameraPreviewSize);
+            // Debug.Log("inPreviewMode" + cameraPreviewSize);
             mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, cameraPreviewSize, Time.deltaTime);
         }
         else if (!inPreviewMode){
