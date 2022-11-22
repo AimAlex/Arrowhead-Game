@@ -6,7 +6,7 @@ public class SideScrolling : MonoBehaviour
     public Transform tourCamera;
     private Transform player;
     private Vector3 startPosition, initPosition;
-    [SerializeField] private float smoothing;
+    // [SerializeField] private float smoothing;
     private Vector3 direction = Vector3.zero;
     private Vector3 speedForward;
     private Vector3 speedBack;
@@ -29,7 +29,7 @@ public class SideScrolling : MonoBehaviour
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         // tourPosition variable, when use the tour camera, must uncomment next line
         // camaraMove = true;
-        smoothing = 1.5f;
+        // smoothing = 1.5f;
         pathIndex = 0;
     }
     private void Start(){
@@ -140,8 +140,6 @@ public class SideScrolling : MonoBehaviour
     private void InitCamera(){
         Vector3 cameraPosition = transform.position;
         cameraPosition.x = player.position.x;
-        //cameraPosition.y = player.position.y + startPosition.y;
-        //cameraPosition.y = player.position.y;
         cameraPosition.y = player.position.y + 3;
         if (cameraPosition != transform.position)
         {

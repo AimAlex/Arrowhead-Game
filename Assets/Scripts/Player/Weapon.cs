@@ -130,13 +130,23 @@ public class Weapon : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Items Are Full");
+                        // Debug.Log("Items Are Full");
                     }
                 }
                 else if(hitInfo.transform.tag == "Enemy")
                 {
-                    Debug.Log("Hit Enemy");
+                    // Debug.Log("Hit Enemy");
                     Destroy(item);
+                }
+                else if(hitInfo.transform.tag == "Boss")
+                {
+                    // Debug.Log("Hit Boss");
+                    bool isStillAlive = FindObjectOfType<bossBar>().UpdateHurt();
+                    if (!isStillAlive)
+                    {
+                        Destroy(item);
+                    }
+                        
                 }
             }else{
                 lineRenderer.SetPosition(0, firePoint.position);

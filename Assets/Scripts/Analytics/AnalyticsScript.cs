@@ -120,11 +120,11 @@ public class AnalyticsScript : MonoBehaviour
             yield return www.SendWebRequest();
             if (www.result != UnityWebRequest.Result.Success)
             {
-                Debug.Log(www.error);
+                // Debug.Log(www.error);
             }
             else
             {
-                Debug.Log("Form1 upload complete!");
+                // Debug.Log("Form1 upload complete!");
             }
         }
     }
@@ -145,11 +145,11 @@ public class AnalyticsScript : MonoBehaviour
             yield return www.SendWebRequest();
             if (www.result != UnityWebRequest.Result.Success)
             {
-                Debug.Log(www.error);
+                // Debug.Log(www.error);
             }
             else
             {
-                Debug.Log("Form upload complete!");
+                // Debug.Log("Form upload complete!");
             }
         }
     }
@@ -170,11 +170,11 @@ public class AnalyticsScript : MonoBehaviour
             yield return www.SendWebRequest();
             if (www.result != UnityWebRequest.Result.Success)
             {
-                Debug.Log(www.error);
+                // Debug.Log(www.error);
             }
             else
             {
-                Debug.Log("Form2 upload complete!");
+                // Debug.Log("Form2 upload complete!");
             }
         }
     }

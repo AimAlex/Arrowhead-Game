@@ -10,7 +10,7 @@ using Unity.VisualScripting;
 public class healthPoint : MonoBehaviour
 {
     private int hurt=0;
-    private int health = 4;
+    // private int health = 4;
     private PlayerMovement playerMovement;
     private AudioClip healthPointDownAudio;
     private healthbar h1;
@@ -20,7 +20,9 @@ public class healthPoint : MonoBehaviour
         hurt=0;
         playerMovement = gameObject.GetComponent<PlayerMovement>();
         healthPointDownAudio = Resources.Load<AudioClip>("music/DM-CGS-30");
-        h1=GameObject.Find("Health Bar").GetComponent<healthbar>();
+        if (GameObject.Find("Health Bar") != null){
+            h1 = GameObject.Find("Health Bar").GetComponent<healthbar>();
+        }
     }
 
 

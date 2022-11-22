@@ -32,6 +32,26 @@ public class SceneChanger : MonoBehaviour
         Application.Quit();
     }
 
+    public void StartLevelDemo()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("level1_1 1");
+    }
+    public void StartLevel0_2()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("level0-2");
+    }
+    public void StartLevel0_3()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("level0-3");
+    }
+    public void PassTutorial()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("TutorialPassScene");
+    }
 	public void StartLevel1_0()
     {
         Time.timeScale = 1;
@@ -104,6 +124,12 @@ public class SceneChanger : MonoBehaviour
         SceneManager.LoadScene("level3-3");
     }
     
+    public void PassLevel3()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Level3PassScene");
+    }
+    
     public void StartLevel4_0()
     {
         Time.timeScale = 1;
@@ -126,6 +152,12 @@ public class SceneChanger : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("level4-3");
+    }
+    
+    public void PassAllLevels()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Level4PassScene");
     }
 
     public void ReturnToMenu()

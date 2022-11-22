@@ -12,8 +12,8 @@ public class backgroundStarMovement : MonoBehaviour
     private Vector2 endPosition=new Vector2(120,-30);
     private int verticalDir = 0;
     private int horizontalDir = 0;
-    private float verticalDistance = 0;
-    private float horizontalDistance = 0;
+    // private float verticalDistance = 0;
+    // private float horizontalDistance = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class backgroundStarMovement : MonoBehaviour
         transform.Translate(verticalDir * speedY * Time.deltaTime * Vector3.up);
         transform.Translate(horizontalDir * speedX * Time.deltaTime * Vector3.right);
         if (transform.position.x > endPosition.x) {
-            Debug.Log("reach vertical distance goal");
+            // Debug.Log("reach vertical distance goal");
             this.transform.position=startPosition;
         }
     }

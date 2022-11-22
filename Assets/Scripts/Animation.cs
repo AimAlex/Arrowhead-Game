@@ -50,8 +50,16 @@ public class Animation : MonoBehaviour
         
         if(hurtDurStarted){
             if(Time.time-timer_hurt>hurtDur){
-                anim.SetBool("idle",true);
-                anim.SetBool("hurt",false);
+                if (FindObjectOfType<PlayerMovement>().isRunning)
+                {
+                    anim.SetBool("running", true);
+                    anim.SetBool("hurt", false);
+                }
+                else
+                {
+                    anim.SetBool("idle",true);
+                    anim.SetBool("hurt",false);
+                }
                 isHurt=false;
                 hurtDurStarted=false;
                 FindObjectOfType<PlayerLife>().hurtStarted=false;

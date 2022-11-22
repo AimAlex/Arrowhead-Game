@@ -22,7 +22,7 @@ public class PlayerLife : MonoBehaviour
     private string collisionItem="";
     public bool hurtStarted=false;
     AudioSource m_MyAudioSource;
-    private float m_MySliderValue=0.1f;
+    // private float m_MySliderValue=0.1f;
 
     private float timeRestart;
 
@@ -46,27 +46,6 @@ public class PlayerLife : MonoBehaviour
         //     m_MyAudioSource.volume = m_MySliderValue;
         // }
 
-
-        // Change instruction image
-        Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
-        for (int i = 0; i < objs.Length; i++)
-        {
-            // if (objs[i].hideFlags == HideFlags.None)
-            // {
-                if (objs[i].name == "Picture")
-                {
-                    if(objs[i].gameObject && objs[i].gameObject.GetComponent<RawImage>() && objs[i].gameObject.GetComponent<RawImage>().texture && Resources.Load<Texture2D>("instruction_new")){
-                        objs[i].gameObject.GetComponent<RawImage>().texture=Resources.Load<Texture2D>("instruction_new");
-                    }
-                    if(objs[i].gameObject && objs[i].gameObject.GetComponent<RectTransform>()){
-                        objs[i].gameObject.GetComponent<RectTransform>().sizeDelta=new Vector2(1000,600);
-                    }
-                    if(objs[i].gameObject && objs[i].gameObject.GetComponent<RectTransform>()){
-                        objs[i].gameObject.GetComponent<RectTransform>().rotation = Quaternion.EulerAngles(0f, 0f, 0f);
-                    }
-                }
-            // }
-        }
 
         //setup destination tag and collider
         var checkObj=GameObject.Find("Destination");
@@ -137,6 +116,20 @@ public class PlayerLife : MonoBehaviour
                 }
             }
         }
+        else if (col.gameObject.CompareTag("bullet"))
+        {
+                bool isStillAlive = FindObjectOfType<healthPoint>().UpdateHurt();
+                if (!isStillAlive)
+                {
+                    FindObjectOfType<AnalyticsScript>().KilledByEnemy();
+                    FindObjectOfType<Animation>().isDead = true;
+                }
+                else
+                {
+                    FindObjectOfType<Animation>().isHurt = true;
+                }
+            
+        }
     }
 
     private void OnCollisionExit2D(Collision2D col){
@@ -147,6 +140,10 @@ public class PlayerLife : MonoBehaviour
         else if (col.gameObject.CompareTag("Enemy"))
         {
             collisionStarted=false;
+        }
+        else if (col.gameObject.CompareTag("bullet"))
+        {
+            collisionStarted = false;
         }
 
     }
@@ -226,7 +223,7 @@ public class PlayerLife : MonoBehaviour
                     restartStart = false;
                     Animation.anim.SetBool("restart", false);
                     Animation.anim.SetBool("idle", true);
-                    Debug.Log("restart end");
+                    // Debug.Log("restart end");
                     RestartLevel();
                 }
 
