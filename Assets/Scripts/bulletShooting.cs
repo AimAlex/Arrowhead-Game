@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class bulletShooting : MonoBehaviour
 {
-    public GameObject prefab_shootItem;
+    public GameObject prefab_shootItem_left;
+    public GameObject prefab_shootItem_right;
     private bool playerClose=false;
     private float shootingRange=230f;
     private float timer;
@@ -13,9 +14,14 @@ public class bulletShooting : MonoBehaviour
     void Start(){
         timer=Time.time-shotGap;
         // prefab_shootItem=GameObject.Find("bullet");
-        if(prefab_shootItem!=null){
-            if(prefab_shootItem.GetComponent<PolygonCollider2D>()==null){
-                prefab_shootItem.AddComponent<PolygonCollider2D>();
+        if(prefab_shootItem_left!=null && prefab_shootItem_right != null)
+        {
+            if(prefab_shootItem_left.GetComponent<PolygonCollider2D>()==null){
+                prefab_shootItem_left.AddComponent<PolygonCollider2D>();
+            }
+            else if (prefab_shootItem_right.GetComponent<PolygonCollider2D>() == null)
+            {
+                prefab_shootItem_right.AddComponent<PolygonCollider2D>();
             }
         }
         // ShootItem();
@@ -38,8 +44,17 @@ public class bulletShooting : MonoBehaviour
     private void ShootItem(){
         // Debug.Log("shoot item");
         // prefab_shootItem=GameObject.Find("bullet");
-        GameObject shotItem=Instantiate(prefab_shootItem);
-        shotItem.transform.tag = "bullet";
+        if (FindObjectOfType<PlayerMovement>().rigidbody.position.x - this.transform.position.x <=0)
+        {
+            GameObject shotItem = Instantiate(prefab_shootItem_left);
+            shotItem.transform.tag = "bullet";
+        }
+        else
+        {
+            GameObject shotItem = Instantiate(prefab_shootItem_right);
+            shotItem.transform.tag = "bullet";
+        }
+
 
     /*    prefab_shootItem.SetActive(true);*/
         // GameObject shotItem=Instantiate(prefab_shootItem,new Vector3(transform.position.x,transform.position.y,transform.position.z));
