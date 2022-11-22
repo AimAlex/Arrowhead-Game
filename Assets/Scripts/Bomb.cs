@@ -82,6 +82,7 @@ IEnumerator Explotion(GameObject bomb, Animator anim)
                                 &&item.name!="Square"
                                     &&!item.CompareTag("Finish")
                                         &&!item.CompareTag("entry")
+                                            &&!item.CompareTag("Deadzone")
             )
         {
             // Debug.Log(item);
