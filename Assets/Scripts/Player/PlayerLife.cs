@@ -12,7 +12,7 @@ public class PlayerLife : MonoBehaviour
 {
     public static Rigidbody2D rb;
     float timer, timer1,timer_collision;
-    float restartHoldDur = 1f;
+    float restartHoldDur = 3f;
     float restartTimeAfterDie = 3f;
     public static string curScene;
     private PlayerMovement playerMovement;
@@ -207,6 +207,15 @@ public class PlayerLife : MonoBehaviour
         }
         else if (Input.GetKey("s"))
         {
+            if (Time.time - timer > restartHoldDur)
+            {
+                timer = float.PositiveInfinity;
+                RestartLevel();
+            }
+        }
+        /*
+        else if (Input.GetKey("s"))
+        {
             // Debug.Log("restart in process");
             if (Time.time - timer > restartHoldDur)
             {
@@ -229,6 +238,7 @@ public class PlayerLife : MonoBehaviour
 
             }
         }
+        */
         /*
         if (Input.GetKey("s"))
         {
