@@ -12,7 +12,7 @@ public class PlayerLife : MonoBehaviour
 {
     public static Rigidbody2D rb;
     float timer, timer1,timer_collision;
-    float restartHoldDur = 2f;
+    float restartHoldDur = 1f;
     float restartTimeAfterDie = 3f;
     public static string curScene;
     private PlayerMovement playerMovement;
