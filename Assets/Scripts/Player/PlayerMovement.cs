@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
 	public bool isGround, isDashing, isPreview, isMoved, isRunning;
 	bool jumpPressed;
 	int jumpCount, dashCount;
-
 	public static bool collectDoubleJump, collectDash;
 	public AudioSource audioSource, audioSource2;
 	AudioClip jumpAudio, dashAudio, pickPowerAudio;
@@ -134,15 +133,15 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update() // Update is called once per frame
 	{
-		if (Input.GetKeyDown(KeyCode.O))
-        {
-            isPreview = true;
-        }
-		if (Input.GetKeyUp(KeyCode.O))
-		{
-			isPreview = false;
-		} 
-		if (!isPreview && Time.timeScale != 0 && !cameraScroll.camaraMove){
+		// if (Input.GetKeyDown(KeyCode.O))
+        // {
+        //     isPreview = true;
+        // }
+		// if (Input.GetKeyUp(KeyCode.O))
+		// {
+		// 	isPreview = false;
+		// } 
+		if (!cameraScroll.inPreviewMode && Time.timeScale != 0 && !cameraScroll.camaraMove){
 			isGround = Physics2D.OverlapCircle(groundCheck.position, 0.7f, ground);
 			if (!isMoved){
 				isMoved = true;

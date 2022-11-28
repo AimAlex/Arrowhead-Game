@@ -12,7 +12,9 @@ public class SideScrolling : MonoBehaviour
     private Vector3 speedBack;
     private Vector3 speedLeft;
     private Vector3 speedRight;
-    public bool camaraMove, inPreviewMode;
+    private Vector3 playerOriginalPosition;
+    public bool camaraMove, inPreviewMode, inExitPreviewMode;
+    public GameObject previewObject;
     private float originalSize = 9.306593f;
     private Camera mainCamera;
     public int pathIndex;
@@ -27,6 +29,7 @@ public class SideScrolling : MonoBehaviour
         player = GameObject.Find("Player").transform;
         startPosition = transform.position - player.position;
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        inExitPreviewMode = false;
         // tourPosition variable, when use the tour camera, must uncomment next line
         // camaraMove = true;
         // smoothing = 1.5f;
@@ -113,30 +116,42 @@ public class SideScrolling : MonoBehaviour
 
     private void Update()
     {
-        startCameraTour();
+        // startCameraTour();
         // tourPosition(pathPoints, pathZoom, pathSpeed);
         if (Input.GetKeyDown(KeyCode.O))
         {
             inPreviewMode = true;
+            inExitPreviewMode = false;
         }
         else if (Input.GetKeyUp(KeyCode.O))
         {
-            inPreviewMode = false;
+            inExitPreviewMode = true;
         }
-        if (inPreviewMode){
-            // Debug.Log("inPreviewMode" + cameraPreviewSize);
+        if (!inExitPreviewMode && inPreviewMode){
+            Debug.Log(transform.position + " " + previewObject.transform.position);
+            transform.position = Vector3.Lerp(transform.position, previewObject.transform.position, Time.deltaTime);
             mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, cameraPreviewSize, Time.deltaTime);
         }
-        else if (!inPreviewMode){
-            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, originalSize, Time.deltaTime);
+        else if (inExitPreviewMode && inPreviewMode){
+            // Debug.Log(inExitPreviewMode + " " + inPreviewMode);
+            transform.position = Vector3.Lerp(transform.position, player.position + new Vector3(0, 0, -10), 3*Time.deltaTime);
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, originalSize, 3*Time.deltaTime);
+            if (Mathf.Abs(transform.position.x - player.position.x) <= 0.7f && Mathf.Abs(transform.position.y - player.position.y) <= 0.7f){
+                inPreviewMode = false;
+                inExitPreviewMode = false;
+                mainCamera.orthographicSize = originalSize;
+            }      
         }
     }
     private void LateUpdate()
     {
-        if (!camaraMove)
-        {
+        if (!inPreviewMode){
             InitCamera();
         }
+        // if (!camaraMove)
+        // {
+        //     InitCamera();
+        // }
     }
     private void InitCamera(){
         Vector3 cameraPosition = transform.position;
