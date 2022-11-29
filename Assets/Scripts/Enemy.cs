@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     private bool playerClose = false;
     private float shootingRange = 100f;
     private float timer;
-    private float shotGap = 3f;
+    private float shotGap = 3.5f;
 
     // Start is called before the first frame update
     void Start()
