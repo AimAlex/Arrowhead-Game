@@ -4,95 +4,70 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Transform firePoint;
-    public LineRenderer lineRenderer;
+    public GameObject enemy_bullet;
+
     public Vector2 direction;
     private RaycastHit2D hitInfo;
     private float time;
     private float timeDelay;
-    public bool hurtStarted=false;
+    public bool hurtStarted = false;
     private Rigidbody2D playerRigidbody;
     private Vector3 enemyPos;
     private Vector3 playerPos;
 
+    private bool playerClose = false;
+    private float shootingRange = 100f;
+    private float timer;
+    private float shotGap = 3f;
+
     // Start is called before the first frame update
     void Start()
     {
+        timer = Time.time - shotGap;
+        if (enemy_bullet != null)
+        {
+            if (enemy_bullet.GetComponent<PolygonCollider2D>() == null)
+            {
+                enemy_bullet.AddComponent<PolygonCollider2D>();
+            }
+        }
         time = 0f;
         timeDelay = 2f;
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
         time = time + 1f * Time.deltaTime;
         playerRigidbody = FindObjectOfType<PlayerMovement>().rigidbody;
         playerPos = playerRigidbody.position;
         enemyPos = transform.position;
-        if (time >= timeDelay && Vector3.Distance(playerPos, enemyPos) < 3.0f)
-        {
-            time = 0f;
-            var random = Random.Range(0f, 260f);
-            Vector2 randomVector = Random.insideUnitCircle;
-            direction = randomVector;
-            StartCoroutine(Shoot());
-        }
-    }
 
-    IEnumerator Shoot()
-    {
-        RaycastHit2D[] hitInfos = Physics2D.RaycastAll(firePoint.position, direction);
-        if (hitInfos.Length == 0 || (hitInfos.Length==1 && hitInfos[0].transform.tag == "Enemy"))
+
+        var dir = new Vector3(FindObjectOfType<PlayerMovement>().rigidbody.position.x, FindObjectOfType<PlayerMovement>().rigidbody.position.y, 0) - this.transform.position;
+        //    Debug.Log(dir.x*dir.x+dir.y*dir.y+dir.z*dir.z);
+        if (dir.x * dir.x + dir.y * dir.y + dir.z * dir.z < shootingRange)
         {
-            lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, direction); 
+            playerClose = true;
         }
         else
         {
-            if (hitInfos[0].transform.tag == "Enemy")
-            {
-                hitInfo = hitInfos[1];
-            }
-            else
-            {
-                hitInfo = hitInfos[0];
-            }
-
-            if (hitInfo)
-            {
-                lineRenderer.SetPosition(0, firePoint.position);
-                lineRenderer.SetPosition(1, hitInfo.point);
-
-                if (hitInfo.transform.tag == "Player")
-                {
-                    if(!hurtStarted){
-                        hurtStarted=true;
-                        bool isStillAlive = FindObjectOfType<healthPoint>().UpdateHurt();
-                        if (!isStillAlive)
-                        {
-                            FindObjectOfType<Animation>().isDead=true;
-                        }else{
-                            FindObjectOfType<Animation>().isHurt=true;
-                        }
-                    }
-                    
-                }
-                /*
-                if (hitInfo.transform.tag == "Player")
-                {
-                    PlayerLife.Die();
-                }
-                */
-            }
-            else
-            {
-                lineRenderer.SetPosition(0, firePoint.position);
-                lineRenderer.SetPosition(1, direction);
-            }
+            playerClose = false;
+        }
+        if (Time.time - timer > shotGap && playerClose&&(FindObjectOfType<PlayerMovement>().rigidbody.position.y- this.transform.position.y>=-1))
+        {
+            ShootItem();
+            timer = Time.time;
         }
 
-        lineRenderer.enabled = true;
-        yield return new WaitForSeconds(0.05f);
-        lineRenderer.enabled = false;
+    }
+
+    private void ShootItem()
+    {
+        // Debug.Log("shoot item");
+        // prefab_shootItem=GameObject.Find("bullet");
+        GameObject shotItem = Instantiate(enemy_bullet);
+        shotItem.transform.tag = "enemy_bullet";
+
     }
 }

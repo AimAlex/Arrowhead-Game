@@ -116,7 +116,8 @@ public class PlayerLife : MonoBehaviour
                 }
             }
         }
-        else if (col.gameObject.CompareTag("bullet"))
+        else if (col.gameObject.CompareTag("bullet")|| col.gameObject.CompareTag("enemy_bullet"))
+
         {
                 bool isStillAlive = FindObjectOfType<healthPoint>().UpdateHurt();
                 if (!isStillAlive)
@@ -141,7 +142,7 @@ public class PlayerLife : MonoBehaviour
         {
             collisionStarted=false;
         }
-        else if (col.gameObject.CompareTag("bullet"))
+        else if (col.gameObject.CompareTag("bullet") || col.gameObject.CompareTag("enemy_bullet"))
         {
             collisionStarted = false;
         }
