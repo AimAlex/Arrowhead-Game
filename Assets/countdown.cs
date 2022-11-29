@@ -16,7 +16,7 @@ public class countdown : MonoBehaviour
     {
         currentTime=startTime;
         resetTime=true;
-        print("countdown start...");
+        // print("countdown start...");
         // gameObject.SetActive(false);
     }
 
@@ -27,14 +27,14 @@ public class countdown : MonoBehaviour
             timer=Time.realtimeSinceStartup;;
             gameObject.SetActive(true);
             resetTime=false;
-            print("reset time true");
+            // print("reset time true");
         }
         currentTime=startTime-(Time.realtimeSinceStartup - timer);
         if(currentTime<=0){
-        this.GetComponent<TextMeshProUGUI>().text="0s left before restart";
+        this.GetComponent<TextMeshProUGUI>().text="Go to next level after 0s";
 
         }else{
-        this.GetComponent<TextMeshProUGUI>().text=currentTime.ToString("0")+"s left before restart";
+        this.GetComponent<TextMeshProUGUI>().text="Go to next level after "+currentTime.ToString("0")+"s";
         }
     }
 }
