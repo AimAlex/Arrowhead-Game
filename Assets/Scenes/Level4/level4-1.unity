@@ -1001,6 +1001,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16c5cc734af1a48dc95eb209f5cc43e2, type: 3}
+--- !u!1 &256639395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 256639396}
+  m_Layer: 0
+  m_Name: previewPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &256639396
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256639395}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8, y: 12.1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &305954789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26053,11 +26084,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1957376139 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7284554469235040391, guid: 0f3a52f0b31ff934cac61ee70dacd9c7, type: 3}
-  m_PrefabInstance: {fileID: 1246731845}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1976839314
 GameObject:
   m_ObjectHideFlags: 0
@@ -26190,21 +26216,12 @@ MonoBehaviour:
   camaraMove: 0
   inPreviewMode: 0
   inExitPreviewMode: 0
-  previewObject: {fileID: 0}
+  previewObject: {fileID: 256639395}
   pathIndex: 0
-  cameraPreviewSize: 17
-  pathPoints:
-  - {fileID: 1421291725}
-  - {fileID: 1957376139}
-  - {fileID: 1374758744}
-  pathZoom:
-  - 6
-  - 24
-  - 10
-  pathSpeed:
-  - 1
-  - 2
-  - 2
+  cameraPreviewSize: 32
+  pathPoints: []
+  pathZoom: []
+  pathSpeed: []
 --- !u!1 &1996345832
 GameObject:
   m_ObjectHideFlags: 0

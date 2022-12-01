@@ -17370,6 +17370,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19e028728685ac341a65ec4771c1f4a3, type: 3}
+--- !u!1 &1862045991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1862045992}
+  m_Layer: 0
+  m_Name: previewPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1862045992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862045991}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.7, y: 17.7, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 30
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1862580093 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4822503739322156, guid: 19e028728685ac341a65ec4771c1f4a3, type: 3}
@@ -41766,21 +41797,12 @@ MonoBehaviour:
   camaraMove: 0
   inPreviewMode: 0
   inExitPreviewMode: 0
-  previewObject: {fileID: 0}
+  previewObject: {fileID: 1862045991}
   pathIndex: 0
-  cameraPreviewSize: 17
-  pathPoints:
-  - {fileID: 607096732}
-  - {fileID: 1793650688}
-  - {fileID: 1524047784}
-  pathZoom:
-  - 6
-  - 28
-  - 8
-  pathSpeed:
-  - 1
-  - 2
-  - 2
+  cameraPreviewSize: 36
+  pathPoints: []
+  pathZoom: []
+  pathSpeed: []
 --- !u!81 &2142694257
 AudioListener:
   m_ObjectHideFlags: 0
