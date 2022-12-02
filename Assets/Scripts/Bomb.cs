@@ -76,8 +76,9 @@ IEnumerator Explotion(GameObject bomb, Animator anim)
     {
         if (item.name != "4_1ground" 
                 && item.name!="Player" 
-                    && !item.CompareTag("Booster") 
-                        &&!item.CompareTag("Treasure")
+                    && !item.CompareTag("Booster")
+                    && !item.CompareTag("Boss")
+                        && !item.CompareTag("Treasure")
                             &&!item.CompareTag("indestructible")
                                 &&item.name!="Square"
                                     &&!item.CompareTag("Finish")
