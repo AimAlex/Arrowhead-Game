@@ -128,7 +128,7 @@ public class SideScrolling : MonoBehaviour
             inExitPreviewMode = true;
         }
         if (!inExitPreviewMode && inPreviewMode){
-            Debug.Log(transform.position + " " + previewObject.transform.position);
+            // Debug.Log(transform.position + " " + previewObject.transform.position);
             transform.position = Vector3.Lerp(transform.position, previewObject.transform.position, Time.deltaTime);
             mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, cameraPreviewSize, Time.deltaTime);
         }
@@ -136,7 +136,7 @@ public class SideScrolling : MonoBehaviour
             // Debug.Log(inExitPreviewMode + " " + inPreviewMode);
             transform.position = Vector3.Lerp(transform.position, player.position + new Vector3(0, 0, -10), 3*Time.deltaTime);
             mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, originalSize, 3*Time.deltaTime);
-            if (Mathf.Abs(transform.position.x - player.position.x) <= 0.7f && Mathf.Abs(transform.position.y - player.position.y) <= 0.7f){
+            if (Mathf.Abs(transform.position.x - player.position.x) <= 0.7f && Mathf.Abs(transform.position.y - player.position.y) <= 0.7f || Mathf.Abs(mainCamera.orthographicSize - originalSize) <= 0.7f){
                 inPreviewMode = false;
                 inExitPreviewMode = false;
                 mainCamera.orthographicSize = originalSize;
