@@ -133,10 +133,14 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update() // Update is called once per frame
 	{
-		// if (Input.GetKeyDown(KeyCode.O))
-        // {
-        //     isPreview = true;
-        // }
+		if (cameraScroll.inPreviewMode && Animation.anim && rigidbody.velocity.x == 0)
+        {
+			Animation.anim.SetBool("idle",true);
+            Animation.anim.SetBool("jump", false);
+			Animation.anim.SetBool("hurt",false);
+			Animation.anim.SetBool("running",false);
+			Animation.anim.SetBool("dash", false);	
+        }
 		// if (Input.GetKeyUp(KeyCode.O))
 		// {
 		// 	isPreview = false;
