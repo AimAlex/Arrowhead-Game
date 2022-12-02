@@ -77,7 +77,7 @@ public class Pickupbomb : MonoBehaviour
     
     private void DropBomb(GameObject bomb)
     {
-        bomb.GetComponent<Rigidbody2D>().drag = 0.5f;
+        bomb.GetComponent<Rigidbody2D>().drag = 1f;
         playerMovement.PlayAudio2(bombDropAudio);
         // Debug.Log(bomb.name);
         bomb_dict[bomb.name] = true;
