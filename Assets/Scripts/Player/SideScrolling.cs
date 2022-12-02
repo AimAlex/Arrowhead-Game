@@ -116,6 +116,10 @@ public class SideScrolling : MonoBehaviour
 
     private void Update()
     {
+        if (!inExitPreviewMode && !inPreviewMode && Mathf.Abs(mainCamera.orthographicSize - originalSize) > 0.05f)
+        {
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, originalSize, Time.deltaTime);
+        }
         // startCameraTour();
         // tourPosition(pathPoints, pathZoom, pathSpeed);
         if (Input.GetKeyDown(KeyCode.O))
@@ -134,12 +138,11 @@ public class SideScrolling : MonoBehaviour
         }
         else if (inExitPreviewMode && inPreviewMode){
             // Debug.Log(inExitPreviewMode + " " + inPreviewMode);
-            transform.position = Vector3.Lerp(transform.position, player.position + new Vector3(0, 0, -10), 3*Time.deltaTime);
-            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, originalSize, 3*Time.deltaTime);
-            if (Mathf.Abs(transform.position.x - player.position.x) <= 0.7f && Mathf.Abs(transform.position.y - player.position.y) <= 0.7f || Mathf.Abs(mainCamera.orthographicSize - originalSize) <= 0.5f){
+            transform.position = Vector3.Lerp(transform.position, player.position + new Vector3(0, 0, -10), 5*Time.deltaTime);
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, originalSize, 5*Time.deltaTime);
+            if ((Mathf.Abs(transform.position.x - player.position.x) <= 0.05f && Mathf.Abs(transform.position.y - player.position.y) <= 0.05f) || Mathf.Abs(mainCamera.orthographicSize - originalSize) <= 0.05f){
                 inPreviewMode = false;
                 inExitPreviewMode = false;
-                mainCamera.orthographicSize = originalSize;
             }      
         }
     }
@@ -156,7 +159,7 @@ public class SideScrolling : MonoBehaviour
     private void InitCamera(){
         Vector3 cameraPosition = transform.position;
         cameraPosition.x = player.position.x;
-        cameraPosition.y = player.position.y + 3;
+        cameraPosition.y = player.position.y;
         if (cameraPosition != transform.position)
         {
             transform.position = cameraPosition;
