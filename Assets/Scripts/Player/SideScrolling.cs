@@ -38,7 +38,7 @@ public class SideScrolling : MonoBehaviour
     private void Start(){
         InitCamera();
         initPosition = transform.position;
-        InitCameraTour();
+        // InitCameraTour();
         // demo camera tour code
         // pathPoints = new List<Vector3>();
         // pathPoints.Add(new Vector3(initPosition.x + 15, initPosition.y, transform.position.z));
