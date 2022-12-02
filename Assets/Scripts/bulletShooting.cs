@@ -9,7 +9,7 @@ public class bulletShooting : MonoBehaviour
     private bool playerClose=false;
     private float shootingRange=230f;
     private float timer;
-    private float shotGap=1.5f;
+    private float shotGap=3f;
 
     void Start(){
         timer=Time.time-shotGap;
@@ -30,7 +30,7 @@ public class bulletShooting : MonoBehaviour
     void Update(){
        var dir= new Vector3(FindObjectOfType<PlayerMovement>().rigidbody.position.x,FindObjectOfType<PlayerMovement>().rigidbody.position.y,0)-this.transform.position;
     //    Debug.Log(dir.x*dir.x+dir.y*dir.y+dir.z*dir.z);
-       if(dir.x*dir.x+dir.y*dir.y+dir.z*dir.z < shootingRange){
+       if(dir.x*dir.x+dir.y*dir.y+dir.z*dir.z < shootingRange/2){
             playerClose=true;
        }else{
             playerClose=false;
