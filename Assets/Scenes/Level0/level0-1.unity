@@ -1950,6 +1950,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270001800}
   m_CullTransparentMesh: 1
+--- !u!1 &281718144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 281718145}
+  m_Layer: 0
+  m_Name: previewPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &281718145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281718144}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.18, y: -4.64, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &286242238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18182,9 +18213,9 @@ MonoBehaviour:
   camaraMove: 0
   inPreviewMode: 0
   inExitPreviewMode: 0
-  previewObject: {fileID: 0}
+  previewObject: {fileID: 281718144}
   pathIndex: 0
-  cameraPreviewSize: 30
+  cameraPreviewSize: 13
   pathPoints: []
   pathZoom: []
   pathSpeed: []
